@@ -8,4 +8,4 @@ var mapboxTiles = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/streets-v
 
 var map = L.map('map')
   .addLayer(mapboxTiles)
-  .setView([42.3610, -71.0687], 15);
+  .setView([46.3610, 6.94], 11);
