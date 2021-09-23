@@ -1,7 +1,6 @@
-html, body, svg {
+html, body{
     margin: 0;
-    font-family: Arial,sans-serif !important;
-    background: #ffffff;
+    font-family: Arial;
     color: #666666;
     font-weight: bold;
   }
