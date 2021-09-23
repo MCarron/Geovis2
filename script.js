@@ -25,7 +25,7 @@ tileSize: 256,
   subdomains:['mt0','mt1','mt2','mt3']
 });
 
-// on ajout la couche qui s'affichera lors du load de la page
+// on ajoute la couche qui s'affichera lors du load de la page
 mapboxTiles.addTo(myMap);
 
 // on insère nos trois couches dans un variable
