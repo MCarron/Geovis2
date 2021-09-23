@@ -8,6 +8,12 @@ const mapboxTiles = L.tileLayer('https://api.mapbox.com/styles/v1/theogerritsen/
        zoomOffset: -1
 });
 
-const map = L.map('map')
+const map = L.map('map', {
+  maxBounds: [[46, 6], [47,7.5]],
+    minZoom: 11,
+    maxZoom: 18,
+    zoom: 13
+}
+)
   .addLayer(mapboxTiles)
-  .setView([46.315119251778235, 6.93942686688034], 13);
+  .setView([46.315119251778235, 6.93942686688034]);
