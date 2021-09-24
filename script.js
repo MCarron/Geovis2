@@ -2,7 +2,7 @@ const width = document.getElementById("map").offsetWidth*0.7,
     margin = {top: 70, right: 20, bottom: 0, left: 120},
     height = 600;
 
-const myMap = L.map('map').setView([46.315119251778235, 6.93942686688034], 13);
+const myMap = L.map('map').setView([46.315119251778235, 6.93942686688034], 12);
   
 myMap.setMaxBounds([[46, 6], [47,7.5]]);
 myMap.setMinZoom(11);

@@ -32,6 +32,8 @@ html, body{
     left: 70%;
     padding-left: 50px;
     top: 20%;
+    stroke: black;
+    stroke-width: 10%;
 }
 #desc
 {
@@ -39,4 +41,5 @@ html, body{
     left: 70%;
     padding-left: 50px;
     top: 50%;
+    stroke: black;
 }
