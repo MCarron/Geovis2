@@ -2,11 +2,12 @@ const width = document.getElementById("map").offsetWidth*0.7,
     margin = {top: 70, right: 20, bottom: 0, left: 120},
     height = 600;
 
-const myMap = L.map('map').setView([46.315119251778235, 6.93942686688034], 12);
+
+// localisation lors du load de la page
+const myMap = L.map('map').locate({setView: true, maxZoom: 18, minZoom: 11});
   
 myMap.setMaxBounds([[46, 6], [47,7.5]]);
-myMap.setMinZoom(11);
-myMap.setMaxZoom(18);
+
 //////////////////////////////
 ////  COUCHES DE BASE ////////
 /////////////////////////////
@@ -48,5 +49,29 @@ L.control.layers(baseMaps, overlays).addTo(myMap);
 L.control.scale({
   position: 'bottomleft'
 }).addTo(myMap);
+
+// lorsque l'on trouve la localisation de l'utilisateur
+function onLocationFound(e) {
+  var radius = e.accuracy;
+
+  // on ajoute un marqueur sur notre carte
+  L.marker(e.latlng).addTo(myMap)
+  // avec un pop up au dessus du marqueur
+      .bindPopup("You are within " + radius + " meters from this point").openPopup();
+
+      //on ajoute un cercle autour du marquer qui correspond à la précision de la géolocalisation
+  L.circle(e.latlng, radius).addTo(myMap);
+}
+
+// message d'erreur si la localisation de l'utilisateur n'a pas été trouvée
+myMap.on('locationfound', onLocationFound);
+
+function onLocationError(e) {
+  alert(e.message);
+}
+
+myMap.on('locationerror', onLocationError);
+
+
 
 
