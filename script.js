@@ -17,6 +17,10 @@ const spots = [
 
 ];
 
+var iconePerso = L.icon({
+  iconUrl: 'https://github.com/ssuter6/Geovis2/'
+})
+
 // localisation lors du load de la page
 const myMap = L.map('map').locate({setView: true, maxZoom: 18, minZoom: 11});
   
@@ -48,7 +52,7 @@ mapboxTiles.addTo(myMap);
 
 // On ajoute nos markeurs rerpésentant les spots de grimpe sur la carte 
 for (var i = 0; i < spots.length; i++) {
-  marker = new L.marker([spots[i][1],spots[i][2]])
+  marker = new L.marker([spots[i][1],spots[i][2]], {icone: iconePerso})
     .bindPopup(spots[i][0])
     .addTo(myMap);
 }
