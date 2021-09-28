@@ -3,6 +3,20 @@ const width = document.getElementById("map").offsetWidth*0.7,
     height = 600;
 
 
+///Création d'une const avec avec les données sur nos diffférents spots de grimpe'///
+
+const spots = [
+  ["Drapel", 46.32326378721646, 6.977545629058104],
+  ["Yvrone (Le château)",46.339930024925245, 6.949014869239109],
+  ["Corbeyrier (La feuille)", 46.35321024972724, 6.953289858538657],
+  ["Verschiez (Dalle à Besson)",46.30864100076279, 6.978640113918804],
+  ["verschiez (Les Noces)", 46.30713193891389, 6.974397011572421],
+  ["St-triphon", 46.29490025429281, 6.977447832828999],
+  ["Veyges", 46.33473359297587, 6.97983360713883],
+
+
+];
+
 // localisation lors du load de la page
 const myMap = L.map('map').locate({setView: true, maxZoom: 18, minZoom: 11});
   
@@ -31,6 +45,13 @@ tileSize: 256,
 
 // on ajoute la couche qui s'affichera lors du load de la page
 mapboxTiles.addTo(myMap);
+
+// On ajoute nos markeurs rerpésentant les spots de grimpe sur la carte 
+for (var i = 0; i < spots.length; i++) {
+  marker = new L.marker([spots[i][1],spots[i][2]])
+    .bindPopup(spots[i][0])
+    .addTo(myMap);
+}
 
 // on insère nos trois couches dans un variable
 const baseMaps = {
@@ -71,7 +92,6 @@ function onLocationError(e) {
 }
 
 myMap.on('locationerror', onLocationError);
-
 
 
 
