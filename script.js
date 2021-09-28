@@ -2,7 +2,6 @@ const width = document.getElementById("map").offsetWidth*0.7,
     margin = {top: 70, right: 20, bottom: 0, left: 120},
     height = 600;
 
-
 ///Création d'une const avec avec les données sur nos diffférents spots de grimpe'///
 
 const spots = [
@@ -18,7 +17,7 @@ const spots = [
 ];
 
 var iconePerso = L.icon({
-  iconUrl: 'https://github.com/ssuter6/Geovis2/blob/main/figs/icone_rouge.png',
+  iconUrl: 'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.png',
   iconSize: [28, 41]
 });
 
