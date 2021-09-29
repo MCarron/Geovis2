@@ -22,10 +22,13 @@ var iconePerso = L.icon({
 });
 
 // localisation lors du load de la page
-const myMap = L.map('map').locate({setView: true, maxZoom: 18, minZoom: 11});
-  
-myMap.setMaxBounds([[46, 6], [47,7.5]]);
+const myMap = L.map('map', {center: [46.33, 6.97],
+  minZoom: 5,
+  maxZoom: 21,
+  zoom: 13});
 
+
+  lc = L.control.locate().addTo(myMap);
 //////////////////////////////
 ////  COUCHES DE BASE ////////
 /////////////////////////////
@@ -75,27 +78,6 @@ L.control.scale({
   position: 'bottomleft'
 }).addTo(myMap);
 
-// lorsque l'on trouve la localisation de l'utilisateur
-function onLocationFound(e) {
-  var radius = e.accuracy;
-
-  // on ajoute un marqueur sur notre carte
-  L.marker(e.latlng).addTo(myMap)
-  // avec un pop up au dessus du marqueur
-      .bindPopup("You are within " + radius + " meters from this point").openPopup();
-
-      //on ajoute un cercle autour du marquer qui correspond à la précision de la géolocalisation
-  L.circle(e.latlng, radius).addTo(myMap);
-}
-
-// message d'erreur si la localisation de l'utilisateur n'a pas été trouvée
-myMap.on('locationfound', onLocationFound);
-
-function onLocationError(e) {
-  alert(e.message);
-}
-
-myMap.on('locationerror', onLocationError);
 
 
 
