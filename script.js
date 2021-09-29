@@ -27,7 +27,7 @@ const myMap = L.map('map', {center: [46.33, 6.97],
   maxZoom: 21,
   zoom: 13});
 
-
+// bouton qui permet d'ajouter notre localisation sur la carte 
   lc = L.control.locate().addTo(myMap);
 //////////////////////////////
 ////  COUCHES DE BASE ////////
