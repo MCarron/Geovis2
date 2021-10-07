@@ -1,6 +1,10 @@
-const width = document.getElementById("map").offsetWidth*0.7,
-    margin = {top: 70, right: 20, bottom: 0, left: 120},
-    height = 600;
+function openNav() {
+  document.getElementById("myFilter").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("myFilter").style.width = "0";
+}
 
 ///Création d'une const avec avec les données sur nos diffférents spots de grimpe'///
 
@@ -29,13 +33,14 @@ const myMap = L.map('map', {center: [46.33, 6.97],
 
 // bouton qui permet d'ajouter notre localisation sur la carte 
   lc = L.control.locate().addTo(myMap);
+
 //////////////////////////////
 ////  COUCHES DE BASE ////////
 /////////////////////////////
 
 // création des const avec nos trois couches de bases (mapbox, google sat et google terrain)
 const mapboxTiles = L.tileLayer('https://api.mapbox.com/styles/v1/theogerritsen/cktvgvy4d294h18lp92dm804n/tiles/512/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoidGhlb2dlcnJpdHNlbiIsImEiOiJja3R2Zzkybzkwa25oMm5tcGp1MWY0enh1In0.n_ye_r9ELbLqxyWl-giSlA', {
-       attribution: '© <a href="https://www.mapbox.com/feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+       attribution: '© <a href="https://www.mapbox.com/feedback/">Mapbox</a>',
        tileSize: 512,
        zoomOffset: -1
 });

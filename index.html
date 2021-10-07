@@ -14,24 +14,19 @@
 
 </head>
 <body>
-    <!-- <div id="container" class="svg-container"> -->
         <div id="map"></div>
-
-        <!-- <div id="infos">
-            <div id="titre">
-                Climbing in the Swiss Chablais
-            </div>
-            <div id="search">
-                <input type="text" name="recherche" placeholder="Search climbing spot" />
-                <button onclick="alert('Trouvé!');">Chercher</button>
-            </div>
-            <div id="filter">
-                On mettra les filtres ici
-            </div>
-            <div id="desc">
-                On mettra les infos sur les voies ici
-            </div> -->
-        <!-- </div> -->
+        <div id="myFilter" class="filter">
+            <!-- On utilise ici des unicodes prédéfinis pour créer le symbole de la croix
+            et du menu plus bas -->
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#">Difficulty</a>
+            <a href="#">Rock Type</a>
+            <a href="#">Length</a>
+            <a href="#">Exposition</a>
+        </div>
+        <div class="bouton">
+        <img width="40" height="40" src="figs/filtre2.png" onclick="openNav()"></img>
+        </div>
         <script src="dist/L.Control.Locate.js" ></script>
         <script src="script.js"></script>
     <!-- </div> -->
