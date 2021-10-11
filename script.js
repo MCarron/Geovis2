@@ -6,30 +6,14 @@ function closeNav() {
   document.getElementById("myFilter").style.width = "0";
 }
 
-///Création d'une const avec avec les données sur nos diffférents spots de grimpe'///
-
-const spots = [
-  ["Drapel", 46.32326378721646, 6.977545629058104],
-  ["Yvrone (Le château)",46.339930024925245, 6.949014869239109],
-  ["Corbeyrier (La feuille)", 46.35321024972724, 6.953289858538657],
-  ["Verschiez (Dalle à Besson)",46.30864100076279, 6.978640113918804],
-  ["verschiez (Les Noces)", 46.30713193891389, 6.974397011572421],
-  ["St-triphon", 46.29490025429281, 6.977447832828999],
-  ["Veyges", 46.33473359297587, 6.97983360713883],
-
-
-];
-
-var iconePerso = L.icon({
-  iconUrl: 'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.png',
-  iconSize: [28, 41]
-});
-
 // localisation lors du load de la page
 const myMap = L.map('map', {center: [46.33, 6.97],
   minZoom: 5,
   maxZoom: 21,
   zoom: 13});
+
+  
+
 
 // bouton qui permet d'ajouter notre localisation sur la carte 
   lc = L.control.locate().addTo(myMap);
@@ -58,12 +42,6 @@ tileSize: 256,
 // on ajoute la couche qui s'affichera lors du load de la page
 mapboxTiles.addTo(myMap);
 
-// On ajoute nos markeurs rerpésentant les spots de grimpe sur la carte 
-for (var i = 0; i < spots.length; i++) {
-  marker = new L.marker([spots[i][1],spots[i][2]], {icon: iconePerso})
-    .bindPopup(spots[i][0])
-    .addTo(myMap);
-}
 
 // on insère nos trois couches dans un variable
 const baseMaps = {
@@ -84,5 +62,25 @@ L.control.scale({
 }).addTo(myMap);
 
 
+///Création de nos icon///
+// dans un premier temps on importe notre icone personnel
 
+var iconePerso = L.icon({
+  iconUrl: 'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.png',
+  iconSize: [28, 41]
+});
 
+// ajout des markers: 
+  // dans un premier temps on créer une fonction qui permet nous permettra de voir quel est le nom de chaque spots lorsque l'on clique dessus
+  // on ajoute ensuite nos marker en utilisant ceux qu'on a créer nous-même)
+function onEachFeature(feature, layer) {
+  if (feature.properties) {
+      layer.bindPopup("<b>" + feature.properties.Nom + "</b>");
+      }
+  }
+var lieux_grimpe = new L.geoJson(spots, {
+  onEachFeature: onEachFeature,
+  pointToLayer: function(feature,latlng){
+    return L.marker(latlng,{icon: iconePerso});
+  }
+}).addTo(myMap);
