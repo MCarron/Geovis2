@@ -12,8 +12,6 @@ const myMap = L.map('map', {center: [46.33, 6.97],
   maxZoom: 21,
   zoom: 13});
 
-  
-
 
 // bouton qui permet d'ajouter notre localisation sur la carte 
   lc = L.control.locate().addTo(myMap);
@@ -41,7 +39,6 @@ tileSize: 256,
 
 // on ajoute la couche qui s'affichera lors du load de la page
 mapboxTiles.addTo(myMap);
-
 
 // on insère nos trois couches dans un variable
 const baseMaps = {
@@ -74,8 +71,8 @@ var iconePerso = L.icon({
   // dans un premier temps on créer une fonction qui permet nous permettra de voir quel est le nom de chaque spots lorsque l'on clique dessus
   // on ajoute ensuite nos marker en utilisant ceux qu'on a créer nous-même)
 function onEachFeature(feature, layer) {
-  if (feature.properties) {
-      layer.bindPopup("<b>" + feature.properties.Nom + "</b>");
+  if (feature.properties) { 
+      layer.bindPopup("<h1>" + feature.properties.Nom + "</h1>" + "<h2>" + feature.properties.Type_voies + "</h2>");
       }
   }
 var lieux_grimpe = new L.geoJson(spots, {
