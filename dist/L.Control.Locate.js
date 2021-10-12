@@ -616,6 +616,7 @@ You can find the project at: https://github.com/domoritz/leaflet-locatecontrol
 
             var radius = this._event.accuracy;
             var latlng = this._event.latlng;
+            console.log(latlng);
 
             // circle with the radius of the location's accuracy
             if (this.options.drawCircle) {

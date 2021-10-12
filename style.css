@@ -47,39 +47,9 @@ html, body, #map {
     position: absolute;
     cursor: pointer;
     top: 80px;
-    left: 85%;
+    right: 15px;
     z-index: 2;
     font-size: 20px;
     color: rgb(0, 0, 0);
 }
-/* #titre
-{
-    position: absolute;
-    top: 2%;
-    left: 70%;
-    padding-left: 10px;
-}
-#search
-{
-    position: absolute;
-    top: 10%;
-    bottom: 0;
-    left: 70%;
-    padding-left: 50px;
-}
-#filter
-{
-    position: absolute;
-    left: 70%;
-    padding-left: 50px;
-    top: 20%;
 
-}
-#desc
-{
-    position: absolute;
-    left: 70%;
-    padding-left: 50px;
-    top: 50%;
-    fill: black;
-} */

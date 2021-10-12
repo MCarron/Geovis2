@@ -6,7 +6,9 @@
     <title>Climbing in the Swiss Chablais</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
+    <script src="polyline.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -14,18 +16,32 @@
 
 </head>
 <body>
+    <h3>Route:</h3>
+        <hr />
+        <div class="form-group">
+          <label for="fromPoint">From:</label>
+          <input type="text" class="form-control" id="fromPoint" placeholder="latitude,longitude" value="46.6274,10.4462">
+          <small id="fromPointHelp" class="form-text text-muted">Only points in Switzerland are taken into account.</small>
+        </div>
+        <div class="form-group">
+          <label for="toPoint">To:</label>
+          <input type="text" class="form-control" id="toPoint" placeholder="latitude,longitude" value="46.5264,6.57996">
+          <small id="fromPointHelp" class="form-text text-muted">Only points in Switzerland are taken into account.</small>
+        </div>
+        <button class="btn btn-primary" onclick="calculateRoute()">Calculate</button>
+        <hr />
         <div id="map"></div>
         <div id="myFilter" class="filter">
             <!-- On utilise ici des unicodes prédéfinis pour créer le symbole de la croix
             et du menu plus bas -->
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="javascript:" class="closebtn" onclick="closeNav()">&times;</a>
             <a href="#">Difficulty</a>
             <a href="#">Rock Type</a>
             <a href="#">Length</a>
             <a href="#">Exposition</a>
         </div>
         <div class="bouton">
-        <img width="40" height="40" src="figs/filtre2.png" onclick="openNav()"></img>
+        <img width="45" height="45" src="figs/filtre2.png" onclick="openNav()"></img>
         </div>
         <script src="dist/L.Control.Locate.js" ></script>
         <script src="spots.js"></script>
