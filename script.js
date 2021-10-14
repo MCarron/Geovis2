@@ -12,13 +12,8 @@ var myMap = L.map('map', {center: [46.33, 6.97],
   maxZoom: 30,
   zoom: 13});
 
-<<<<<<< Updated upstream
 
-// bouton qui permet d'ajouter notre localisation sur la carte 
-  lc = L.control.locate().addTo(myMap);
 
-=======
->>>>>>> Stashed changes
 //////////////////////////////
 ////  COUCHES DE BASE ////////
 /////////////////////////////
