@@ -8,8 +8,8 @@ function closeNav() {
 
 // localisation lors du load de la page
 var myMap = L.map('map', {center: [46.33, 6.97],
-  minZoom: 3,
-  maxZoom: 30,
+  minZoom: 10,
+  maxZoom: 18,
   zoom: 13});
 
 
@@ -41,144 +41,6 @@ tileSize: 256,
 
 // on ajoute la couche qui s'affichera lors du load de la page
 osmLayer.addTo(myMap);
-
-/* var current_position, current_accuracy;
-
-function onLocationFound(e){
-  if (current_position) {
-    myMap.removeLayer(current_position);
-    myMap.removeLayer(current_accuracy);
-  }
-
-  var radius = e.accuracy/2;
-
-  current_position = L.marker(e.latlng).addTo(myMap)
-  .bindPopup(radius).openPopup();
-
-  current_accuracy = L.circle(e.latlng, radius).addTo(myMap);
-}
-
-function onLocationError(e) {
-  alert(e.message);
-}
-
-myMap.on('locationfound', onLocationFound);
-myMap.on('locationerror', onLocationError);
-
-function locate() {
-  myMap.locate();
-}
-
-setInterval(locate, 3000); */
-// bouton qui permet d'ajouter notre localisation sur la carte
-
-lc = L.control.locate().addTo(myMap);
-
-var fromCurrentPos = 'fromPoint'
-var toSelectedMarker = 'toPoint';
-
-
-// on va chercher notre localisation actuelle pour calculer l'itinéraire depuis notre position
-myMap.on('locationfound', function (evt) {
-
-  //on va chercher lat et long de notre position actuelle
-  var currentPos = evt.latlng;
-
-  // on reformate le résulat et on le lie à notre boite de dialogue
-  $('#'+fromCurrentPos).val(currentPos.lat + ',' + currentPos.lng);
-  fromCurrentPos == 'fromPoint';
-  // notre position va être recaluclé toutes les 5 secondes
-});
-
-// on va chercher notre lieu de destination
-myMap.on('click', function(e){
-
-  var pt = e.latlng;
-
-  $('#'+toSelectedMarker).val(pt.lat + ',' + pt.lng);
-
-  toSelectedMarker == 'toPoint';
-
-  console.log(toSelectedMarker)
-});
-
-// calculer l'itinéraire
-function calculateRoute(){
-
-  // on prend le point de départ
-  var fromPoint = $('#fromPoint').val();
-  // et le point d'arrivée
-  var toPoint = $('#toPoint').val();
-
-
-  // on fait le Query de notre route avec cpomme moyen de transport par défaut la voiture
-  makeRoutingQuery({
-      fromPlace: fromPoint,
-      toPlace: toPoint,
-      mode: 'WALK',
-  });
-}
-
-// s'il est possible de faire la route, on la dessine avec la fonction drawRoute
-function makeRoutingQuery(data){
-  $.ajax({
-    url: 'http://localhost:8080/otp/routers/ch/plan',
-    type: 'GET',
-    dataType: 'json',
-    data: data,
-    success: drawRoute,
-    error: calculateRouteError,
-    beforeSend: setHeader
-  });
-}
-
-function setHeader(xhr){
-  xhr.setRequestHeader('Accept', 'application/json');
-}
-
-// dessiner l'itinéraire
-function drawRoute(data){
-  console.log('drawRoute', data);
-
-  if (data.error){
-    alert(data.error.msg);
-    return;
-  }
-
-  // Show the first itinerary (OTP returns several alternatives)
-  // on prend le premier itinéraire qu'OTP nous propose
-  var itin = data.plan.itineraries[0];
-  for (var i=0; i < itin.legs.length; i++){
-    var leg = itin.legs[i].legGeometry.points;
-    var geomLeg = polyline.toGeoJSON(leg);
-    L.geoJSON(geomLeg, {
-      style: function(feature){
-        return { 
-          color: '#0000ff',
-          opacity: 0.7
-        };
-      }
-    }).addTo(myMap);
-  }
-
-  // Show origin and destination
-
-  
-  var destination = L.circleMarker(
-    [data.plan.to.lat, data.plan.to.lon],
-    {
-      color: '#000000',
-      fillOpacity: 0.5,
-      fillColor: '#0000ff'
-    }
-  ).addTo(myMap);
-
-}
-
-function calculateRouteError(error){
-  alert('Error during route calculation.');
-  console.log('Routing error', error);
-}
 
 
 // on insère nos trois couches dans un variable
@@ -223,3 +85,110 @@ var lieux_grimpe = new L.geoJson(spots, {
     return L.marker(latlng,{icon: iconePerso});
   }
 }).addTo(myMap);
+
+lc = L.control.locate().addTo(myMap);
+
+var fromCurrentPos = 'fromPoint'
+var toSelectedMarker = 'toPoint';
+
+
+// on va chercher notre localisation actuelle pour calculer l'itinéraire depuis notre position
+myMap.on('locationfound', function (evt) {
+
+  //on va chercher lat et long de notre position actuelle
+  var currentPos = evt.latlng;
+
+  // on reformate le résulat et on le lie à notre boite de dialogue
+  $('#'+fromCurrentPos).val(currentPos.lat + ',' + currentPos.lng);
+  fromCurrentPos == 'fromPoint';
+  // notre position va être recaluclé toutes les 5 secondes
+});
+
+// on va chercher notre lieu de destination
+lieux_grimpe.on('click', function(e){
+
+  var pt = e.latlng;
+
+  $('#'+toSelectedMarker).val(pt.lat + ',' + pt.lng);
+
+  toSelectedMarker == 'toPoint';
+
+  console.log(toSelectedMarker)
+});
+
+// calculer l'itinéraire
+
+function calculateRoute(){
+  // on prend le point de départ
+  var fromPoint = $('#fromPoint').val();
+  // et le point d'arrivée
+  var toPoint = $('#toPoint').val();
+
+
+  // on fait le Query de notre route avec cpomme moyen de transport par défaut la voiture
+  makeRoutingQuery({
+      fromPlace: fromPoint,
+      toPlace: toPoint,
+      mode: 'WALK',
+  });
+}
+
+// s'il est possible de faire la route, on la dessine avec la fonction drawRoute
+function makeRoutingQuery(data){
+  $.ajax({
+    url: 'http://localhost:8080/otp/routers/ch/plan',
+    type: 'GET',
+    dataType: 'json',
+    data: data,
+    success: drawRoute,
+    error: calculateRouteError,
+    beforeSend: setHeader
+  });
+}
+
+function setHeader(xhr){
+  xhr.setRequestHeader('Accept', 'application/json');
+}
+
+/////////////////////////////////
+///  DESSINER ITIN /////////////
+//////////////////////////////
+
+// On set notre variable a null pour pouvoir le reset à chaque nouveau calcul
+var geojsonLayer = null;
+function drawRoute(data){
+  if (data.error){
+    alert(data.error.msg);
+    return;
+  }
+  // si notre layer est différent de null (donc si notre itin a déjà été dessinée)
+  // on enlève la couche en question (geojson)
+  if (geojsonLayer != null){
+    myMap.removeLayer(geojsonLayer);
+  }
+
+  // Show the first itinerary (OTP returns several alternatives)
+  // on prend le premier itinéraire qu'OTP nous propose
+  var itin = data.plan.itineraries[0];
+  for (var i=0; i < itin.legs.length; i++){
+
+    var leg = itin.legs[i].legGeometry.points;
+    var geomLeg = polyline.toGeoJSON(leg);
+    geojsonLayer = L.geoJSON(geomLeg, {
+      style: function(feature){
+        return { 
+          border: 10,
+          color: '#2ca8da',
+          opacity: 0.7,
+          weight: 6
+        };
+      }
+    }).addTo(myMap);
+  }
+}
+
+
+function calculateRouteError(error){
+  alert('Error during route calculation.');
+  console.log('Routing error', error);
+}

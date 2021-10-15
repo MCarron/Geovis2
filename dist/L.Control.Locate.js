@@ -184,7 +184,7 @@ You can find the project at: https://github.com/domoritz/leaflet-locatecontrol
                 return locationEvent.bounds;
             },
             /** Smooth pan and zoom to the location of the marker. Only works in Leaflet 1.0+. */
-            flyTo: false,
+            flyTo: true,
             /**
              * The user location can be inside and outside the current view when the user clicks on the
              * control that is already active. Both cases can be configures separately.
