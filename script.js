@@ -75,7 +75,7 @@ var iconePerso = L.icon({
   // dans un premier temps on créer une fonction qui permet nous permettra de voir quel est le nom de chaque spots lorsque l'on clique dessus
   // on ajoute ensuite nos marker en utilisant ceux qu'on a créer nous-même)
 function onEachFeature(feature, layer) {
-  if (feature.properties) { 
+  if (feature.properties) {
       layer.bindPopup("<h1>" + feature.properties.Nom + "</h1>" + "<h2>" + feature.properties.Type_voies + "</h2>");
       }
   }
@@ -90,6 +90,7 @@ lc = L.control.locate().addTo(myMap);
 
 var fromCurrentPos = 'fromPoint'
 var toSelectedMarker = 'toPoint';
+var toSelectedName ='toName';
 
 
 // on va chercher notre localisation actuelle pour calculer l'itinéraire depuis notre position
@@ -107,13 +108,17 @@ myMap.on('locationfound', function (evt) {
 // on va chercher notre lieu de destination
 lieux_grimpe.on('click', function(e){
 
+  // on va chercher les coordonnées lat long du marqueur sur lequel on a cliqué
   var pt = e.latlng;
-
+  //on va chercher le nom du marqueur sur lequel on a cliqué
+  var content = e.layer.feature.properties.Nom;
+  // puis on ajoute les coordonnées lat long du marqueur dans l'input hidden pour calculer l'itinéraire
   $('#'+toSelectedMarker).val(pt.lat + ',' + pt.lng);
-
   toSelectedMarker == 'toPoint';
 
-  console.log(toSelectedMarker)
+  // on change le text de l'input pour qu'il corresponde au site sur lequel on a cliqué
+  $('#'+toSelectedName).val(content);
+  toSelectedName == 'toName';
 });
 
 // calculer l'itinéraire
@@ -180,7 +185,7 @@ function drawRoute(data){
           border: 10,
           color: '#2ca8da',
           opacity: 0.7,
-          weight: 6
+          weight: 10
         };
       }
     }).addTo(myMap);

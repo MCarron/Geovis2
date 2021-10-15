@@ -16,16 +16,20 @@
 
 </head>
 <body>
-    <h3>Route:</h3>
-        <hr />
         <div class="form-group">
           <label for="fromPoint">From:</label>
-          <input type="text" class="form-control" id="fromPoint" placeholder="latitude,longitude" value="46.6274,10.4462">
+          <!-- on ajout un input inactif qui dit "current position"-->
+          <input type="text" placeholder="Current position" disabled>
+          <!-- puis on ajoute un input actif qui fonctionnera avec notre script-->
+          <input type="hidden" class="form-control" id="fromPoint">
           <small id="fromPointHelp" class="form-text text-muted">Only points in Switzerland are taken into account.</small>
         </div>
         <div class="form-group">
           <label for="toPoint">To:</label>
-          <input type="text" class="form-control" id="toPoint" placeholder="latitude,longitude" value="46.5264,6.57996">
+          <!-- on va afficher le nom du spot auquel on veut aller-->
+          <input type="text" class="form-control" id="toName" placeholder="Destination">
+          <!-- on cache l'input avec les coordonnées mais on le garde pour calculer l'itinéraire -->
+          <input type="hidden" class="form-control" id="toPoint">
           <small id="fromPointHelp" class="form-text text-muted">Only points in Switzerland are taken into account.</small>
         </div>
         <button class="btn btn-primary" onclick="calculateRoute()">Itinéraire</button>
@@ -46,7 +50,5 @@
         <script src="dist/L.Control.Locate.js" ></script>
         <script src="spots.js"></script>
         <script src="script.js"></script>
-
-    <!-- </div> -->
 </body>
 </html>
