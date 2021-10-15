@@ -115,7 +115,7 @@ function calculateRoute(){
   makeRoutingQuery({
       fromPlace: fromPoint,
       toPlace: toPoint,
-      mode: 'CAR',
+      mode: 'WALK',
   });
 }
 
@@ -151,8 +151,6 @@ function drawRoute(data){
   for (var i=0; i < itin.legs.length; i++){
     var leg = itin.legs[i].legGeometry.points;
     var geomLeg = polyline.toGeoJSON(leg);
-    window.GEOM = geomLeg;
-    document.getElementById('geojson').innerText = JSON.stringify(geomLeg);
     L.geoJSON(geomLeg, {
       style: function(feature){
         return { 
@@ -165,14 +163,6 @@ function drawRoute(data){
 
   // Show origin and destination
 
-  var origin = L.circleMarker(
-    [data.plan.from.lat, data.plan.from.lon],
-    {
-      color: '#000000',
-      fillOpacity: 0.5,
-      fillColor: '#ff0000'
-    }
-  ).addTo(myMap);
   
   var destination = L.circleMarker(
     [data.plan.to.lat, data.plan.to.lon],
