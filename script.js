@@ -76,7 +76,9 @@ var iconePerso = L.icon({
   // on ajoute ensuite nos marker en utilisant ceux qu'on a créer nous-même)
 function onEachFeature(feature, layer) {
   if (feature.properties) {
-      layer.bindPopup("<h1>" + feature.properties.Nom + "</h1>" + "<h2>" + feature.properties.Type_voies + "</h2>");
+      layer.bindPopup("<h1>" + feature.properties.Nom + "</h1>" +
+       "<h4>" + feature.properties.Desc +"</h4>"+ "<h2>Type de voies: </h2><h4>" +
+        feature.properties.Type_voies + "</h4>" +'>Press for more INFO </button>');
       }
   }
 var lieux_grimpe = new L.geoJson(spots, {
@@ -85,6 +87,14 @@ var lieux_grimpe = new L.geoJson(spots, {
     return L.marker(latlng,{icon: iconePerso});
   }
 }).addTo(myMap);
+
+
+
+
+
+
+
+
 
 lc = L.control.locate().addTo(myMap);
 
