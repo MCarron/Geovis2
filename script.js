@@ -141,10 +141,15 @@ function calculateRoute(){
 
 
   // on fait le Query de notre route avec cpomme moyen de transport par défaut la voiture
-  makeRoutingQuery({
-      fromPlace: fromPoint,
-      toPlace: toPoint,
-      mode: 'WALK',
+   // on fait le Query de notre route avec cpomme moyen de transport par défaut la voiture
+   makeRoutingQuery({
+    fromPlace: fromPoint,
+    toPlace: toPoint,
+    //time: '13:45',
+    //date: '2021-10-20',
+    mode: 'WALK',
+    //maxWalkDistance: 200000,
+    //locale: 'fr'
   });
 }
 
@@ -181,14 +186,21 @@ function drawRoute(data){
   if (geojsonLayer != null){
     myMap.removeLayer(geojsonLayer);
   }
-
-  // Show the first itinerary (OTP returns several alternatives)
-  // on prend le premier itinéraire qu'OTP nous propose
+    // on prend le premier itinéraire qu'OTP nous propose
+    // il faudra venir ici pour choisir entre plusieurs itin
+    // si otp nous en propose plusieurs
   var itin = data.plan.itineraries[0];
   for (var i=0; i < itin.legs.length; i++){
-
-    var leg = itin.legs[i].legGeometry.points;
-    var geomLeg = polyline.toGeoJSON(leg);
+    // on va chercher chaque point géométrique que otp nous propose
+        var leg = itin.legs[i];
+        var steps = leg.steps;
+        for (var f = 0; f < steps.length; f++){
+          var step = steps[f];
+          console.log(step)
+        }
+        // on le convertir en geojson
+        var geomLeg = polyline.toGeoJSON(leg.legGeometry.points);
+        // on stylise notre polyline geojson
     geojsonLayer = L.geoJSON(geomLeg, {
       style: function(feature){
         return { 
@@ -200,6 +212,13 @@ function drawRoute(data){
       }
     }).addTo(myMap);
   }
+  // on va chercher la durée en minutes de notre trajet
+  var duree = itin.duration/60
+  // on va chercher la distance en km de notre trajet
+  var dist = itin.walkDistance/1000
+  // on va chercher les étapes de notre trajet
+  console.log(duree)
+  console.log(dist)
 }
 
 
