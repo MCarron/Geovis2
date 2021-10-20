@@ -145,10 +145,10 @@ function calculateRoute(){
    makeRoutingQuery({
     fromPlace: fromPoint,
     toPlace: toPoint,
-    //time: '13:45',
-    //date: '2021-10-20',
-    mode: 'WALK',
-    //maxWalkDistance: 200000,
+    time: '13:45',
+    date: '2021-10-20',
+    mode: 'TRANSIT,WALK',
+    maxWalkDistance: 200
     //locale: 'fr'
   });
 }
@@ -176,6 +176,7 @@ function setHeader(xhr){
 
 // On set notre variable a null pour pouvoir le reset à chaque nouveau calcul
 var geojsonLayer = null;
+
 function drawRoute(data){
   if (data.error){
     alert(data.error.msg);
@@ -189,29 +190,34 @@ function drawRoute(data){
     // on prend le premier itinéraire qu'OTP nous propose
     // il faudra venir ici pour choisir entre plusieurs itin
     // si otp nous en propose plusieurs
-  var itin = data.plan.itineraries[0];
-  for (var i=0; i < itin.legs.length; i++){
+  //for(var l=0; l < data.plan.itineraries.length; l++){
+    var itin = data.plan.itineraries[0]
+
+    console.log('data', data)
+    console.log('itin', itin)
+    for (var i=0; i < itin.legs.length; i++){
     // on va chercher chaque point géométrique que otp nous propose
-        var leg = itin.legs[i];
-        var steps = leg.steps;
+      var leg = itin.legs[i];
+      var steps = leg.steps;
         for (var f = 0; f < steps.length; f++){
           var step = steps[f];
-          console.log(step)
+          //console.log(step)
         }
         // on le convertir en geojson
         var geomLeg = polyline.toGeoJSON(leg.legGeometry.points);
         // on stylise notre polyline geojson
-    geojsonLayer = L.geoJSON(geomLeg, {
-      style: function(feature){
-        return { 
-          border: 10,
-          color: '#2ca8da',
-          opacity: 0.7,
-          weight: 10
-        };
-      }
-    }).addTo(myMap);
-  }
+      geojsonLayer = L.geoJSON(geomLeg, {
+        style: function(feature){
+          return { 
+            border: 10,
+            color: '#2ca8da',
+            opacity: 0.7,
+            weight: 10
+          };
+        }
+      }).addTo(myMap);
+    }
+  //}
   // on va chercher la durée en minutes de notre trajet
   var duree = itin.duration/60
   // on va chercher la distance en km de notre trajet

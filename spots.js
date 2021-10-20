@@ -20,7 +20,8 @@ var spots = [{
 { "type": "Feature", "properties": { "id": 17, "Nom": "Carrière des Chamois", "Desc": "Lieux de grimpe très agrèable bla bla", "Type_voies": "Couennes", "nbr_voies": 45 }, "geometry": { "type": "Point", "coordinates": [ 6.999526297136597, 46.342680713627985 ] } },
 { "type": "Feature", "properties": { "id": 18, "Nom": "Planpraz", "Desc": "Lieux de grimpe très agrèable bla bla", "Type_voies": "Couennes", "nbr_voies": 5 }, "geometry": { "type": "Point", "coordinates": [ 7.012762636048781, 46.350898671837498 ] } },
 { "type": "Feature", "properties": { "id": 19, "Nom": "Leysin", "Desc": "Lieux de grimpe très agrèable bla bla", "Type_voies": "Longues voies et Couennes", "nbr_voies": 8 }, "geometry": { "type": "Point", "coordinates": [ 7.007721819314087, 46.36582457532338 ] } },
-{ "type": "Feature", "properties": { "id": 20, "Nom": "Miroire de l'Argentine", "Desc": "Lieux de grimpe très agrèable bla bla", "Type_voies": "Longues voies", "nbr_voies": 30 }, "geometry": { "type": "Point", "coordinates": [ 7.143120710173434, 46.277813018460961 ] } }
+{ "type": "Feature", "properties": { "id": 20, "Nom": "Miroire de l'Argentine", "Desc": "Lieux de grimpe très agrèable bla bla", "Type_voies": "Longues voies", "nbr_voies": 30 }, "geometry": { "type": "Point", "coordinates": [ 7.143120710173434, 46.277813018460961 ] } },
+{ "type": "Feature", "properties": { "id": 20, "Nom": "Gare", "Desc": "Lieux de grimpe très agrèable bla bla", "Type_voies": "Longues voies", "nbr_voies": 30 }, "geometry": { "type": "Point", "coordinates": [ 6.927113829027021, 46.35868473508596 ] } }
 ]
 }
 ];
