@@ -132,7 +132,14 @@ lieux_grimpe.on('click', function(e){
 });
 
 // calculer l'itinéraire
-
+// function transit(mode) {
+//   if (mode === 'TRANSIT,WALK'){
+//     'maxWalkDistance: 200';
+// }
+// else {
+//   'maxWalkDistance: 200000';
+//   }
+// }
 function calculateRoute(){
   // on prend le point de départ
   var fromPoint = $('#fromPoint').val();
@@ -142,6 +149,7 @@ function calculateRoute(){
 
   // on fait le Query de notre route avec cpomme moyen de transport par défaut la voiture
    // on fait le Query de notre route avec cpomme moyen de transport par défaut la voiture
+
    makeRoutingQuery({
     fromPlace: fromPoint,
     toPlace: toPoint,
@@ -149,6 +157,7 @@ function calculateRoute(){
     date: '2021-10-20',
     mode: 'TRANSIT,WALK',
     maxWalkDistance: 200
+    //maxWalkDistance: 2000
     //locale: 'fr'
   });
 }
@@ -225,6 +234,11 @@ function drawRoute(data){
   // on va chercher les étapes de notre trajet
   console.log(duree)
   console.log(dist)
+  // il faut a chaque fois appuyer sur notre localisation
+  // pour que les transits fonctionnent
+  // ce que j'ai fait pour que ça fonctionne : modifier le build-config
+  // et le otp-config et mettre le maxwalkdistance à 200 ou 2000
+  // https://github.com/opentripplanner/OpenTripPlanner/issues/3598
 }
 
 
