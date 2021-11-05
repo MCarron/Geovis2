@@ -169,6 +169,14 @@ function setHeader(xhr){
 // on crée une variable qui contiendra l'ensemble de nos polylines
 var polylineGroup = L.layerGroup().addTo(myMap);
 
+// var myStyle = {
+//   color: setColor(leg_mode),
+//   opacity: 0.8,
+//   stroke: 2,
+//   //"stroke-width": ,
+//   weight: 10,
+//   dashArray: setDash(legmode)
+// }
 
 
 function drawRoute(data){
@@ -208,20 +216,18 @@ function drawRoute(data){
         // il faut grouper les layers ensemble
         // ici on a notre couche qui rassemble l'ensemble de nos polyline
       geojsonLayer = L.geoJSON(geomLeg, {
-        style: function(feature){
-          return { 
-            border: 10,
-            color: '#2ca8da',
-            opacity: 0.7,
-            weight: 10
-          };
+        style: {
+            //border: 10,
+            "color": setColor(leg_mode),
+            "opacity": 0.9,
+            "weight": 8,
+            "dashArray": setDash(leg_mode)
         }
         // on ajoute chaque polyline à notre layergroup
       }).addTo(polylineGroup);
-      
+      console.log(geojsonLayer)
     }
   //}
-  //  test git
   // on va chercher la durée en minutes de notre trajet
   // var polylineGroup = L.layerGroup().addLayer(geojsonLayer);
   // console.log('group', polylineGroup)
@@ -234,6 +240,41 @@ function drawRoute(data){
 }
 
 
+
+function setColor(mode) {
+  switch (mode) {
+
+    case 'CAR':
+      return '#3f9cff';
+    
+    case 'BICYCLE':
+      return '#73ff3f';
+    
+    case 'WALK':
+      return '#3f9cff';
+    
+    case 'RAIL':
+      return ' #ff3f3f';
+
+    case 'BUS':
+      return '#ffb33f';
+
+    default:
+      return 'white';
+
+  }
+}
+
+function setDash(mode) {
+  switch(mode) {
+
+    case 'WALK':
+      return '1, 15';
+
+    default:
+      return 'null';
+  }
+}
 
 function calculateRouteError(error){
   alert('Error during route calculation.');
