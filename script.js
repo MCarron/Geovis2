@@ -94,24 +94,6 @@ var fromCurrentPos = 'fromPoint'
 var toSelectedMarker = 'toPoint';
 var toSelectedName ='toName';
 
-// $(document).ready(function() {
-//   $("select.mode-select").change(function(){
-//     var chosenMode = $(this).children("option:selected").val();
-//     console.log(chosenMode)
-//     return chosenMode
-//     //alert("You have selected the country - " + chosenMode);
-
-//   });
-// });
-//console.log(chosenMode)
-
-// var chosen = document.getElementById("mode-select");
-// var value = chosen.options[chosen.selectedIndex].value;
-// //var ok = $("#mode-select :selected").val();
-// console.log(value)
-
-
-
 // on va chercher notre localisation actuelle pour calculer l'itinéraire depuis notre position
 myMap.on('locationfound', function (evt) {
 
@@ -151,12 +133,7 @@ function calculateRoute(){
   // dans le dropdown menu
   var chosenMode = $('#mode-select').val();
 
-
-  // il faut qu'on aille chercher le mode de transport sélectionner
-
-
-  // on fait le Query de notre route avec cpomme moyen de transport par défaut la voiture
-   // on fait le Query de notre route avec cpomme moyen de transport par défaut la voiture
+   // on fait le Query de notre route 
    makeRoutingQuery({
     fromPlace: fromPoint,
     toPlace: toPoint,
@@ -189,24 +166,27 @@ function setHeader(xhr){
 ///  DESSINER ITIN /////////////
 //////////////////////////////
 
-// On set notre variable a null pour pouvoir le reset à chaque nouveau calcul
-var geojsonLayer = null;
+// on crée une variable qui contiendra l'ensemble de nos polylines
+var polylineGroup = L.layerGroup().addTo(myMap);
+
+
 
 function drawRoute(data){
   if (data.error){
     alert(data.error.msg);
     return;
   }
-  // si notre layer est différent de null (donc si notre itin a déjà été dessinée)
-  // on enlève la couche en question (geojson)
-  if (geojsonLayer != null){
-    myMap.removeLayer(geojsonLayer);
-  }
+
+  // on enlève tout d'abord notre polylinegroup pour que les itinéraires
+  // se redessine à chaque fois qu'on les recalcule
+  polylineGroup.clearLayers();
+
     // on prend le premier itinéraire qu'OTP nous propose
     // il faudra venir ici pour choisir entre plusieurs itin
     // si otp nous en propose plusieurs
-  //for(var l=0; l < data.plan.itineraries.length; l++){
-    var itin = data.plan.itineraries[0]
+
+    var itin = data.plan.itineraries[1]
+    
 
     console.log('data', data)
     console.log('itin', itin)
@@ -225,6 +205,8 @@ function drawRoute(data){
         // on le convertir en geojson
         var geomLeg = polyline.toGeoJSON(leg.legGeometry.points);
         // on stylise notre polyline geojson
+        // il faut grouper les layers ensemble
+        // ici on a notre couche qui rassemble l'ensemble de nos polyline
       geojsonLayer = L.geoJSON(geomLeg, {
         style: function(feature){
           return { 
@@ -234,10 +216,14 @@ function drawRoute(data){
             weight: 10
           };
         }
-      }).addTo(myMap);
+        // on ajoute chaque polyline à notre layergroup
+      }).addTo(polylineGroup);
+      
     }
   //}
   // on va chercher la durée en minutes de notre trajet
+  // var polylineGroup = L.layerGroup().addLayer(geojsonLayer);
+  // console.log('group', polylineGroup)
   var duree = itin.duration/60
   // on va chercher la distance en km de notre trajet
   var dist = itin.walkDistance/1000
@@ -245,6 +231,7 @@ function drawRoute(data){
   console.log(duree)
   console.log(dist)
 }
+
 
 
 function calculateRouteError(error){
