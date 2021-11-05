@@ -88,19 +88,28 @@ var lieux_grimpe = new L.geoJson(spots, {
   }
 }).addTo(myMap);
 
-
-
-
-
-
-
-
-
 lc = L.control.locate().addTo(myMap);
 
 var fromCurrentPos = 'fromPoint'
 var toSelectedMarker = 'toPoint';
 var toSelectedName ='toName';
+
+// $(document).ready(function() {
+//   $("select.mode-select").change(function(){
+//     var chosenMode = $(this).children("option:selected").val();
+//     console.log(chosenMode)
+//     return chosenMode
+//     //alert("You have selected the country - " + chosenMode);
+
+//   });
+// });
+//console.log(chosenMode)
+
+// var chosen = document.getElementById("mode-select");
+// var value = chosen.options[chosen.selectedIndex].value;
+// //var ok = $("#mode-select :selected").val();
+// console.log(value)
+
 
 
 // on va chercher notre localisation actuelle pour calculer l'itinéraire depuis notre position
@@ -124,6 +133,7 @@ lieux_grimpe.on('click', function(e){
   var content = e.layer.feature.properties.Nom;
   // puis on ajoute les coordonnées lat long du marqueur dans l'input hidden pour calculer l'itinéraire
   $('#'+toSelectedMarker).val(pt.lat + ',' + pt.lng);
+  
   toSelectedMarker == 'toPoint';
 
   // on change le text de l'input pour qu'il corresponde au site sur lequel on a cliqué
@@ -131,33 +141,29 @@ lieux_grimpe.on('click', function(e){
   toSelectedName == 'toName';
 });
 
-// calculer l'itinéraire
-// function transit(mode) {
-//   if (mode === 'TRANSIT,WALK'){
-//     'maxWalkDistance: 200';
-// }
-// else {
-//   'maxWalkDistance: 200000';
-//   }
-// }
 function calculateRoute(){
   // on prend le point de départ
   var fromPoint = $('#fromPoint').val();
   // et le point d'arrivée
   var toPoint = $('#toPoint').val();
 
+  // on va chercher le mode de transport choisi par l'utilisateur
+  // dans le dropdown menu
+  var chosenMode = $('#mode-select').val();
+
+
+  // il faut qu'on aille chercher le mode de transport sélectionner
+
 
   // on fait le Query de notre route avec cpomme moyen de transport par défaut la voiture
    // on fait le Query de notre route avec cpomme moyen de transport par défaut la voiture
-
    makeRoutingQuery({
     fromPlace: fromPoint,
     toPlace: toPoint,
     time: '13:45',
     date: '2021-10-20',
-    mode: 'TRANSIT,WALK',
-    maxWalkDistance: 200
-    //maxWalkDistance: 2000
+    mode: chosenMode
+    //maxWalkDistance: 200000
     //locale: 'fr'
   });
 }
@@ -207,6 +213,10 @@ function drawRoute(data){
     for (var i=0; i < itin.legs.length; i++){
     // on va chercher chaque point géométrique que otp nous propose
       var leg = itin.legs[i];
+
+      // on va chercher le mode de transport pour chaque leg (pour icone surement)
+      var leg_mode = leg.mode
+      console.log(leg_mode)
       var steps = leg.steps;
         for (var f = 0; f < steps.length; f++){
           var step = steps[f];
@@ -234,11 +244,6 @@ function drawRoute(data){
   // on va chercher les étapes de notre trajet
   console.log(duree)
   console.log(dist)
-  // il faut a chaque fois appuyer sur notre localisation
-  // pour que les transits fonctionnent
-  // ce que j'ai fait pour que ça fonctionne : modifier le build-config
-  // et le otp-config et mettre le maxwalkdistance à 200 ou 2000
-  // https://github.com/opentripplanner/OpenTripPlanner/issues/3598
 }
 
 

@@ -31,7 +31,10 @@ html, body, #map {
     display: block;
     transition: 0.3s;
 }
-
+select {
+    font-size: .9rem;
+    padding: 2px 5px;
+}
 .filter a:hover {
     color: #f1f1f1;
 }
