@@ -221,6 +221,7 @@ function drawRoute(data){
       
     }
   //}
+  //  test git
   // on va chercher la durée en minutes de notre trajet
   // var polylineGroup = L.layerGroup().addLayer(geojsonLayer);
   // console.log('group', polylineGroup)
