@@ -13,13 +13,14 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="dist/L.Control.Locate.css" />
+    <link rel="stylesheet" href="dist/leaflet.contextmenu.min.css"/>
 
 </head>
 <body>
         <div class="form-group">
           <label for="fromPoint">From:</label>
           <!-- on ajout un input inactif qui dit "current position"-->
-          <input type="text" placeholder="Current position" disabled>
+          <input type="text" class="form-control" id="fromName" placeholder="Current position">
           <!-- puis on ajoute un input actif qui fonctionnera avec notre script-->
           <input type="hidden" class="form-control" id="fromPoint">
           <small id="fromPointHelp" class="form-text text-muted"></small>
@@ -57,6 +58,7 @@
         </select>
         </div>
         <script src="dist/L.Control.Locate.js" ></script>
+        <script src="dist/leaflet.contextmenu.min.js"></script>
         <script src="spots.js"></script>
         <script src="script.js"></script>
 </body>

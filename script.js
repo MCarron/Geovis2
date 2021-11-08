@@ -10,9 +10,13 @@ function closeNav() {
 var myMap = L.map('map', {center: [46.33, 6.97],
   minZoom: 10,
   maxZoom: 18,
-  zoom: 13});
-
-
+  zoom: 13,
+  contextmenu: true,
+  contextmenuWidth: 140,
+  contextmenuItems: [{
+    text: 'Define as start point',
+    callback: choseStartPoint
+  }]});
 
 //////////////////////////////
 ////  COUCHES DE BASE ////////
@@ -90,9 +94,11 @@ var lieux_grimpe = new L.geoJson(spots, {
 
 lc = L.control.locate().addTo(myMap);
 
+var fromSelectedPos = 'fromName';
 var fromCurrentPos = 'fromPoint'
 var toSelectedMarker = 'toPoint';
 var toSelectedName ='toName';
+var popup = L.popup();
 
 // on va chercher notre localisation actuelle pour calculer l'itinéraire depuis notre position
 myMap.on('locationfound', function (evt) {
@@ -101,10 +107,42 @@ myMap.on('locationfound', function (evt) {
   var currentPos = evt.latlng;
 
   // on reformate le résulat et on le lie à notre boite de dialogue
+  // correspond au input invisible
   $('#'+fromCurrentPos).val(currentPos.lat + ',' + currentPos.lng);
+
   fromCurrentPos == 'fromPoint';
+
+  // correspond à l'input visible
+  $('#'+fromSelectedPos).val('Current position');
+  fromSelectedPos == 'fromName'
   // notre position va être recaluclé toutes les 5 secondes
 });
+
+
+var origin = null
+// définition du starting point si on veut autre chose que notre position actuelle
+function choseStartPoint (e) {
+  var currentPos = e.latlng;
+  if (origin != null){
+    myMap.removeLayer(origin);
+  }
+  // ajout un marqueur pour indiquer la position qu'on a choisi
+  origin = L.circleMarker(
+    [currentPos.lat, currentPos.lng],
+    {
+      color: '#FFFFFF',
+      fillOpacity: 1,
+      fillColor: '#ff2828'
+    }
+  ).addTo(myMap);
+  $('#'+fromCurrentPos).val(currentPos.lat + ',' + currentPos.lng);
+  fromCurrentPos == 'fromPoint';
+
+  $('#'+fromSelectedPos).val('Selected position');
+  fromSelectedPos == 'fromName'
+
+  origin.bindPopup("Selected start point");
+}
 
 // on va chercher notre lieu de destination
 lieux_grimpe.on('click', function(e){
@@ -267,6 +305,9 @@ function setColor(mode) {
 
     case 'GONDOLA':
       return '#82ff3f';
+
+    case 'SUBWAY':
+      return '#ecff08';
 
     default:
       return 'white';
