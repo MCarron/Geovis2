@@ -140,8 +140,6 @@ function calculateRoute(){
     time: '13:45',
     date: '2021-10-20',
     mode: chosenMode
-    //maxWalkDistance: 200000
-    //locale: 'fr'
   });
 }
 
@@ -169,16 +167,6 @@ function setHeader(xhr){
 // on crée une variable qui contiendra l'ensemble de nos polylines
 var polylineGroup = L.layerGroup().addTo(myMap);
 
-// var myStyle = {
-//   color: setColor(leg_mode),
-//   opacity: 0.8,
-//   stroke: 2,
-//   //"stroke-width": ,
-//   weight: 10,
-//   dashArray: setDash(legmode)
-// }
-
-
 function drawRoute(data){
   if (data.error){
     alert(data.error.msg);
@@ -188,12 +176,18 @@ function drawRoute(data){
   // on enlève tout d'abord notre polylinegroup pour que les itinéraires
   // se redessine à chaque fois qu'on les recalcule
   polylineGroup.clearLayers();
+  
+    // problème avec OTP 2 qui renvoie comme premier itinéraire pour TRANSIT,WALK
+    // uniquement le chemin à pied
+    // il faut donc aller chercher le deuxième itinéraire si TRANSIT,WALK est choisi
+    // et le premier itinéraire si les autres modes sont choisis
 
-    // on prend le premier itinéraire qu'OTP nous propose
-    // il faudra venir ici pour choisir entre plusieurs itin
-    // si otp nous en propose plusieurs
+    // on va chercher le mode de transport choisi
+    var transp_mode = data.requestParameters.mode
 
-    var itin = data.plan.itineraries[1]
+    // puis on applique la fonction choseItin qui switch entre 1 (deuxième itin si
+    // TRANSIT,WALK est choisi) et 0 (tous les autres moyens de transports)
+    var itin = data.plan.itineraries[choseItin(transp_mode)]
     
 
     console.log('data', data)
@@ -225,7 +219,7 @@ function drawRoute(data){
         }
         // on ajoute chaque polyline à notre layergroup
       }).addTo(polylineGroup);
-      console.log(geojsonLayer)
+      //console.log(geojsonLayer)
     }
   //}
   // on va chercher la durée en minutes de notre trajet
@@ -239,8 +233,20 @@ function drawRoute(data){
   console.log(dist)
 }
 
+// fonction pour choisir le deuxième itin si TRANSIT,WALK est choisi
+// et premier itin pour tous les autres modes
+function choseItin(mode) {
+  switch (mode) {
 
+    case 'TRANSIT,WALK':
+      return 1;
 
+    default:
+      return 0;
+  }
+}
+
+// défini la couleur de la polyline selon le mode transport
 function setColor(mode) {
   switch (mode) {
 
@@ -259,12 +265,16 @@ function setColor(mode) {
     case 'BUS':
       return '#ffb33f';
 
+    case 'GONDOLA':
+      return '#82ff3f';
+
     default:
       return 'white';
 
   }
 }
 
+// si mode WALK est choisi, met l'itin en traitillé
 function setDash(mode) {
   switch(mode) {
 
