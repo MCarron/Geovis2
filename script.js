@@ -1,15 +1,15 @@
 function openNav() {
-  document.getElementById("myFilter").style.width = "250px";
+  document.getElementById("myFilter").style.height = "250px";
 }
 
 function closeNav() {
-  document.getElementById("myFilter").style.width = "0";
+  document.getElementById("myFilter").style.height = "0";
 }
 
 /**
 * Implémentation de la carte 
 */
-var myMap = L.map('map', {center: [46.33, 6.97],
+let myMap = L.map('map', {center: [46.33, 6.97],
 	minZoom: 10,
 	maxZoom: 18,
 	zoom: 13,
@@ -51,7 +51,7 @@ const googleTerrain = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z
 osmLayer.addTo(myMap);
 
 /**
- * Ajout des 4 couches dans une variables pour
+ * Ajout des 4 couches dans une letiables pour
  * le baseMaps controler
  */
 const baseMaps = {
@@ -78,7 +78,7 @@ L.control.scale({
 /**
  * Importation de l'icone personalisée
  */
-var iconePerso = L.icon({
+let iconePerso = L.icon({
   	iconUrl: 'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.png',
   	iconSize: [28, 41]
 });
@@ -94,7 +94,7 @@ function onEachFeature(feature, layer) {
     }
 }
 
-var lieux_grimpe = new L.geoJson(spots, {
+let lieux_grimpe = new L.geoJson(spots, {
   	onEachFeature: onEachFeature,
   	pointToLayer: function(feature,latlng){
     	return L.marker(latlng,{icon: iconePerso});
@@ -110,15 +110,15 @@ lc = L.control.locate().addTo(myMap);
 
 // Définition des liezux de départ et d'arrivée pour notre GPS
 // les 'from/to Name' mettront à jour les noms que l'utilisateurs voit (from et to)
-var fromSelectedPos = 'fromName';
-var toSelectedName ='toName';
+let fromSelectedPos = 'fromName';
+let toSelectedName ='toName';
 
 // les 'from/to Point' mettront à jour les coordonnées pour que OTP puisse calculer l'itinéraire
 // ces coordonnées sont invisibles pour l'utilisateur
-var fromCurrentPos = 'fromPoint'
-var toSelectedMarker = 'toPoint';
+let fromCurrentPos = 'fromPoint'
+let toSelectedMarker = 'toPoint';
 
-var popup = L.popup();
+let popup = L.popup();
 
 /**
  * Calcul de notre localisation actuelle pour calculer l'itinéraire depuis notre position
@@ -126,7 +126,7 @@ var popup = L.popup();
 myMap.on('locationfound', function (evt) {
 
   	// lat / long de la position actuelle de l'utilisateur
-  	var currentPos = evt.latlng;
+  	let currentPos = evt.latlng;
 
   	// On reformate le résulat et on le lie à notre boite de dialogue
   	// correspond au input invisible
@@ -139,14 +139,13 @@ myMap.on('locationfound', function (evt) {
   	fromSelectedPos == 'fromName'
 });
 
-
-var origin = null
+let origin = null
 
 /**
  * Définition du starting point si autre que position actuelle
  */
 function choseStartPoint (e) {
-  	var currentPos = e.latlng;
+  	let currentPos = e.latlng;
   	if (origin != null){
     	myMap.removeLayer(origin);
   	}
@@ -181,9 +180,9 @@ function choseStartPoint (e) {
 lieux_grimpe.on('click', function(e){
 
   	// Coordonnées lat long du marqueur sur lequel on a cliqué
-  	var pt = e.latlng;
+  	let pt = e.latlng;
   	//Nom du marqueur sur lequel on a cliqué (lieu de grimpe)
-  	var content = e.layer.feature.properties.Nom;
+  	let content = e.layer.feature.properties.Nom;
   	// Ajout des coordonnées lat long du marqueur dans l'input hidden pour calculer l'itinéraire
   	$('#'+toSelectedMarker).val(pt.lat + ',' + pt.lng);
   
@@ -200,19 +199,24 @@ lieux_grimpe.on('click', function(e){
  */
 function calculateRoute(){
   	// Point de départ
-  	var fromPoint = $('#fromPoint').val();
+  	let fromPoint = $('#fromPoint').val();
   	// Point d'arrivée
-  	var toPoint = $('#toPoint').val();
+  	let toPoint = $('#toPoint').val();
 
   	// Mode de transport choisi par l'utilisateur
-  	var chosenMode = $('#mode-select').val();
+  	let chosenMode = $('#mode-select').val();
+
+	// Date et heure actuelle
+	let today = new Date();
+	let currentDate = today.getFullYear() + '-' + (today.getMonth()+1) + '-' + today.getDate();
+	let currentTime = today.getHours() + ":" + today.getMinutes() + ":"  +today.getSeconds();
 
    	// Query de notre route
    	makeRoutingQuery({
     	fromPlace: fromPoint,
     	toPlace: toPoint,
-    	time: '13:45',
-    	date: '2021-10-20',
+    	time: currentTime,
+    	date: currentDate,
     	mode: chosenMode
   	});
 }
@@ -241,13 +245,13 @@ function setHeader(xhr){
 /////////////////////////////////////////////
 
 /**
- * Variable contenant l'ensemble de nos polylines (groupées dans une couche)
+ * letiable contenant l'ensemble de nos polylines (groupées dans une couche)
  */
-var polylineGroup = L.layerGroup().addTo(myMap);
+let polylineGroup = L.layerGroup().addTo(myMap);
 
 function drawRoute(data){
   	if (data.error){
-    	alert(data.error.msg);
+    	alert("Couldn't calculate itinerary, try to change the time");
     	return;
   	}
 
@@ -261,32 +265,32 @@ function drawRoute(data){
     // et le premier itinéraire si les autres modes sont choisis
 
     // on va chercher le mode de transport choisi
-    var transp_mode = data.requestParameters.mode
+    let transp_mode = data.requestParameters.mode
 
     // puis on applique la fonction choseItin qui switch entre 1 (deuxième itin si
     // TRANSIT,WALK est choisi) et 0 (tous les autres moyens de transports)
-    var itin = data.plan.itineraries[choseItin(transp_mode)]
+    let itin = data.plan.itineraries[choseItin(transp_mode)]
     
 
     console.log('data', data)
     console.log('itin', itin)
-    for (var i=0; i < itin.legs.length; i++){
+    for (let i=0; i < itin.legs.length; i++){
     	// on va chercher chaque point géométrique que OTP nous propose
-      	var leg = itin.legs[i];
+      	let leg = itin.legs[i];
 
       	// on va chercher le mode de transport pour chaque leg (pour icone surement)
-      	var leg_mode = leg.mode
+      	let leg_mode = leg.mode
       	console.log(leg_mode)
-      	var steps = leg.steps;
-        for (var f = 0; f < steps.length; f++){
-          	var step = steps[f];
+      	let steps = leg.steps;
+        for (let f = 0; f < steps.length; f++){
+          	let step = steps[f];
           	//console.log(step)
         }
         // on c$onvertit chaque point en geojson
-        var geomLeg = polyline.toGeoJSON(leg.legGeometry.points);
+        let geomLeg = polyline.toGeoJSON(leg.legGeometry.points);
 
         // Style de notre polyline
-      	geojsonLayer = L.geoJSON(geomLeg, {
+      	let geojsonLayer = L.geoJSON(geomLeg, {
         	style: {
             	//border: 10,
             	"color": setColor(leg_mode),
@@ -300,9 +304,9 @@ function drawRoute(data){
     }
 
   	// Durée en minutes du trajet
-  	var duree = itin.duration/60
+  	let duree = itin.duration/60
   	// Distance en km du trajet
-  	var dist = itin.walkDistance/1000
+  	let dist = itin.walkDistance/1000
   	console.log(duree)
   	console.log(dist)
 }
