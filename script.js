@@ -250,6 +250,25 @@ function calculateRoute(){
 }
 
 /**
+ * AUTOCOMPLETE DE LA DESTINATION
+ */
+
+// Features inclus de notre json
+let spot_features = spots.features
+
+// Array contenant tous les noms des spots
+let name_array = spot_features.map(a=>(a.properties.Nom));
+
+// Fonction jquery pour autocomplete les noms que les users sont
+// en train d'écrire
+$( function() {
+    $( "#toName" ).autocomplete({
+      source: name_array
+    });
+});
+
+
+/**
  * Indication du chemin pour OTP
  */
 function makeRoutingQuery(data){
@@ -330,9 +349,14 @@ function drawRoute(data){
       	}).addTo(polylineGroup);
       	//console.log(geojsonLayer)
     }
+	// Durée en minutes du trajet
+	let duree = Math.round(itin.duration/60)
+	// Heure d'arrivée
+	let eta = new Date(itin.endTime);
+	let etaTime = eta.getHours() + ":" + zeroPadded(eta.getMinutes()) + ":"  + eta.getSeconds();
+	$('#eta').html('Arriving at '+etaTime+', duration : '+duree+' minutes');
 
-  	// Durée en minutes du trajet
-  	let duree = itin.duration/60
+	console.log(eta)
   	// Distance en km du trajet
   	let dist = itin.walkDistance/1000
   	console.log(duree)

@@ -6,53 +6,71 @@
     	<title>Climbing in the Swiss Chablais</title>
     	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-    	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+		<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
     	<script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
     	<script src="polyline.js"></script>
 		
     	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     	<link rel="stylesheet" href="style.css">
+		<link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     	<link rel="stylesheet" href="dist/L.Control.Locate.css" />
     	<link rel="stylesheet" href="dist/leaflet.contextmenu.min.css"/>
+		<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+		<link href = "https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel = "stylesheet">
 	</head>
 	<body>
-        <div id="map">
-			
-		</div>
+        <div id="map"></div>
 		<div id="myFilter" class="filter">
-			<!-- On utilise ici des unicodes prédéfinis pour créer le symbole de la croix
-			et du menu plus bas -->
-			<a href="javascript:" class="btn">&times;</a>
-			<div class="from_to">
-				<div class="form-group">
-					<!-- on ajout un input inactif qui dit "current position"-->
-					<input type="text" class="form-control" id="fromName" placeholder="Current position">
-					<!-- puis on ajoute un input actif qui fonctionnera avec notre script-->
-					<input type="hidden" class="form-control" id="fromPoint">
-					<small id="fromPointHelp" class="form-text text-muted"></small>
-	  			</div>
-	  			<div class="form-group">
-					<!-- on va afficher le nom du spot auquel on veut aller-->
-					<input type="text" class="form-control" id="toName" placeholder="Destination">
-					<!-- on cache l'input avec les coordonnées mais on le garde pour calculer l'itinéraire -->
-					<input type="hidden" class="form-control" id="toPoint">
-					<small id="fromPointHelp" class="form-text text-muted"></small>
-					
-				</div>
-				<div class="time_selector">
-					<input type="datetime-local" id="time-select">
-					<button onclick="setCurrentTime()" class="buttons">Use current time</button>
-				</div>
-				<button onclick="calculateRoute()">Itinéraire</button>
-				<div class="options">
-					<!-- Dropdown menu pour le choix des mode de transport-->
-        			<select class="mode-select" id="mode-select">
-						<option value="CAR">Car</option>
-						<option value="TRANSIT,WALK">Public transport</option>
-						<option value="BICYCLE">Bicycle</option>
-						<option value="WALK">Walk</option>
-					</select>
+			<div class="information">
+				<!-- On utilise ici des unicodes prédéfinis pour créer le symbole de la croix
+				et du menu plus bas -->
+				<a href="javascript:" class="btn">&times;</a>
+				<div class="from_to">
+					<div class="form-group">
+						<!-- on ajout un input inactif qui dit "current position"-->
+						<i class='bx bx-map-pin'></i>
+						<input type="text" class="form-control" id="fromName" placeholder="Current position">
+					</a>
+						<!-- puis on ajoute un input actif qui fonctionnera avec notre script-->
+						<input type="hidden" class="form-control" id="fromPoint">
+						<small id="fromPointHelp" class="form-text text-muted"></small>
+					</div>
+
+
+					<div class="form-group">
+						<!-- on va afficher le nom du spot auquel on veut aller-->
+							<i class='bx bx-search' ></i>
+							<label for="toName"></label>
+							<input type="text" class="form-control" id="toName" placeholder="Destination">
+						<!-- on cache l'input avec les coordonnées mais on le garde pour calculer l'itinéraire -->
+						<input type="hidden" class="form-control" id="toPoint">
+						<small id="fromPointHelp" class="form-text text-muted"></small>
+					</div>
+
+
+					<div class="options">
+						<!-- Dropdown menu pour le choix des mode de transport-->
+						<select class="mode-select" id="mode-select">
+							<option value="CAR">Car</option>
+							<option value="TRANSIT,WALK">Public transport</option>
+							<option value="BICYCLE">Bicycle</option>
+							<option value="WALK">Walk</option>
+						</select>
+					</div>
+					<div class="time_selector">
+						<input type="datetime-local" id="time-select">
+						<button onclick="setCurrentTime()" class="buttons">Use current time</button>
+					</div>
+					<button onclick="calculateRoute()">Calculate itinerary</button>
+					<div class="eta-group">
+						<label for="eta">Estimated time of arrival :</label>
+						<div class="eta">
+							<span id="eta"></span>
+						</div>
+						<!-- <input type="text" class="eta" disabled> -->
+					</div>
 				</div>
 	  		</div>
 		</div>
@@ -65,8 +83,7 @@
 					<img src="figs/map.png" class="btn"></img>
 					<img src="figs/filtres_nav.png" class="btn"></img>
 					<img src="figs/map.png" class="btn"></img>
-				</div>
-			<!-- </div> -->
+				<!-- </div> -->
 			</div>
 		</div>
 		<script src="dist/leaflet.contextmenu.min.js"></script>

@@ -1,4 +1,4 @@
-var spots = [{
+var spots = {
 "type": "FeatureCollection",
 
 "features": [
@@ -25,4 +25,4 @@ var spots = [{
 { "type": "Feature", "properties": { "id": 22, "Nom": "Gare", "Desc": "Lieux de grimpe très agrèable bla bla", "Type_voies": "Longues voies", "nbr_voies": 30 }, "geometry": { "type": "Point", "coordinates": [ 6.835733255664843, 46.46720774679321 ] } }
 ]
 }
-];
+;
