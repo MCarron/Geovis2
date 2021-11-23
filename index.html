@@ -12,39 +12,48 @@
 		
     	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     	<link rel="stylesheet" href="style.css">
-    	<link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     	<link rel="stylesheet" href="dist/L.Control.Locate.css" />
     	<link rel="stylesheet" href="dist/leaflet.contextmenu.min.css"/>
 	</head>
 	<body>
-        <div id="map"></div>
+        <div id="map">
+			
+		</div>
 		<div id="myFilter" class="filter">
 			<!-- On utilise ici des unicodes prédéfinis pour créer le symbole de la croix
 			et du menu plus bas -->
-			<a href="javascript:" class="closebtn" onclick="closeNav()">&times;</a>
-			<div class="form-group">
-				<label for="fromPoint">From:</label>
-				<!-- on ajout un input inactif qui dit "current position"-->
-				<input type="text" class="form-control" id="fromName" placeholder="Current position">
-				<!-- puis on ajoute un input actif qui fonctionnera avec notre script-->
-				<input type="hidden" class="form-control" id="fromPoint">
-				<small id="fromPointHelp" class="form-text text-muted"></small>
-	  		</div>
-	  		<div class="form-group">
-				<label for="toPoint">To:</label>
-				<!-- on va afficher le nom du spot auquel on veut aller-->
-				<input type="text" class="form-control" id="toName" placeholder="Destination">
-				<!-- on cache l'input avec les coordonnées mais on le garde pour calculer l'itinéraire -->
-				<input type="hidden" class="form-control" id="toPoint">
-				<small id="fromPointHelp" class="form-text text-muted"></small>
-				<button class="btn btn-primary" onclick="calculateRoute()">Itinéraire</button>
-				<!-- Dropdown menu pour le choix des mode de transport-->
-        		<select class="mode-select" id="mode-select">
-					<option value="CAR">Car</option>
-					<option value="TRANSIT,WALK">Public transport</option>
-					<option value="BICYCLE">Bicycle</option>
-					<option value="WALK">Walk</option>
-			  </select>
+			<a href="javascript:" class="btn">&times;</a>
+			<div class="from_to">
+				<div class="form-group">
+					<!-- on ajout un input inactif qui dit "current position"-->
+					<input type="text" class="form-control" id="fromName" placeholder="Current position">
+					<!-- puis on ajoute un input actif qui fonctionnera avec notre script-->
+					<input type="hidden" class="form-control" id="fromPoint">
+					<small id="fromPointHelp" class="form-text text-muted"></small>
+	  			</div>
+	  			<div class="form-group">
+					<!-- on va afficher le nom du spot auquel on veut aller-->
+					<input type="text" class="form-control" id="toName" placeholder="Destination">
+					<!-- on cache l'input avec les coordonnées mais on le garde pour calculer l'itinéraire -->
+					<input type="hidden" class="form-control" id="toPoint">
+					<small id="fromPointHelp" class="form-text text-muted"></small>
+					
+				</div>
+				<div class="time_selector">
+					<input type="datetime-local" id="time-select">
+					<button onclick="setCurrentTime()" class="buttons">Use current time</button>
+				</div>
+				<button onclick="calculateRoute()">Itinéraire</button>
+				<div class="options">
+					<!-- Dropdown menu pour le choix des mode de transport-->
+        			<select class="mode-select" id="mode-select">
+						<option value="CAR">Car</option>
+						<option value="TRANSIT,WALK">Public transport</option>
+						<option value="BICYCLE">Bicycle</option>
+						<option value="WALK">Walk</option>
+					</select>
+				</div>
 	  		</div>
 		</div>
 		<div class="container" id="container">
@@ -53,9 +62,10 @@
         	<!-- </div> -->
 			<div class="option-bar">
 				<!-- <div class="bouton"> -->
-				<img style="width:45px;height:45px;" src="figs/map.png" onclick="openNav()"></img>
-				<img style="width:45px;height:45px;margin-left:33%;" src="figs/filtres_nav.png" onclick="openNav()"></img>
-				<img style="width:45px;height:45px;margin-left:66%;" src="figs/map.png"></img>
+					<img src="figs/map.png" class="btn"></img>
+					<img src="figs/filtres_nav.png" class="btn"></img>
+					<img src="figs/map.png" class="btn"></img>
+				</div>
 			<!-- </div> -->
 			</div>
 		</div>

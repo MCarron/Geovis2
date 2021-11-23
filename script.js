@@ -1,10 +1,17 @@
-function openNav() {
-  document.getElementById("myFilter").style.height = "250px";
-}
 
-function closeNav() {
-  document.getElementById("myFilter").style.height = "0";
-}
+let filter = document.querySelector(".filter");
+
+$(function() {
+	$(".btn").on("click", function(e){
+		// alert("caca");
+		filter.classList.toggle("active");
+		e.preventDefault();
+	});
+});
+
+// btn.onclick = function() {
+//     filter.classList.toggle("active");
+// }
 
 /**
 * Implémentation de la carte 
@@ -71,7 +78,6 @@ L.control.layers(baseMaps, overlays).addTo(myMap);
 L.control.scale({
   position: 'bottomleft'
 }).addTo(myMap);
-
 
 ///Création de nos icon///
 
@@ -193,6 +199,21 @@ lieux_grimpe.on('click', function(e){
   	toSelectedName == 'toName';
 });
 
+
+// Fonction pour ajouter un 0 selon le mois pour avoir un format de date lisible
+function zeroPadded(val) {
+	if (val >= 10)
+	  return val;
+	else
+	  return '0' + val;
+  }
+  
+// On va changer la valeur de la date et l'heure sélectionnée
+// pour la date et heure actuelle
+function setCurrentTime() {
+	d = new Date();
+	$('input[type=datetime-local]').val(d.getFullYear()+"-"+zeroPadded(d.getMonth() + 1)+"-"+zeroPadded(d.getDate())+"T"+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds());
+}
 /**
  * Calcule de la route (starting point to ending point)
  * et récupération des paramètres voulus pour OTP (makeRoutingQuery)
@@ -206,17 +227,24 @@ function calculateRoute(){
   	// Mode de transport choisi par l'utilisateur
   	let chosenMode = $('#mode-select').val();
 
+	// Heure customisée indiquée par l'utilisateur
+	let selectedDateTime = $('#time-select').val();
+
+	// Conversion de la date indiquée
+	selectedDateTime = new Date(selectedDateTime)
+	console.log(selectedDateTime)
+	// Recupération de la date et heure indiquée dans un format convenable pour OTP
+	let selectedDate = selectedDateTime.getFullYear() + '-' + (selectedDateTime.getMonth()+1) + '-' + selectedDateTime.getDate();
+	let selectedTime = selectedDateTime.getHours() + ":" + selectedDateTime.getMinutes() + ":"  + selectedDateTime.getSeconds();
+
 	// Date et heure actuelle
-	let today = new Date();
-	let currentDate = today.getFullYear() + '-' + (today.getMonth()+1) + '-' + today.getDate();
-	let currentTime = today.getHours() + ":" + today.getMinutes() + ":"  +today.getSeconds();
 
    	// Query de notre route
    	makeRoutingQuery({
     	fromPlace: fromPoint,
     	toPlace: toPoint,
-    	time: currentTime,
-    	date: currentDate,
+    	time: selectedTime,
+    	date: selectedDate,
     	mode: chosenMode
   	});
 }
@@ -382,3 +410,4 @@ function calculateRouteError(error){
   	alert('Error during route calculation.');
   	console.log('Routing error', error);
 }
+
