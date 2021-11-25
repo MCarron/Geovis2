@@ -1,23 +1,20 @@
 
 let filter = document.querySelector(".filter");
+let eta_dist = document.querySelector(".eta-dist");
 
 $(function() {
-	$(".btn").on("click", function(e){
-		// alert("caca");
+	$(".btn").click(function(e){
+		// Ajout l'attribut active à la classe filter
+		// On ajoute 60% de height à cette classe, donc visible si on appuie sur un des menus
 		filter.classList.toggle("active");
+		
+		// Suppression de l'attribut active pour la classe eta-dist
+		// Permet d'enelver l'indication de l'ETA + distance si l'utilisateur
+		// appuie à nouveau sur un des boutons du menu
+		$(".eta-dist").removeClass("active");
 		e.preventDefault();
 	});
 });
-
-// $( window ).load(function() {
-//     $('#loadingDiv').hide();
-//     $('#stop-go').show();
-// });
-
-
-// btn.onclick = function() {
-//     filter.classList.toggle("active");
-// }
 
 /**
 * Implémentation de la carte 
@@ -229,6 +226,11 @@ function setCurrentTime() {
  * et récupération des paramètres voulus pour OTP (makeRoutingQuery)
  */
 function calculateRoute(){
+	// Dé-zoom et fermeture du menu pour voir l'itinéraire
+	myMap.setView([46.33, 6.79], 10);
+	filter.classList.toggle("active");
+	eta_dist.classList.toggle("active");
+
   	// Point de départ
   	let fromPoint = $('#fromPoint').val();
   	// Point d'arrivée
@@ -363,16 +365,24 @@ function drawRoute(data){
 	let duree = Math.round(itin.duration/60)
 	// Heure d'arrivée
 	let eta = new Date(itin.endTime);
-	let etaTime = eta.getHours() + ":" + zeroPadded(eta.getMinutes()) + ":"  + eta.getSeconds();
+	let etaTime = ('0'+ eta.getHours()).slice(-2) + 
+	":" + ('0' + eta.getMinutes()).slice(-2);
 	$('#eta').html('Arriving at '+etaTime+', duration : '+duree+' minutes');
 
-	console.log(eta)
   	// Distance en km du trajet
-  	let dist = itin.walkDistance/1000
-  	console.log(duree)
-  	console.log(dist)
+  	let dist = Math.round((itin.walkDistance/1000)*100) / 100
+	$('#dist').html('Total distance : ' + dist + ' km')
 }
 
+// function setCurrentTime() {
+// 	let d = new Date();
+// 	$('#time-select').val(d.getFullYear()+"-"+
+// 		('0'+ (d.getMonth() + 1)).slice(-2)+"-"+
+// 		('0'+ d.getDate()).slice(-2)+
+// 		"T"+ ('0'+d.getHours()).slice(-2)+
+// 		":"+ ('0'+d.getMinutes()).slice(-2)+
+// 		":"+ ('0'+d.getSeconds()).slice(-2));
+// }
 /**
  * Fonction switch pour TRANSIT,WALk et tous les autres modes
  * @param {*} mode Mode de transport choisi par l'utilisateur

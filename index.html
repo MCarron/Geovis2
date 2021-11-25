@@ -66,19 +66,22 @@
 					<button onclick="setCurrentTime()">Use current time</button>
 				</div>
 
-				<div class="stop-go" id="stop-go">
-					<button onclick="calculateRoute()" class="go-btn">Calculate itinerary</button>
+				<div class="itin-go" id="stop-go">
+					<button onclick="calculateRoute()" class="itin-btn">Show itinerary</button>
 				</div>
 
-				<div class="eta-group">
-					<label for="eta">Estimated time of arrival :</label>
-					<div class="eta">
-						<span id="eta"></span>
-					</div>
-					<!-- <input type="text" class="eta" disabled> -->
-				</div>
-	  		</div>
+			</div>
 		</div>
+		<div class="eta-dist">
+				<div class="eta">
+					<p id="eta"></p>
+				</div>
+				<div class="dist">
+					<p id="dist"></p>
+				</div>
+				<button onclick="#" class="go-btn">Go</button>
+		</div>
+					<!-- <input type="text" class="eta" disabled> -->
 		<div class="container" id="container">
         	<!-- <div class="bouton"> -->
         		<!-- <img width="45" height="45" src="figs/filtre2.png" onclick="openNav()"></img> -->
