@@ -9,6 +9,12 @@ $(function() {
 	});
 });
 
+// $( window ).load(function() {
+//     $('#loadingDiv').hide();
+//     $('#stop-go').show();
+// });
+
+
 // btn.onclick = function() {
 //     filter.classList.toggle("active");
 // }
@@ -198,21 +204,25 @@ lieux_grimpe.on('click', function(e){
   	$('#'+toSelectedName).val(content);
   	toSelectedName == 'toName';
 });
-
-
-// Fonction pour ajouter un 0 selon le mois pour avoir un format de date lisible
-function zeroPadded(val) {
-	if (val >= 10)
-	  return val;
-	else
-	  return '0' + val;
-  }
   
 // On va changer la valeur de la date et l'heure sélectionnée
 // pour la date et heure actuelle
+// Le format de date js n'inclus pas les 0 devant les chiffres seuls, ce qui pose problème pour mettre à jour
+// l'input
+// nous devons donc rajouter un 0 devant les sections concernées (mois, jour, heure, min sec)
+// Puis avec slice(-2) nous choisissons de garder uniquement les deux derniers caractères de notre string
+// donc si nous étions à 8 secondes, ça donnera 08
+// si nous sommes à 18 sec, ça donnera 018 (-0 puisqu'on garde uniquement les deux derniers caractères)
+// donc 18
+
 function setCurrentTime() {
-	d = new Date();
-	$('input[type=datetime-local]').val(d.getFullYear()+"-"+zeroPadded(d.getMonth() + 1)+"-"+zeroPadded(d.getDate())+"T"+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds());
+	let d = new Date();
+	$('#time-select').val(d.getFullYear()+"-"+
+		('0'+ (d.getMonth() + 1)).slice(-2)+"-"+
+		('0'+ d.getDate()).slice(-2)+
+		"T"+ ('0'+d.getHours()).slice(-2)+
+		":"+ ('0'+d.getMinutes()).slice(-2)+
+		":"+ ('0'+d.getSeconds()).slice(-2));
 }
 /**
  * Calcule de la route (starting point to ending point)

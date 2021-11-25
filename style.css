@@ -41,7 +41,7 @@ html, body{
     text-decoration: none;
     color: #acacac;
 }
-input{
+input[type=text]{
     /* display: block; */
     text-align: center;
     margin-left: auto;
@@ -66,23 +66,40 @@ input{
     z-index: 99;
     color: #525252;
 }
-button{
+.time_selector button{
     display: block;
     border: none;
     border-radius: 20px;
     padding: 4px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     background-color:  #d6d6d6;
     color:  #525252;
 }
+
 input[type="datetime-local"]{
     font-size: 16px;
     height: 30px;
     width: auto;
+    background-color:  #d6d6d6;
+    border: none;
+    border-radius: 40px;
+    margin-bottom: 10px;
+    color: #525252;
     padding-top: 4px;
     padding-bottom: 4px;
+}
+.stop-go button{
+    border-radius: 40px;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    color: #fff;
+    font-size: 18px;
+    margin: 7px;
+    background-color: rgb(108, 168, 118);
 }
 button:hover{
     background-color:  #969696;
@@ -124,10 +141,10 @@ select {
     padding-right: 20px;
     padding-top: 10px;
 }
-.option-bar img{
+.option-bar .btn{
     cursor: pointer;
-    width: 45px;
-    height: 45px;
+    font-size: 34px;
+    color: rgb(70, 97, 76);
 }
 /* .option-bar img{
     margin: 0 100px 0 0;
