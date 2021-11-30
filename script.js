@@ -98,14 +98,14 @@ let iconePerso = L.icon({
 function onEachFeature(feature, layer) {
   	if (feature.properties) {
       	layer.bindPopup("<h1>" + feature.properties.Nom + "</h1>" +
-       	"<h4>" + feature.properties.Desc +"</h4>"+ "<h2>Type de voies: </h2><h4>" +
-        feature.properties.Type_voies + "</h4>" +'>Press for more INFO </button>');
+       	"<h4>" + feature.properties.Desc +"</h4>"+ "<h2>Type de voies: </h2><h4>" +feature.properties.Type_voies + 
+		   "<img src='" + feature.properties.img + "'>"+ "</h4>" +'>Press for more INFO </button>');
     }
 }
 
 let lieux_grimpe = new L.geoJson(spots, {
   	onEachFeature: onEachFeature,
-  	pointToLayer: function(feature,latlng){
+  	pointToLayer: function(feature,latlng){	
     	return L.marker(latlng,{icon: iconePerso});
   	}
 }).addTo(myMap);
