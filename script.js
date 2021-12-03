@@ -6,7 +6,16 @@ $(function() {
 	$(".btn").click(function(e){
 		// Ajout l'attribut active à la classe filter
 		// On ajoute 60% de height à cette classe, donc visible si on appuie sur un des menus
-		filter.classList.toggle("active");
+		
+		if (this.id == "bmap") {
+			filter.classList.toggle("active");
+		}
+		if (this.id == "bmap") {
+			filter.classList.toggle("active");
+		}
+		if (this.id == "bmap") {
+			filter.classList.toggle("active");
+		}
 		
 		// Suppression de l'attribut active pour la classe eta-dist
 		// Permet d'enelver l'indication de l'ETA + distance si l'utilisateur
@@ -343,7 +352,7 @@ function drawRoute(data){
       	let steps = leg.steps;
         for (let f = 0; f < steps.length; f++){
           	let step = steps[f];
-          	//console.log(step)
+          	console.log(step)
         }
         // on c$onvertit chaque point en geojson
         let geomLeg = polyline.toGeoJSON(leg.legGeometry.points);
