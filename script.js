@@ -273,21 +273,61 @@ function calculateRoute(){
 /**
  * AUTOCOMPLETE DE LA DESTINATION
  */
+ var options = [{
+	"label": "46.308767920299452, 6.978613659578678",
+	"value": "Verschiez (Dalle à Besson)"
+},
+{
+	"label": " 46.306903847814702, 6.976375793764475",
+	"value": "Versciez (Les Noces)"
+},
+{
+	"label": "46.308629544862868, 6.972804361990741",
+	"value": "Aigle"
+},
+{
+	"label": "46.321872864773226, 6.978318141740336",
+	"value": "Drapel"
+},
+{
+	"label": "46.329283379218218, 6.97922262741458",
+	"value": "Roc des Veyges"
+},
+{
+	"label": "46.33108581757196, 6.978411650326897",
+	"value": "Jardin suspendu"
+},
+{
+	"label": "46.34140823995979, 6.95448726592305",
+	"value": "Vers-Cor"
+}
+];
 
-// Features inclus de notre json
-let spot_features = spots.features
-
-// Array contenant tous les noms des spots
-let name_array = spot_features.map(a=>(a.properties.Nom));
-
-// Fonction jquery pour autocomplete les noms que les users sont
-// en train d'écrire
-$( function() {
-    $( "#toName" ).autocomplete({
-      source: name_array
-    });
+$("#toName").autocomplete({
+	lookup: options,
+	onSelect: function (suggestion) {
+		$('#toPoint').val(suggestion.label);
+	}
 });
 
+/**
+ * Lieu de destination (uniquement marqueur sélectionnable)
+ */
+ lieux_grimpe.on('click', function(e){
+
+	// Coordonnées lat long du marqueur sur lequel on a cliqué
+	let pt = e.latlng;
+	//Nom du marqueur sur lequel on a cliqué (lieu de grimpe)
+	let content = e.layer.feature.properties.Nom;
+	// Ajout des coordonnées lat long du marqueur dans l'input hidden pour calculer l'itinéraire
+	$('#'+toSelectedMarker).val(pt.lat + ',' + pt.lng);
+
+	toSelectedMarker == 'toPoint';
+
+	// Changement du texte de l'input pour qu'il corresponde au site sur lequel on a cliqué
+	$('#'+toSelectedName).val(content);
+	toSelectedName == 'toName';
+});
 
 /**
  * Indication du chemin pour OTP
@@ -463,4 +503,5 @@ function calculateRouteError(error){
   	alert('Error during route calculation.');
   	console.log('Routing error', error);
 }
+
 

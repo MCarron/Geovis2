@@ -56,6 +56,9 @@ input[type=text]{
     color:  #525252;
     /* margin: 10px; */
 }
+.dist{
+    position: relative;
+}
 .form-group i{
     height: 40px;
     min-width: 40px;
