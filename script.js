@@ -513,3 +513,21 @@ function calculateRouteError(error){
 }
 
 
+
+
+
+var output = $('#output');
+
+$('#slider').noUiSlider({
+    start: [0, 300], 
+    range: {
+        'min': [0],
+        'max': [100],
+    },
+	step: 1,
+	connect: true
+}).on('slide', function(evt) {
+    // In this event handler, I want to see which of the two sliders is being moved
+    // Is there a property of the 'evt' parameter which would tell me this?
+    output.html($(this).val().join(' - '));
+});
