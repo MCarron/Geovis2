@@ -1,13 +1,30 @@
-
-let filter = document.querySelector(".filter");
+let filters = document.querySelectorAll(".filter");
 let eta_dist = document.querySelector(".eta-dist");
 
 $(function() {
 	$(".btn").click(function(e){
 		// Ajout l'attribut active à la classe filter
 		// On ajoute 60% de height à cette classe, donc visible si on appuie sur un des menus
-		filter.classList.toggle("active");
 		
+		filters.forEach(filter => {
+			console.log(filter)
+	  		if (filter.classList.contains("active")) {
+        		filter.classList.remove("active");
+      		};
+		});
+
+		if (this.id == "bmap") {
+			document.querySelector("#filter1").classList.add("active");
+		}
+		
+		if (this.id == "bfilter") {
+			document.querySelector("#filter2").classList.add("active");
+		}
+
+		if (this.id == "bgroup") {
+			document.querySelector("#filter3").classList.add("active");
+		}
+
 		// Suppression de l'attribut active pour la classe eta-dist
 		// Permet d'enelver l'indication de l'ETA + distance si l'utilisateur
 		// appuie à nouveau sur un des boutons du menu
@@ -228,7 +245,7 @@ function setCurrentTime() {
 function calculateRoute(){
 	// Dé-zoom et fermeture du menu pour voir l'itinéraire
 	myMap.setView([46.33, 6.79], 10);
-	filter.classList.toggle("active");
+	filter1.classList.toggle("active");
 	eta_dist.classList.toggle("active");
 
   	// Point de départ
@@ -383,7 +400,7 @@ function drawRoute(data){
       	let steps = leg.steps;
         for (let f = 0; f < steps.length; f++){
           	let step = steps[f];
-          	//console.log(step)
+          	console.log(step)
         }
         // on c$onvertit chaque point en geojson
         let geomLeg = polyline.toGeoJSON(leg.legGeometry.points);
@@ -496,3 +513,21 @@ function calculateRouteError(error){
 }
 
 
+
+
+
+var output = $('#output');
+
+$('#slider').noUiSlider({
+    start: [0, 300], 
+    range: {
+        'min': [0],
+        'max': [100],
+    },
+	step: 1,
+	connect: true
+}).on('slide', function(evt) {
+    // In this event handler, I want to see which of the two sliders is being moved
+    // Is there a property of the 'evt' parameter which would tell me this?
+    output.html($(this).val().join(' - '));
+});
