@@ -551,4 +551,7 @@ $('#slider2').noUiSlider({
  */
  function applyFilters(){
 	console.log($("#slider1").val())
+	for (layer in lieux_grimpe._layers) {
+		distance = lieux_grimpe._layers[layer]._latlng
+	}
 }

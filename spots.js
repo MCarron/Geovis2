@@ -297,7 +297,7 @@ var spots = {
       "type": "Feature",
       "properties": {
         "id": 20,
-        "Nom": "Miroire de l'Argentine",
+        "Nom": "Miroir de l'Argentine",
         "Type_voies": "Longues voies",
         "nbr_voies": 30
       },
