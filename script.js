@@ -149,10 +149,13 @@ let popup = L.popup();
 /**
  * Calcul de notre localisation actuelle pour calculer l'itinéraire depuis notre position
  */
+
+currentPos = null
+
 myMap.on('locationfound', function (evt) {
 
   	// lat / long de la position actuelle de l'utilisateur
-  	let currentPos = evt.latlng;
+  	currentPos = evt.latlng;
 
   	// On reformate le résulat et on le lie à notre boite de dialogue
   	// correspond au input invisible
@@ -163,6 +166,7 @@ myMap.on('locationfound', function (evt) {
   	// Correspond à l'input visible
   	$('#'+fromSelectedPos).val('Current position');
   	fromSelectedPos == 'fromName'
+	
 });
 
 let origin = null
@@ -552,6 +556,13 @@ $('#slider2').noUiSlider({
  function applyFilters(){
 	console.log($("#slider1").val())
 	for (layer in lieux_grimpe._layers) {
-		distance = lieux_grimpe._layers[layer]._latlng
+
+		let vdist = (lieux_grimpe._layers[layer]._latlng.lat - currentPos.lat)*110.574
+
+		let hdist = (lieux_grimpe._layers[layer]._latlng.lng - currentPos.lng)*111.320*Math.cos((lieux_grimpe._layers[layer]._latlng.lat)* (180 / Math.PI))
+		
+		let distance = Math.sqrt(Math.pow(vdist, 2) + Math.pow(hdist, 2))
+		
+		console.log(distance)
 	}
 }
