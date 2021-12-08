@@ -1,28 +1,28 @@
-let filters = document.querySelectorAll(".filter");
+let windows = document.querySelectorAll(".window");
 let eta_dist = document.querySelector(".eta-dist");
 
 $(function() {
 	$(".btn").click(function(e){
-		// Ajout l'attribut active à la classe filter
+		// Ajout l'attribut active à la classe window
 		// On ajoute 60% de height à cette classe, donc visible si on appuie sur un des menus
 		
-		filters.forEach(filter => {
-			console.log(filter)
-	  		if (filter.classList.contains("active")) {
-        		filter.classList.remove("active");
+		windows.forEach(window => {
+			console.log(window)
+	  		if (window.classList.contains("active")) {
+        		window.classList.remove("active");
       		};
 		});
 
 		if (this.id == "bmap") {
-			document.querySelector("#filter1").classList.add("active");
+			document.querySelector("#itinerary").classList.add("active");
 		}
 		
 		if (this.id == "bfilter") {
-			document.querySelector("#filter2").classList.add("active");
+			document.querySelector("#filters").classList.add("active");
 		}
 
 		if (this.id == "bgroup") {
-			document.querySelector("#filter3").classList.add("active");
+			document.querySelector("#infos").classList.add("active");
 		}
 
 		// Suppression de l'attribut active pour la classe eta-dist
@@ -245,7 +245,7 @@ function setCurrentTime() {
 function calculateRoute(){
 	// Dé-zoom et fermeture du menu pour voir l'itinéraire
 	myMap.setView([46.33, 6.79], 10);
-	filter1.classList.toggle("active");
+	itinerary.classList.toggle("active");
 	eta_dist.classList.toggle("active");
 
   	// Point de départ
@@ -545,3 +545,10 @@ $('#slider2').noUiSlider({
 }).on('slide', function() {
     output2.html($(this).val().join(' - '));
 });
+
+/**
+ * Application des filtres aux différents marqueurs
+ */
+ function applyFilters(){
+	console.log($("#slider1").val())
+}

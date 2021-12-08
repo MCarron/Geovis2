@@ -29,7 +29,7 @@
 	<body>
         <div id="map"></div>
 
-		<div id="filter1" class="filter">
+		<div id="itinerary" class="window">
 			<div class="information">
 				<!-- On utilise ici des unicodes prédéfinis pour créer le symbole de la croix
 				et du menu plus bas -->
@@ -89,7 +89,7 @@
 				<button onclick="#" class="go-btn">Go</button>
 		</div>
 
-		<div id="filter2" class="filter">
+		<div id="filters" class="window">
 			<div class="information">
 				<!-- On utilise ici des unicodes prédéfinis pour créer le symbole de la croix
 				et du menu plus bas -->
@@ -102,19 +102,15 @@
 					<div id="output2">2e output</div>
 				</div>
 
-				<div class="time_selector">
-					<input type="datetime-local" id="time-select">
-					<button onclick="setCurrentTime()">Use current time</button>
-				</div>
-
-				<div class="itin-go" id="stop-go">
-					<button onclick="calculateRoute()" class="itin-btn">Show itinerary</button>
+				<div class="itin-go" id="filter-go">
+					<button onclick="applyFilters()" class="filter-btn">Apply filters</button>
 				</div>
 
 			</div>
 		</div>
 
-		<div id="filter3" class="filter">
+		<div id="infos" class="window">
+			<div>Informations générales</div>
 		</div>
 
 					<!-- <input type="text" class="eta" disabled> -->
