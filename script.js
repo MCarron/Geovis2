@@ -249,7 +249,7 @@ function setCurrentTime() {
 function calculateRoute(){
 	// Dé-zoom et fermeture du menu pour voir l'itinéraire
 	myMap.setView([46.33, 6.79], 10);
-	windows.removeClass("active");
+	$("#itinerary").removeClass("active");
 	eta_dist.classList.toggle("active");
 
   	// Point de départ
@@ -579,6 +579,13 @@ $(".filter_type").click(function(e){
  * Application des filtres aux différents marqueurs
  */
 function applyFilters(){
+	// changement de zoom sur la carte
+	myMap.setView([46.33, 6.79], 10);
+
+	// fermeture de la fenetre de filtres
+	$("#filters").removeClass("active");
+
+	// fonction de filtre pou
 	for (layer in lieux_grimpe._layers) {
 
 		// retablir style de base pour toutes les icones
@@ -596,21 +603,16 @@ function applyFilters(){
 
 		// extraction du type de voies
 		let t_voies = lieux_grimpe._layers[layer].feature.properties.Type_voies
-
-		// obtention des types de voies selectionnes au moment de l'application du filtre
-		filter_type_val = []
-
+		console.log(t_voies)
 		
 		// identifier les sites respectant les différentes conditions de filtre
 		if (distance >= $('#slider1').val()[0] && distance <= $('#slider1').val()[1]
 		&& n_voies >= $('#slider2').val()[0] && n_voies <= $('#slider2').val()[1]
-		&& t_voies in filter_type_val
+		&& filter_type_val.includes(t_voies)
 		){
 			// mettre en evidence les icones correspondantes
 			lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.png"
 		}
-
-
 
 	};
 };
