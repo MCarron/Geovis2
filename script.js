@@ -249,7 +249,7 @@ function setCurrentTime() {
 function calculateRoute(){
 	// Dé-zoom et fermeture du menu pour voir l'itinéraire
 	myMap.setView([46.33, 6.79], 10);
-	itinerary.classList.toggle("active");
+	windows.removeClass("active");
 	eta_dist.classList.toggle("active");
 
   	// Point de départ
@@ -521,11 +521,14 @@ function calculateRouteError(error){
 
 /**
  * FILTRES
+ * on definit 
  */
 
-var output1 = $('#output1');
-var output2 = $('#output2');
+// valeur des filtres coulissants
+var output1 = $('#output1'); // distance
+var output2 = $('#output2'); // nombre de voies
 
+// filtre des distances
 $('#slider1').noUiSlider({
     start: [0, 300], 
     range: {
@@ -538,6 +541,7 @@ $('#slider1').noUiSlider({
     output1.html($(this).val().join(' - '));
 });
 
+// filtre du nombre de voies
 $('#slider2').noUiSlider({
     start: [0, 250], 
     range: {
@@ -550,12 +554,25 @@ $('#slider2').noUiSlider({
     output2.html($(this).val().join(' - '));
 });
 
+// valeur du filtre a choix multiple
 let filter_type_val = ["Couennes", "Longues voies", "Salle"]
 
+// valeur du filtre a choix multiple
 $(".filter_type").click(function(e){
 	console.log($(this).val())
 	$(this).toggleClass("active")
 	console.log($(this).attr("class"))
+	
+	// redefinir la liste des filtres actives
+	filter_type_val = []
+	let filter_types = document.querySelectorAll(".filter_type");
+	filter_types.forEach(filtertype => {
+		console.log(filtertype)
+		  if (filtertype.classList.contains("active")) {
+			filter_type_val.push(filtertype.value);
+			console.log(filter_type_val)
+		  };
+	});
 });
 
 /**
@@ -564,21 +581,30 @@ $(".filter_type").click(function(e){
 function applyFilters(){
 	for (layer in lieux_grimpe._layers) {
 
-		// calcul des distances horizontales et verticales et calcul
+		// retablir style de base pour toutes les icones
+		lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.png"
+
+		// calcul des distances horizontales et verticales au point de depart
 		let vdist = (lieux_grimpe._layers[layer]._latlng.lat - currentPos.lat)*110.574
 		let hdist = (lieux_grimpe._layers[layer]._latlng.lng - currentPos.lng)*111.320*Math.cos((lieux_grimpe._layers[layer]._latlng.lat)* (180 / Math.PI))
 		
-		// calcul de la distance complete
+		// calcul de la distance complete au point de depart
 		let distance = Math.sqrt(Math.pow(vdist, 2) + Math.pow(hdist, 2))
 		
-		// extraction des propriétés de 
-		let t_voies = lieux_grimpe._layers[layer].feature.properties.Type_voies
+		// extraction du nombre de voies
 		let n_voies = lieux_grimpe._layers[layer].feature.properties.nbr_voies
+
+		// extraction du type de voies
+		let t_voies = lieux_grimpe._layers[layer].feature.properties.Type_voies
+
+		// obtention des types de voies selectionnes au moment de l'application du filtre
+		filter_type_val = []
+
 		
 		// identifier les sites respectant les différentes conditions de filtre
-		if (distance > $('#slider1').val()[0] && distance < $('#slider1').val()[1]
-		&& n_voies > $('#slider2').val()[0] && n_voies < $('#slider2').val()[1]
-		//&& t_voies in filter_type_val
+		if (distance >= $('#slider1').val()[0] && distance <= $('#slider1').val()[1]
+		&& n_voies >= $('#slider2').val()[0] && n_voies <= $('#slider2').val()[1]
+		&& t_voies in filter_type_val
 		){
 			// mettre en evidence les icones correspondantes
 			lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.png"
@@ -598,5 +624,7 @@ function resetFilters(){
 	output2.html($("#slider2").val().join(' - '));
 	
 	// mettre en evidence les icones correspondantes
-	lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.png"
+	for (layer in lieux_grimpe._layers) {
+		lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.png"
+	}
 }
