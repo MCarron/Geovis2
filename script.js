@@ -539,10 +539,10 @@ $('#slider1').noUiSlider({
 });
 
 $('#slider2').noUiSlider({
-    start: [0, 800], 
+    start: [0, 250], 
     range: {
         'min': [0],
-        'max': [700],
+        'max': [250],
     },
 	step: 1,
 	connect: true
@@ -550,11 +550,18 @@ $('#slider2').noUiSlider({
     output2.html($(this).val().join(' - '));
 });
 
+let filter_type_val = ["Couennes", "Longues voies", "Salle"]
+
+$(".filter_type").click(function(e){
+	console.log($(this).val())
+	$(this).toggleClass("active")
+	console.log($(this).attr("class"))
+});
+
 /**
  * Application des filtres aux différents marqueurs
  */
 function applyFilters(){
-	console.log($("#slider1").val())
 	for (layer in lieux_grimpe._layers) {
 
 		// calcul des distances horizontales et verticales et calcul
@@ -564,16 +571,22 @@ function applyFilters(){
 		// calcul de la distance complete
 		let distance = Math.sqrt(Math.pow(vdist, 2) + Math.pow(hdist, 2))
 		
-		// calcul de la distance complete
-		console.log(lieux_grimpe._layers[layer].feature.properties.Type_voies)-
+		// console.logs
+		let t_voies = lieux_grimpe._layers[layer].feature.properties.Type_voies
+		let n_voies = lieux_grimpe._layers[layer].feature.properties.nbr_voies
+		
+		if (distance > $('#slider1').val()[0] && distance < $('#slider1').val()[1]) {
+			console.log(lieux_grimpe._layers[layer].feature.properties.Nom)
+		}
 
-		console.log(distance)
-	}
-}
+
+
+	};
+};
 
 function resetFilters(){
 	$("#slider1").val([ "0.00", "300.00" ]);
 	output1.html($("#slider1").val().join(' - '));
-	$("#slider2").val([ "0.00", "700.00" ]);
+	$("#slider2").val([ "0.00", "250.00" ]);
 	output2.html($("#slider2").val().join(' - '));
 }

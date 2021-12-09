@@ -86,7 +86,7 @@
 				<div class="dist">
 					<p id="dist"></p>
 				</div>
-				<button onclick="#" class="go-btn">Go</button>
+				<button class="go-btn">Go</button> // !! onclick="#" rajouter la fonction
 		</div>
 
 		<div id="filters" class="window">
@@ -94,21 +94,22 @@
 				<!-- On utilise ici des unicodes prédéfinis pour créer le symbole de la croix
 				et du menu plus bas -->
 				<a href="javascript:" class="btn">&times;</a>
-				<!-- On introduit les différents filtres -->
+				<!-- On introduit les différents filtres coulissants -->
 				<div class="sliders">
 					<label>Type </label>
 					<div id="slider1" class="slider"></div>
 					<div id="output1">0.00 - 300.00</div>
 					<label>Type </label>
 					<div id="slider2" class="slider"></div>
-					<div id="output2">0.00 - 700.00</div>
+					<div id="output2">0.00 - 250.00</div>
 
+				<!-- On introduit les différents filtres en boutons -->
 				<div class="controls">
 					<label>Type </label>
 						
-					<button class="filter_type" data-filter=".category-1">Couennes</button>
-					<button class="filter_type" data-filter=".category-2">Longues voies</button>
-					<button class="filter_type" data-filter=".category-3">Salle</button>
+					<button id="filter_type_1" class="filter_type active" value="Couennes" data-filter=".category-1">Couennes</button>
+					<button id="filter_type_2" class="filter_type active" value="Longues voies" data-filter=".category-2">Longues voies</button>
+					<button id="filter_type_3" class="filter_type active" value="Salle" data-filter=".category-3">Salle</button>
 					</div>
 
 				</div>

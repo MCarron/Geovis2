@@ -246,7 +246,7 @@ input[type="datetime-local"]{
   .filter_type{
     display: inline-block;
     padding: .4em .8em;
-    background: rgb(192, 67, 67);
+    background: #b6b6b6;
     border: 0;
     color: #ddd;
     font-size: 12px;
@@ -256,5 +256,9 @@ input[type="datetime-local"]{
   }
   
   .filter_type.active{
-    background: #68b8c4;
+    background: rgb(192, 67, 67);
+  }
+
+  .controls{
+    padding: 5%;
   }
