@@ -557,12 +557,33 @@ $('#slider2').noUiSlider({
 	console.log($("#slider1").val())
 	for (layer in lieux_grimpe._layers) {
 
+		// calcul des distances horizontales et verticales et calcul
 		let vdist = (lieux_grimpe._layers[layer]._latlng.lat - currentPos.lat)*110.574
-
 		let hdist = (lieux_grimpe._layers[layer]._latlng.lng - currentPos.lng)*111.320*Math.cos((lieux_grimpe._layers[layer]._latlng.lat)* (180 / Math.PI))
 		
+		// calcul de la distance complete
 		let distance = Math.sqrt(Math.pow(vdist, 2) + Math.pow(hdist, 2))
 		
+		// calcul de la distance complete
+		console.log(lieux_grimpe._layers[layer].feature.properties.Type_voies)-
+
 		console.log(distance)
 	}
 }
+
+$(function(){
+	$('#Container').mixItUp({
+	  load: {
+		filter: '' 
+	  },
+	  controls: {
+		toggleFilterButtons: true,
+		toggleLogic: 'and'
+	  },
+	  callbacks: {
+		onMixEnd: function(state){
+		  console.log(state.activeFilter)
+		}
+	  }
+	});
+  });
