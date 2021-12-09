@@ -96,10 +96,12 @@
 				<a href="javascript:" class="btn">&times;</a>
 				<!-- On introduit les différents filtres -->
 				<div class="sliders">
+					<label>Type </label>
 					<div id="slider1" class="slider"></div>
-					<div id="output1">1er output</div>
+					<div id="output1">0.00 - 300.00</div>
+					<label>Type </label>
 					<div id="slider2" class="slider"></div>
-					<div id="output2">2e output</div>
+					<div id="output2">0.00 - 700.00</div>
 
 				<div class="controls">
 					<label>Type </label>
@@ -115,7 +117,9 @@
 					<button onclick="applyFilters()" class="filter-btn">Apply filters</button>
 				</div>
 
-				<button onclick='console.log("reset button")'>Reset</button>
+				<div class="itin-go" id="reset-go"></div>
+					<button onclick="resetFilters()">Reset</button>
+				</div>
 
 			</div>
 		</div>

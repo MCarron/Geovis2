@@ -7,7 +7,7 @@ var spots = {
       "properties": {
         "id": 1,
         "Nom": "Verschiez (Dalle à Besson)",
-        "Type_voies": "Couenes",
+        "Type_voies": "Couennes",
         "nbr_voies": 40,
         "img": "img/Besson.jpg"
       },
@@ -73,7 +73,7 @@ var spots = {
       "properties": {
         "id": 5,
         "Nom": "Roc de Veyges",
-        "Type_voies": "Couenes",
+        "Type_voies": "Couennes",
         "nbr_voies": 32
       },
       "geometry": {
@@ -154,7 +154,7 @@ var spots = {
       "properties": {
         "id": 10,
         "Nom": "Roche",
-        "Type_voies": "Couennes ()",
+        "Type_voies": "Couennes",
         "nbr_voies": 10
       },
       "geometry": {
@@ -170,7 +170,7 @@ var spots = {
       "properties": {
         "id": 11,
         "Nom": "Scex des Nombrieux",
-        "Type_voies": "Longues voies et couenes",
+        "Type_voies": "Longues voies et Couennes",
         "nbr_voies": 23
       },
       "geometry": {

@@ -553,7 +553,7 @@ $('#slider2').noUiSlider({
 /**
  * Application des filtres aux différents marqueurs
  */
- function applyFilters(){
+function applyFilters(){
 	console.log($("#slider1").val())
 	for (layer in lieux_grimpe._layers) {
 
@@ -571,19 +571,9 @@ $('#slider2').noUiSlider({
 	}
 }
 
-$(function(){
-	$('#Container').mixItUp({
-	  load: {
-		filter: '' 
-	  },
-	  controls: {
-		toggleFilterButtons: true,
-		toggleLogic: 'and'
-	  },
-	  callbacks: {
-		onMixEnd: function(state){
-		  console.log(state.activeFilter)
-		}
-	  }
-	});
-  });
+function resetFilters(){
+	$("#slider1").val([ "0.00", "300.00" ]);
+	output1.html($("#slider1").val().join(' - '));
+	$("#slider2").val([ "0.00", "700.00" ]);
+	output2.html($("#slider2").val().join(' - '));
+}
