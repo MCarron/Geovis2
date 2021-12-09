@@ -571,12 +571,17 @@ function applyFilters(){
 		// calcul de la distance complete
 		let distance = Math.sqrt(Math.pow(vdist, 2) + Math.pow(hdist, 2))
 		
-		// console.logs
+		// extraction des propriétés de 
 		let t_voies = lieux_grimpe._layers[layer].feature.properties.Type_voies
 		let n_voies = lieux_grimpe._layers[layer].feature.properties.nbr_voies
 		
-		if (distance > $('#slider1').val()[0] && distance < $('#slider1').val()[1]) {
-			console.log(lieux_grimpe._layers[layer].feature.properties.Nom)
+		// identifier les sites respectant les différentes conditions de filtre
+		if (distance > $('#slider1').val()[0] && distance < $('#slider1').val()[1]
+		&& n_voies > $('#slider2').val()[0] && n_voies < $('#slider2').val()[1]
+		//&& t_voies in filter_type_val
+		){
+			// mettre en evidence les icones correspondantes
+			lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.png"
 		}
 
 
@@ -585,8 +590,13 @@ function applyFilters(){
 };
 
 function resetFilters(){
+	
+	// retablir les valeurs par defaut des differents filtres
 	$("#slider1").val([ "0.00", "300.00" ]);
 	output1.html($("#slider1").val().join(' - '));
 	$("#slider2").val([ "0.00", "250.00" ]);
 	output2.html($("#slider2").val().join(' - '));
+	
+	// mettre en evidence les icones correspondantes
+	lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.png"
 }
