@@ -592,12 +592,14 @@ $(".filter_type").click(function(e){
 /**
  * Application des filtres aux différents marqueurs
  */
-function applyFilters(){
-	// changement de zoom sur la carte
-	myMap.setView([46.33, 6.79], 10);
+ function applyFilters(){
 
 	// fermeture de la fenetre de filtres
 	$("#filters").removeClass("active");
+
+	// preparation des vecteurs pour accueillir les valeurs de longitude et latitude
+	let latfiltered = []
+	let lngfiltered = []
 
 	// fonction de filtre pou
 	for (layer in lieux_grimpe._layers) {
@@ -626,9 +628,23 @@ function applyFilters(){
 		){
 			// mettre en evidence les icones correspondantes
 			lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.png"
-		}
 
-	};
+			// stocker les infos de longitude-latitude pour ajuster le zoom sur les icones concernees
+			latfiltered.push(Number(lieux_grimpe._layers[layer]._latlng.lat))
+			lngfiltered.push(Number(lieux_grimpe._layers[layer]._latlng.lng))
+		}
+	}
+
+	// calcul du centre de la carte (coordonnees horizontale et verticale)
+	let latcenter = (Math.min.apply(Math,latfiltered) + Math.max.apply(Math,latfiltered))/2
+	let lngcenter = (Math.min.apply(Math,lngfiltered) + Math.max.apply(Math,lngfiltered))/2
+
+	console.log(latcenter)
+	// calcul du niveau de zoom de la carte (coordonnees horizontale et verticale)
+	
+
+	// changement de zoom sur la carte
+	myMap.setView([latcenter, lngcenter], 12);
 };
 
 function resetFilters(){
