@@ -638,7 +638,7 @@ function applyFilters(){
 		if (currentPos != null) {
 			// calcul des distances horizontales et verticales au point de depart
 			vdist = (lieux_grimpe._layers[layer]._latlng.lat - currentPos.lat)*110.574
-			hdist = (lieux_grimpe._layers[layer]._latlng.lng - currentPos.lng)*111.320*Math.cos((lieux_grimpe._layers[layer]._latlng.lat)* (180 / Math.PI))
+			hdist = (lieux_grimpe._layers[layer]._latlng.lng - currentPos.lng)*111.320*Math.cos((lieux_grimpe._layers[layer]._latlng.lat)* (Math.PI/180))
 		
 			// calcul de la distance complete au point de depart
 			distance = Math.sqrt(Math.pow(vdist, 2) + Math.pow(hdist, 2))
@@ -670,7 +670,10 @@ function applyFilters(){
 	let lngcenter = (Math.min.apply(Math,lngfiltered) + Math.max.apply(Math,lngfiltered))/2
 
 	// calcul du niveau de zoom de la carte (coordonnees horizontale et verticale)
-	// A COMPLETER
+	let latextent = (Math.max.apply(Math,latfiltered) - Math.min.apply(Math,latfiltered))*110.574
+	let lngextent = (Math.max.apply(Math,lngfiltered) - Math.min.apply(Math,lngfiltered))*111.320*Math.cos(latcenter * (Math.PI/180))
+	let maxextent = Math.min(latextent,lngextent)
+	console.log(maxextent)
 
 	// changement de zoom sur la carte
 	myMap.setView([latcenter, lngcenter], 12);
