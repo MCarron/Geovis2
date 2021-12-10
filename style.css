@@ -96,8 +96,6 @@ input[type="datetime-local"]{
 .itin-go button{
     border-radius: 40px;
     border: none;
-    margin-left: auto;
-    margin-right: auto;
     padding: 20px;
     color: #fff;
     font-size: 18px;
@@ -105,12 +103,22 @@ input[type="datetime-local"]{
 }
 .itin-go .itin-btn{
     background-color: rgb(108, 168, 118);
+    margin-left: auto;
+    margin-right: auto;
 }
 .itin-go .go-btn{
     background-color: rgb(102, 158, 223);
 }
 .itin-go .filter-btn{
     background-color: rgb(223, 171, 102);
+    display: inline-block;
+    padding: .4em .8em;
+    text-align: left;
+}
+.itin-go .reset-btn{
+    background-color: rgb(178, 207, 206);
+    display: inline-block;
+    padding: .4em .8em;
 }
 .itin-go button:hover{
     background-color:  #969696;
@@ -212,38 +220,28 @@ input[type="datetime-local"]{
 /* .option-bar img{
     margin: 0 100px 0 0;
 } */
-
-
 .sliders {
     margin:15px;
 }
-
 .slider {
     margin-top: 10px;
     height: 10px;
     padding: 0 9px;
 }
-
 .slider .noUi-connect {
     background: #ac382b;
 }
-
 .slider .noUi-handle {
     box-shadow: none;
     height: 18px;
     width: 18px;
     border-radius: 9px;
 }
-
 .slider .noUi-handle::before,
 .noUi-handle::after {
     display: none;
 }
-
-
-
-
-  .filter_type{
+.filter_type{
     display: inline-block;
     padding: .4em .8em;
     background: #b6b6b6;
@@ -253,20 +251,16 @@ input[type="datetime-local"]{
     font-weight: 300;
     border-radius: 4px;
     cursor: pointer;
-  }
-  
-  .filter_type.active{
+}
+.filter_type.active{
     background: rgb(192, 67, 67);
-  }
-
-  .controls{
+}
+.controls{
     padding: 5%;
-  }
-
+}
 .nom_spot {
     border:1px solid #000;
 }
-
 .text-align-left{
     text-align:left;
-  }
+}
