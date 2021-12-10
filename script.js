@@ -187,7 +187,7 @@ let origin = null
  * Définition du starting point si autre que position actuelle
  */
 function choseStartPoint (e) {
-  	let currentPos = e.latlng;
+  	currentPos = e.latlng;
   	if (origin != null){
     	myMap.removeLayer(origin);
   	}
