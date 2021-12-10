@@ -181,6 +181,9 @@ myMap.on('locationfound', function (evt) {
   	$('#'+fromSelectedPos).val('Current position');
   	fromSelectedPos == 'fromName'
 	
+  	// On rend actif le filtre de distance
+  	$('#slider1').removeClass("notactive")
+	
 });
 
 let origin = null
@@ -552,7 +555,13 @@ $('#slider1').noUiSlider({
 	step: 1,
 	connect: true
 }).on('slide', function() {
-    output1.html($(this).val().join(' - '));
+    if ($(this).hasClass("notactive")) {
+		$("#slider1").val([ "0.00", "300.00" ]);
+		alert("Chose a location on the map or activate your location to use this filter.")
+	}
+	else {
+		output1.html($(this).val().join(' - '));
+	}
 });
 
 // filtre du nombre de voies
