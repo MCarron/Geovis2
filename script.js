@@ -98,28 +98,31 @@ L.control.layers(baseMaps, overlays).addTo(myMap);
 L.control.scale({
   position: 'bottomleft'
 }).addTo(myMap);
+									//////////////////////////
+									///Création de nos icon///
+									//////////////////////////
 
-///Création de nos icon///
 
-/**
- * Importation de l'icone personalisée
- */
+///Importation de l'icone personalisée///
+ 
 let iconePerso = L.icon({
   	iconUrl: 'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.png',
   	iconSize: [28, 41]
 });
 
-// ajout des markers: 
-  // dans un premier temps on créer une fonction qui permet nous permettra de voir quel est le nom de chaque spots lorsque l'on clique dessus
-  // on ajoute ensuite nos marker en utilisant ceux qu'on a créer nous-même)
-function onEachFeature(feature, layer) {
+/// ajout des markers ///
+// dans un premier temps on créer une fonction qui permet nous permettra de voir quel est le nom de chaque spots lorsque l'on clique dessus
+// on ajoute ensuite nos marker en utilisant ceux qu'on a créer nous-même)
+
+/*function onEachFeature(feature, layer) {
   	if (feature.properties) {
-      	layer.bindPopup("<h1>" + feature.properties.Nom + "</h1>" +
+      	layer.bindPopup("<h1>" + feature.properties.Nom + "</h1>");/* +
        	"<h4>" + feature.properties.Desc +"</h4>"+ "<h2>Type de voies: </h2><h4>" +feature.properties.Type_voies + 
 		   "<img src='" + feature.properties.img + "'>"+ "</h4>" +'>Press for more INFO </button>');
     }
-}
+}*/
 
+///Affichages des marqueurs/// 
 let lieux_grimpe = new L.geoJson(spots, {
   	onEachFeature: onEachFeature,
   	pointToLayer: function(feature,latlng){	
@@ -127,6 +130,15 @@ let lieux_grimpe = new L.geoJson(spots, {
   	}
 }).addTo(myMap);
 
+///On créer une function qui nous permet d'afficher les info (contenues dans nos marqueurs), dans les derniers onglets du slidebar
+
+function onEachFeature(feature, layer) {
+  layer.on('click', function(e) {
+	$(".nome").html(feature.properties.Nom);
+	$(".imagem").html(feature.properties.img);
+	$(".descricao").html(feature.properties.type);
+  });
+}
 //////////////////////////////////////////////////
 /////////// OPEN TRIP PLANNER ////////////////////
 /////////////////////////////////////////////////

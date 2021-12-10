@@ -264,8 +264,9 @@ input[type="datetime-local"]{
   }
 
 .nom_spot {
-    margin-top: 10px;
-    text-align: left;
-    height: 10px;
-    padding: 0 9px;
+    border:1px solid #000;
 }
+
+.text-align-left{
+    text-align:left;
+  }

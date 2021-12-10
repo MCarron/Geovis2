@@ -14,7 +14,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.27/jquery.autocomplete.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.js"></script>
 		<script src="https://cdn.rawgit.com/leongersen/noUiSlider/c8a70344bebb0b69a09adf12a1e7cc08894f8c3b/distribute/jquery.nouislider.all.min.js"></script>
-		
+
     	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
 		<link href="https://cdn.rawgit.com/leongersen/noUiSlider/c8a70344bebb0b69a09adf12a1e7cc08894f8c3b/distribute/jquery.nouislider.min.css" rel="stylesheet"/>
 		<link rel="stylesheet" href="style.css"/>
@@ -24,6 +24,9 @@
     	<link rel="stylesheet" href="dist/leaflet.contextmenu.min.css"/>
 		<link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css"/>
+		<link type="text/css" rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+		<link type="text/css" rel="stylesheet" href="https://unpkg.com/leaflet-sidebar@0.2.0/src/L.Control.Sidebar.css" />		
+		<link type="text/css" rel="stylesheet" href="style.css" />	
 		
 	</head>
 	<body>
@@ -135,8 +138,12 @@
 				<a href="javascript:" class="btn">&times;</a>
 
 			<!-- On ajoute maintenant les éléments d'informations-->
-			<div class = "nom_spot"></div>
-			<Span class="text-align-left">Spot</Span>
+				-- Click the desired marker on the map to fill the data --
+				<br>
+				<b>Name:</b><div class="nome"></div>
+				<b>Image:</b><div class="img"></div>
+				<b>Desc:</b><div class="descricao"></div>
+			  </div>
 				
 
 		</div>
@@ -165,6 +172,12 @@
 				<!-- </div> -->
 			</div>
 		</div>
+
+
+		<div id="sidebar"></div>
+		<script src="https://unpkg.com/leaflet/dist/leaflet-src.js"></script>
+		<script src="https://unpkg.com/leaflet-sidebar@0.2.0/src/L.Control.Sidebar.js"></script>
+
 		<script src="dist/leaflet.contextmenu.min.js"></script>
         <script src="dist/L.Control.Locate.js" ></script>
         <script src="spots.js"></script>

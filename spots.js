@@ -123,7 +123,7 @@ var spots = {
         "Nom": "Yvorne",
         "Type_voies": "Couennes",
         "nbr_voies": 45,
-        "img": "img/Yorne.jpg"
+        "img": "<img src ='img/Yorne.jpg'"
       },
       "geometry": {
         "type": "Point",
@@ -139,7 +139,7 @@ var spots = {
         "id": 9,
         "Nom": "Falaise de la Feuille",
         "Type_voies": "Couennes",
-        "nbr_voies": 23
+        "nbr_voies": 23,
       },
       "geometry": {
         "type": "Point",
