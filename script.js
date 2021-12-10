@@ -219,6 +219,9 @@ function choseStartPoint (e) {
   	fromSelectedPos == 'fromName'
 
   	origin.bindPopup("Selected start point");
+
+	// On rend actif le filtre de distance
+	$('#slider1').removeClass("notactive")
 }
 
 /**
@@ -544,6 +547,7 @@ function calculateRouteError(error){
 // valeur des filtres coulissants
 var output1 = $('#output1'); // distance
 var output2 = $('#output2'); // nombre de voies
+var output3 = $('#output3'); // altitude
 
 // filtre des distances
 $('#slider1').noUiSlider({
@@ -560,7 +564,7 @@ $('#slider1').noUiSlider({
 		alert("Chose a location on the map or activate your location to use this filter.")
 	}
 	else {
-		output1.html($(this).val().join(' - '));
+		output1.html($(this).val().join(' - ')  + " m");
 	}
 });
 
@@ -575,6 +579,19 @@ $('#slider2').noUiSlider({
 	connect: true
 }).on('slide', function() {
     output2.html($(this).val().join(' - '));
+});
+
+// filtre de l'altitude
+$('#slider3').noUiSlider({
+    start: [0, 3000], 
+    range: {
+        'min': [0],
+        'max': [3000],
+    },
+	step: 1,
+	connect: true
+}).on('slide', function() {
+    output3.html($(this).val().join(' - ')  + " km");
 });
 
 // valeur du filtre a choix multiple
@@ -662,11 +679,13 @@ function applyFilters(){
 function resetFilters(){
 	
 	// retablir les valeurs par defaut des differents filtres
-	$("#slider1").val([ "0.00", "300.00" ]);
-	output1.html($("#slider1").val().join(' - '));
-	$("#slider2").val([ "0.00", "250.00" ]);
+	$("#slider1").val([ "0", "300" ]);
+	output1.html($("#slider1").val().join(' - ') + " km");
+	$("#slider2").val([ "0", "250" ]);
 	output2.html($("#slider2").val().join(' - '));
-	
+	$("#slider3").val([ "0", "3000" ]);
+	output3.html($("#slider3").val().join(' - ') + " m");
+
 	// mettre en evidence les icones correspondantes
 	for (layer in lieux_grimpe._layers) {
 		lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.png"
