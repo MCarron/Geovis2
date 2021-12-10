@@ -231,6 +231,9 @@ input[type="datetime-local"]{
 .slider .noUi-connect {
     background: #ac382b;
 }
+.slider.notactive .noUi-connect {
+    background: #a8a8a8;
+}
 .slider .noUi-handle {
     box-shadow: none;
     height: 18px;

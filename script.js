@@ -592,7 +592,7 @@ $(".filter_type").click(function(e){
 /**
  * Application des filtres aux différents marqueurs
  */
- function applyFilters(){
+function applyFilters(){
 
 	// fermeture de la fenetre de filtres
 	$("#filters").removeClass("active");
@@ -607,12 +607,16 @@ $(".filter_type").click(function(e){
 		// retablir style de base pour toutes les icones
 		lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.png"
 
-		// calcul des distances horizontales et verticales au point de depart
-		let vdist = (lieux_grimpe._layers[layer]._latlng.lat - currentPos.lat)*110.574
-		let hdist = (lieux_grimpe._layers[layer]._latlng.lng - currentPos.lng)*111.320*Math.cos((lieux_grimpe._layers[layer]._latlng.lat)* (180 / Math.PI))
+		// definir la distance entre le point de depart
+		let distance = -1 // initialisation d'une distance "absurde", utile pour les conditions de filtre
+		if (currentPos != null) {
+			// calcul des distances horizontales et verticales au point de depart
+			vdist = (lieux_grimpe._layers[layer]._latlng.lat - currentPos.lat)*110.574
+			hdist = (lieux_grimpe._layers[layer]._latlng.lng - currentPos.lng)*111.320*Math.cos((lieux_grimpe._layers[layer]._latlng.lat)* (180 / Math.PI))
 		
-		// calcul de la distance complete au point de depart
-		let distance = Math.sqrt(Math.pow(vdist, 2) + Math.pow(hdist, 2))
+			// calcul de la distance complete au point de depart
+			distance = Math.sqrt(Math.pow(vdist, 2) + Math.pow(hdist, 2))
+		}
 		
 		// extraction du nombre de voies
 		let n_voies = lieux_grimpe._layers[layer].feature.properties.nbr_voies
@@ -622,9 +626,9 @@ $(".filter_type").click(function(e){
 		console.log(t_voies)
 		
 		// identifier les sites respectant les différentes conditions de filtre
-		if (distance >= $('#slider1').val()[0] && distance <= $('#slider1').val()[1]
+		if ((distance >= $('#slider1').val()[0] && distance <= $('#slider1').val()[1] || currentPos == null)
 		&& n_voies >= $('#slider2').val()[0] && n_voies <= $('#slider2').val()[1]
-		&& filter_type_val.includes(t_voies)
+		//&& filter_type_val.includes(t_voies)
 		){
 			// mettre en evidence les icones correspondantes
 			lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.png"
@@ -639,9 +643,8 @@ $(".filter_type").click(function(e){
 	let latcenter = (Math.min.apply(Math,latfiltered) + Math.max.apply(Math,latfiltered))/2
 	let lngcenter = (Math.min.apply(Math,lngfiltered) + Math.max.apply(Math,lngfiltered))/2
 
-	console.log(latcenter)
 	// calcul du niveau de zoom de la carte (coordonnees horizontale et verticale)
-	
+	// A COMPLETER
 
 	// changement de zoom sur la carte
 	myMap.setView([latcenter, lngcenter], 12);
