@@ -123,6 +123,8 @@ let iconePerso = L.icon({
 }*/
 
 ///Affichages des marqueurs/// 
+
+ 
 let lieux_grimpe = new L.geoJson(spots, {
   	onEachFeature: onEachFeature,
   	pointToLayer: function(feature,latlng){	

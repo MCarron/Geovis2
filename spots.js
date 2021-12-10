@@ -26,7 +26,7 @@ var spots = {
         "Nom": "Versciez (Les Noces)",
         "Type_voies": "Couennes",
         "nbr_voies": 45,
-        "img": "img/Noces.jpg"
+        "img": "<img src='img/Noce.jpg' alt='maptime logo gif' width='350px' height='600px'/>",
       },
       "geometry": {
         "type": "Point",
@@ -123,7 +123,7 @@ var spots = {
         "Nom": "Yvorne",
         "Type_voies": "Couennes",
         "nbr_voies": 45,
-        "img": "<img src ='img/Yorne.jpg'"
+        "img": "img/Yorne.jpg"
       },
       "geometry": {
         "type": "Point",

@@ -263,10 +263,14 @@ input[type="datetime-local"]{
     padding: 5%;
   }
 
-.nom_spot {
-    border:1px solid #000;
-}
-
-.text-align-left{
-    text-align:left;
+  .ele_info{
+    text-align: left;
+    width: 50%;
+    margin-top: 10px;
   }
+
+.image{
+    text-align: right;
+    width: 50%;
+    margin-top : 10px;
+}
