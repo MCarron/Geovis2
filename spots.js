@@ -170,7 +170,9 @@ var spots = {
         "id": 10,
         "Nom": "Roche",
         "Type_voies": "Couennes",
-        "nbr_voies": 10
+        "nbr_voies": 20,
+        "description":"Le spot de grimpe de roche est un spot relativement avancé ou le niveau des voies commence uniquement en '6a'. De plus, l'accès au secteur est relativement compliqué et ne convient pas aux enfants et personnes peu expérimentée",
+        "img" : "<img src='img/Noces.jpg' alt='maptime logo gif' width='250px' height='300px'/>"
       },
       "geometry": {
         "type": "Point",
@@ -186,7 +188,8 @@ var spots = {
         "id": 11,
         "Nom": "Scex des Nombrieux",
         "Type_voies": "Longues voies et Couennes",
-        "nbr_voies": 23
+        "nbr_voies": 23,
+        "Description":"",
       },
       "geometry": {
         "type": "Point",
