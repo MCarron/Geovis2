@@ -25,7 +25,7 @@ html, body{
     background-color:  #ececec;
     overflow: hidden;
     transition: all 0.5s ease;
-    padding-top: 60px;
+    padding-top: 38px;
     text-align: center;
     box-shadow: 0px 0px 30px rgba(65, 65, 65, 0.308);
 }
@@ -278,8 +278,20 @@ input[type="datetime-local"]{
 
 .left{
     text-align: left;
+    background-color: #fff;
 }
 
+.nome{
+    color: rgb(70, 97, 76);
+    font-size: 24pt;
+    padding-top: 5px;
+}
+
+
+
+#infos{
+    overflow: scroll;
+}
 
 .imagem{
     text-align: center;

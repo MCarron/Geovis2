@@ -138,6 +138,8 @@ function onEachFeature(feature, layer) {
   layer.on('click', function(e) {
 	$(".nome").html(feature.properties.Nom);
 	$(".imagem").html(feature.properties.img);
+	$(".type").html(feature.properties.Type_voies);
+	$(".nbr").html(feature.properties.nbr_voies);
 	$(".descricao").html(feature.properties.description);
 	if (feature.properties) {
 		layer.bindPopup("<h1>" + feature.properties.Nom + "</h1>");	
@@ -696,3 +698,6 @@ function resetFilters(){
 		lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.png"
 	}
 }
+
+var element2 = document.getElementById('infos');
+element.scrollTop = element.scrollHeight;
