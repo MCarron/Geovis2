@@ -8,8 +8,9 @@ var spots = {
         "id": 1,
         "Nom": "Verschiez (Dalle à Besson)",
         "Type_voies": "Couennes",
-        "nbr_voies": 40,
-        "img": "img/Besson.jpg"
+        "nbr_voies": 20,
+        "description": "Très jolie petite dalle situé à 15min de Verschiez à pied. Il est composé d'une quinzaines de voies orientées Sud",
+        "img": "<img src='img/Besson.jpg' alt='maptime logo gif' width='300px' height='200px'/>"
       },
       "geometry": {
         "type": "Point",
@@ -25,8 +26,9 @@ var spots = {
         "id": 2,
         "Nom": "Versciez (Les Noces)",
         "Type_voies": "Couennes",
-        "nbr_voies": 45,
-        "img": "<img src='img/Noce.jpg' alt='maptime logo gif' width='350px' height='600px'/>",
+        "nbr_voies": 8,
+        "description": "Très jolie petite dalle situé à 15min de Verschiez à pied. Il est composé de 6-7 voies orientées Sud",
+        "img": "<img src='img/Noce.jpg' alt='maptime logo gif' width='150px' height='200px'/>",
       },
       "geometry": {
         "type": "Point",
@@ -42,7 +44,9 @@ var spots = {
         "id": 3,
         "Nom": "Aigle",
         "Type_voies": "Couennes",
-        "nbr_voies": 3
+        "nbr_voies": 3,
+        "description": "Joli secteur de grimpe situé à 5min à pied du parking. Il est composé d'une vingtaine de voie relativement engagée. Il est idéal pour l'été car orienté Ouest/Nord-Ouest",
+        "img": "<img src='img/aigle.jpg' alt='maptime logo gif' width='300px' height='150px'/>",
       },
       "geometry": {
         "type": "Point",

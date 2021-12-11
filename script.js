@@ -138,7 +138,7 @@ function onEachFeature(feature, layer) {
   layer.on('click', function(e) {
 	$(".nome").html(feature.properties.Nom);
 	$(".imagem").html(feature.properties.img);
-	$(".descricao").html(feature.properties.type);
+	$(".descricao").html(feature.properties.description);
   });
 }
 //////////////////////////////////////////////////

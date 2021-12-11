@@ -263,13 +263,25 @@ input[type="datetime-local"]{
 <<<<<<< HEAD
   }
 
-  .ele_info{
-    text-align: left;
+.ele_info{
+    font-size: 0;
     width: 50%;
-    margin-top: 10px;
-  }
+    height: 120px;
+    padding: 20px;
+    margin-right: 50px;
+ }
 
 .image{
     text-align: right;
     width: 50%;
     margin-top : 10px;
+}
+
+.left{
+    text-align: left;
+}
+
+
+.imagem{
+    text-align: center;
+}
