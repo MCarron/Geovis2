@@ -139,7 +139,9 @@ function onEachFeature(feature, layer) {
 	$(".nome").html(feature.properties.Nom);
 	$(".imagem").html(feature.properties.img);
 	$(".descricao").html(feature.properties.description);
-  });
+	if (feature.properties) {
+		layer.bindPopup("<h1>" + feature.properties.Nom + "</h1>");	
+  }});
 }
 //////////////////////////////////////////////////
 /////////// OPEN TRIP PLANNER ////////////////////
