@@ -417,12 +417,13 @@ function drawRoute(data){
     console.log('data', data)
     console.log('itin', itin)
 
-	//
+	// Boucle d'iteration parmi les differents points geometrique
     for (let i=0; i < itin.legs.length; i++){
-    	// on va chercher chaque point géométrique que OTP nous propose
+
+    	// Recherche de chaque point géométrique propose par OTP
       	let leg = itin.legs[i];
 
-      	// on va chercher le mode de transport pour chaque leg (pour icone surement)
+      	// Obtention du mode de transport pour chaque leg (pour icone surement)
       	let leg_mode = leg.mode
       	console.log(leg_mode)
       	let steps = leg.steps;
@@ -430,24 +431,27 @@ function drawRoute(data){
           	let step = steps[f];
           	console.log(step)
         }
-        // on c$onvertit chaque point en geojson
+
+        // Conversion chaque point en GeoJson
         let geomLeg = polyline.toGeoJSON(leg.legGeometry.points);
 
-        // Style de notre polyline
+        // Style de polyline
       	let geojsonLayer = L.geoJSON(geomLeg, {
         	style: {
-            	//border: 10,
+            	//"border": 10,
             	"color": setColor(leg_mode),
             	"opacity": 0.9,
             	"weight": 8,
             	"dashArray": setDash(leg_mode)
         	}
-        // on ajoute chaque polyline à notre layergroup
+        
+		// Ajout de chaque polyline à notre layergroup
       	}).addTo(polylineGroup);
-      	//console.log(geojsonLayer)
     }
+
 	// Durée en minutes du trajet
 	let duree = Math.round(itin.duration/60)
+
 	// Heure d'arrivée
 	let eta = new Date(itin.endTime);
 	let etaTime = ('0'+ eta.getHours()).slice(-2) + 
@@ -459,19 +463,23 @@ function drawRoute(data){
 	$('#dist').html('Total distance : ' + dist + ' km')
 }
 
-// function setCurrentTime() {
-// 	let d = new Date();
-// 	$('#time-select').val(d.getFullYear()+"-"+
-// 		('0'+ (d.getMonth() + 1)).slice(-2)+"-"+
-// 		('0'+ d.getDate()).slice(-2)+
-// 		"T"+ ('0'+d.getHours()).slice(-2)+
-// 		":"+ ('0'+d.getMinutes()).slice(-2)+
-// 		":"+ ('0'+d.getSeconds()).slice(-2));
-// }
+/*
+// Fonction pour definir le temps actuel
+function setCurrentTime() {
+ 	let d = new Date();
+ 	$('#time-select').val(d.getFullYear()+"-"+
+ 		('0'+ (d.getMonth() + 1)).slice(-2)+"-"+
+ 		('0'+ d.getDate()).slice(-2)+
+ 		"T"+ ('0'+d.getHours()).slice(-2)+
+ 		":"+ ('0'+d.getMinutes()).slice(-2)+
+ 		":"+ ('0'+d.getSeconds()).slice(-2));
+}
+*/
+
 /**
- * Fonction switch pour TRANSIT,WALk et tous les autres modes
+ * Fonction switch pour TRANSIT,WALK et tous les autres modes
  * @param {*} mode Mode de transport choisi par l'utilisateur
- * @returns deuxième itin pour TRANSIT,WALK, premier itin pour tous les autres
+ * @returns 2e itin pour TRANSIT,WALK, 1er itin pour tous les autres
  */
 function choseItin(mode) {
   	switch (mode) {
@@ -542,18 +550,16 @@ function calculateRouteError(error){
 
 
 
+//////////////////////////////////////////////////
+//////////// GESTION DES FILTRES /////////////////
+/////////////////////////////////////////////////
 
-/**
- * FILTRES
- * on definit 
- */
-
-// valeur des filtres coulissants
+// Valeur des filtres coulissants
 var output1 = $('#output1'); // distance
 var output2 = $('#output2'); // nombre de voies
 var output3 = $('#output3'); // altitude
 
-// filtre des distances
+// Filtre des distances
 $('#slider1').noUiSlider({
     start: [0, 300], 
     range: {
@@ -572,7 +578,7 @@ $('#slider1').noUiSlider({
 	}
 });
 
-// filtre du nombre de voies
+// Filtre du nombre de voies
 $('#slider2').noUiSlider({
     start: [0, 250], 
     range: {
@@ -585,7 +591,7 @@ $('#slider2').noUiSlider({
     output2.html($(this).val().join(' - '));
 });
 
-// filtre de l'altitude
+// Filtre de l'altitude
 $('#slider3').noUiSlider({
     start: [0, 3000], 
     range: {
@@ -598,94 +604,96 @@ $('#slider3').noUiSlider({
     output3.html($(this).val().join(' - ')  + " km");
 });
 
-// valeur du filtre a choix multiple
-let filter_type_val = ["Couennes", "Longues voies", "Salle"]
+// Initialisation de la liste contenant les types de voie actuellement selectionnes par le filtre
+let filter_type_val = ["Couennes", "Longues voies", "Salle"];
 
-// valeur du filtre a choix multiple
+// Filtre des types de voies
 $(".filter_type").click(function(e){
-	console.log($(this).val())
-	$(this).toggleClass("active")
-	console.log($(this).attr("class"))
+	$(this).toggleClass("active");
 	
-	// redefinir la liste des filtres actives
-	filter_type_val = []
+	// Actualisation de la liste des filtres actives
+	filter_type_val = [];
 	let filter_types = document.querySelectorAll(".filter_type");
-	filter_types.forEach(filtertype => {
-		console.log(filtertype)
-		  if (filtertype.classList.contains("active")) {
+	filter_types.forEach(filtertype => {	
+		if (filtertype.classList.contains("active")) {
 			filter_type_val.push(filtertype.value);
-			console.log(filter_type_val)
-		  };
+		};
 	});
 });
 
-/**
- * Application des filtres aux différents marqueurs
- */
+// Fonction d'application des filtres aux marqueurs
 function applyFilters(){
 
-	// fermeture de la fenetre de filtres
+	// Fermeture de la fenetre de filtres
 	$("#filters").removeClass("active");
 
-	// preparation des vecteurs pour accueillir les valeurs de longitude et latitude
-	let latfiltered = []
-	let lngfiltered = []
+	// Preparation des vecteurs pour accueillir les valeurs de longitude et latitude
+	let latfiltered = [];
+	let lngfiltered = [];
 
-	// fonction de filtre pou
+	// Boucle d'iteration a travers les marqueurs
 	for (layer in lieux_grimpe._layers) {
 
-		// retablir style de base pour toutes les icones
-		lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.png"
+		// Retablissement du style de base pour tous les marqueurs
+		lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.png";
 
-		// definir la distance entre le point de depart
-		let distance = -1 // initialisation d'une distance "absurde", utile pour les conditions de filtre
+		// Definition de distance entre le point de depart et chaque filtre
+		let distance = -1; // Initialisation d'une distance "absurde", utile pour les conditions de filtre
 		if (currentPos != null) {
-			// calcul des distances horizontales et verticales au point de depart
-			vdist = (lieux_grimpe._layers[layer]._latlng.lat - currentPos.lat)*110.574
-			hdist = (lieux_grimpe._layers[layer]._latlng.lng - currentPos.lng)*111.320*Math.cos((lieux_grimpe._layers[layer]._latlng.lat)* (Math.PI/180))
+
+			// Calcul des distances horizontales et verticales au point de depart
+			vdist = (lieux_grimpe._layers[layer]._latlng.lat - currentPos.lat)*110.574;
+			hdist = (lieux_grimpe._layers[layer]._latlng.lng - currentPos.lng)*111.320*Math.cos((lieux_grimpe._layers[layer]._latlng.lat)* (Math.PI/180));
 		
-			// calcul de la distance complete au point de depart
-			distance = Math.sqrt(Math.pow(vdist, 2) + Math.pow(hdist, 2))
+			// Calcul de la distance au point de depart
+			distance = Math.sqrt(Math.pow(vdist, 2) + Math.pow(hdist, 2));
 		}
 		
-		// extraction du nombre de voies
-		let n_voies = lieux_grimpe._layers[layer].feature.properties.nbr_voies
+		// Extraction du nombre de voies
+		let n_voies = lieux_grimpe._layers[layer].feature.properties.nbr_voies;
 
-		// extraction du type de voies
-		let t_voies = lieux_grimpe._layers[layer].feature.properties.Type_voies
-		console.log(t_voies)
+		// Extraction du type de voies
+		let t_voies = lieux_grimpe._layers[layer].feature.properties.Type_voies;
 		
-		// identifier les sites respectant les différentes conditions de filtre
-		if ((distance >= $('#slider1').val()[0] && distance <= $('#slider1').val()[1] || currentPos == null)
+		// Identification des sites respectant les différentes conditions de filtre
+		
+		// Conditions de distance : si currentPos n'est pas identifie, la distance n'a aucune incidence
+		if ((distance >= $('#slider1').val()[0] && distance <= $('#slider1').val()[1]
+		|| currentPos == null)
+
+		// Condition du nombre de voies
 		&& n_voies >= $('#slider2').val()[0] && n_voies <= $('#slider2').val()[1]
+		
+		// Condition du type de voies
 		//&& filter_type_val.includes(t_voies)
 		){
-			// mettre en evidence les icones correspondantes
-			lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.png"
+			// Mise en evidence des icones correspondantes
+			lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.png";
 
-			// stocker les infos de longitude-latitude pour ajuster le zoom sur les icones concernees
-			latfiltered.push(Number(lieux_grimpe._layers[layer]._latlng.lat))
-			lngfiltered.push(Number(lieux_grimpe._layers[layer]._latlng.lng))
+			// Stockage des infos de longitude-latitude pour ajuster par la suite la carte aux icones concernees
+			latfiltered.push(Number(lieux_grimpe._layers[layer]._latlng.lat));
+			lngfiltered.push(Number(lieux_grimpe._layers[layer]._latlng.lng));
 		}
 	}
 
-	// calcul du centre de la carte (coordonnees horizontale et verticale)
-	let latcenter = (Math.min.apply(Math,latfiltered) + Math.max.apply(Math,latfiltered))/2
-	let lngcenter = (Math.min.apply(Math,lngfiltered) + Math.max.apply(Math,lngfiltered))/2
+	// Calcul du centre de la carte (coordonnees horizontale et verticale)
+	let latcenter = (Math.min.apply(Math,latfiltered) + Math.max.apply(Math,latfiltered))/2;
+	let lngcenter = (Math.min.apply(Math,lngfiltered) + Math.max.apply(Math,lngfiltered))/2;
 
-	// calcul du niveau de zoom de la carte (coordonnees horizontale et verticale)
-	let latextent = (Math.max.apply(Math,latfiltered) - Math.min.apply(Math,latfiltered))*110.574
-	let lngextent = (Math.max.apply(Math,lngfiltered) - Math.min.apply(Math,lngfiltered))*111.320*Math.cos(latcenter * (Math.PI/180))
-	let maxextent = Math.min(latextent,lngextent)
+	// Calcul de l'extent de la carte = largeur & hauteur (coordonnees horizontale et verticale)
+	let latextent = (Math.max.apply(Math,latfiltered) - Math.min.apply(Math,latfiltered))*110.574;
+	let lngextent = (Math.max.apply(Math,lngfiltered) - Math.min.apply(Math,lngfiltered))*111.320*Math.cos(latcenter * (Math.PI/180));
+	let maxextent = Math.min(latextent,lngextent);
 	console.log(maxextent)
 
-	// changement de zoom sur la carte
+	// Changement de zoom sur la carte en fonction des parametres calcules
 	myMap.setView([latcenter, lngcenter], 12);
 };
 
+// Fonction de reinitialisation des filtres
 function resetFilters(){
 	
-	// retablir les valeurs par defaut des differents filtres
+	// Retablissement des valeurs par defaut des differents filtres
 	$("#slider1").val([ "0", "300" ]);
 	output1.html($("#slider1").val().join(' - ') + " km");
 	$("#slider2").val([ "0", "250" ]);
@@ -693,10 +701,10 @@ function resetFilters(){
 	$("#slider3").val([ "0", "3000" ]);
 	output3.html($("#slider3").val().join(' - ') + " m");
 
-	// mettre en evidence les icones correspondantes
+	// Redefinition du style de base pour tous les marqueurs
 	for (layer in lieux_grimpe._layers) {
 		lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.png"
-	}
+	};
 }
 
 var element2 = document.getElementById('infos');
