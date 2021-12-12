@@ -108,12 +108,8 @@ L.control.scale({
 
 // Importation des icones personalisées (defaut = rouge / filtree = jaune)
 let iconePerso = L.icon({
-  	iconUrl: 'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.png',
+  	iconUrl: 'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.svg',
   	iconSize: [28, 41]
-});
-let iconePersoF = L.icon({
-	iconUrl: 'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.png',
-	iconSize: [28, 41]
 });
 
 // Fonction pour afficher les infos de spots lorsque l'on clique dessus
@@ -234,21 +230,35 @@ function choseStartPoint (e) {
 // Fonction lors de clic sur lieu de destination
 lieux_grimpe.on('click', function(e){
 
+	// Enlever eventuels highlights de marqueurs
+	for (layer in lieux_grimpe._layers) {
+
+		// Retablissement du style de base pour tous les marqueurs
+		if (lieux_grimpe._layers[layer]._icon.src == "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge_h.svg"){
+			lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.svg";
+		}
+		if (lieux_grimpe._layers[layer]._icon.src == "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune_h.svg"){
+			lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.svg";
+		}
+	}
+
 	// Highlight du marqueur
 	switch (e.layer._icon.src) {
   
-		case 'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.png':
-			e.layer._icon.src = 'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge_h.png';
-
-		case 'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge_h.png':
-			e.layer._icon.src =  'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.png';
-
-		case 'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.png':
-			e.layer._icon.src =  'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune_h.png';
-	
-		case 'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune_h.png':
-			e.layer._icon.src =  'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.png';
+		case 'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.svg':
+			e.layer._icon.src = 'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge_h.svg';
+			break;
+		case 'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge_h.svg':
+			e.layer._icon.src =  'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.svg';
+			break;
+		case 'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.svg':
+			e.layer._icon.src =  'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune_h.svg';
+			break;
+		case 'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune_h.svg':
+			e.layer._icon.src =  'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.svg';
+			break;
   		}
+
 
   	// Coordonnées lat long du marqueur sur lequel on a cliqué
   	let pt = e.latlng;
@@ -669,7 +679,7 @@ function applyFilters(){
 	for (layer in lieux_grimpe._layers) {
 
 		// Retablissement du style de base pour tous les marqueurs
-		lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.png";
+		lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.svg";
 
 		// Definition de distance entre le point de depart et chaque filtre
 		let distance = -1; // Initialisation d'une distance "absurde", utile pour les conditions de filtre
@@ -702,7 +712,7 @@ function applyFilters(){
 		//&& filter_type_val.includes(t_voies)
 		){
 			// Mise en evidence des icones correspondantes
-			lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.png";
+			lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.svg";
 
 			// Stockage des infos de longitude-latitude pour ajuster par la suite la carte aux icones concernees
 			latfiltered.push(Number(lieux_grimpe._layers[layer]._latlng.lat));
@@ -759,7 +769,7 @@ function resetFilters(){
 	for (layer in lieux_grimpe._layers) {
 		lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.svg"
 		if (lieux_grimpe._layers[layer].feature.properties.Nom == $(".nome").html()) {
-			lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.svg"
+			lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge_h.svg"
 		};
 	};
 }
