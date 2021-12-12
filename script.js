@@ -565,7 +565,8 @@ $('#slider1').noUiSlider({
 		alert("Chose a location on the map or activate your location to use this filter.")
 	}
 	else {
-		output1.html($(this).val().join(' - ')  + " m");
+		let valueF = [parseInt($(this).val()[0]),parseInt($(this).val()[1])];
+		output1.html(valueF.join(' - ')  + " km");
 	}
 });
 
@@ -579,7 +580,8 @@ $('#slider2').noUiSlider({
 	step: 1,
 	connect: true
 }).on('slide', function() {
-    output2.html($(this).val().join(' - '));
+	let valueF = [parseInt($(this).val()[0]),parseInt($(this).val()[1])];
+	output2.html(valueF.join(' - '));
 });
 
 // Filtre de l'altitude
@@ -592,8 +594,8 @@ $('#slider3').noUiSlider({
 	step: 1,
 	connect: true
 }).on('slide', function() {
-    output3.html($(this).val().join(' - ')  + " km");
-});
+	let valueF = [parseInt($(this).val()[0]),parseInt($(this).val()[1])];
+	output3.html(valueF.join(' - ')  + " m");});
 
 // Initialisation de la liste contenant les types de voie actuellement selectionnes par le filtre
 let filter_type_val = ["Couennes", "Longues voies", "Salle"];

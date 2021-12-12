@@ -220,11 +220,13 @@ input[type="datetime-local"]{
 /* .option-bar img{
     margin: 0 100px 0 0;
 } */
+.filterbox {
+    margin-top:3%;
+}
 .sliders {
-    margin:15px;
+    margin:2%;
 }
 .slider {
-    margin-top: 10px;
     height: 10px;
     padding: 0 9px;
 }
