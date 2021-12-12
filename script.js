@@ -2,9 +2,6 @@
 //////////// GESTION DES FENETRES ////////////////
 /////////////////////////////////////////////////
 
-// Invocation des differentes fenetres
-let eta_dist = document.querySelector(".eta-dist");
-
 // Fonction pour relier boutons du menu a actions de fenetres
 $(function() {
 	$(".btn").click(function(e){
@@ -302,7 +299,10 @@ function calculateRoute(){
 	// Dé-zoom et fermeture du menu pour voir l'itinéraire
 	myMap.setView([46.33, 6.79], 10);
 	$("#itinerary").removeClass("active");
-	eta_dist.classList.toggle("active");
+	// Ouverture du menu eta-dist (seulement si currentPos existant)
+	if (currentPos != null) {
+		eta_dist.classList.toggle("active");
+	}
 
   	// Point de départ & d'arrivee
   	let fromPoint = $('#fromPoint').val();
