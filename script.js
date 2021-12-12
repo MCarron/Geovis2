@@ -23,6 +23,11 @@ $(function() {
 			document.querySelector("#filters").classList.remove("active");
 			document.querySelector("#infos").classList.toggle("active");
 		}
+		else {
+			document.querySelector("#itinerary").classList.remove("active");
+			document.querySelector("#filters").classList.remove("active");
+			document.querySelector("#infos").classList.remove("active");
+		}
 
 		// Suppression de l'attribut active pour la classe eta-dist
 		// Permet d'enelver l'indication de l'ETA + distance si l'utilisateur
