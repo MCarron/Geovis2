@@ -13,7 +13,8 @@ html, body{
     z-index: 1;
 }
 .window.active {
-    height: 60%;
+    height: 50%;
+    padding-bottom: 60px;
 }
 .window {
     height: 0;
@@ -25,11 +26,21 @@ html, body{
     background-color:  #ececec;
     overflow: hidden;
     transition: all 0.5s ease;
-    padding-top: 60px;
+    padding-top: 38px;
     text-align: center;
-    /* box-shadow: 0px 0px 30px rgba(65, 65, 65, 0.308); */
+    box-shadow: 0px 0px 30px rgba(65, 65, 65, 0.308);
+    overflow: scroll;
+    -ms-overflow-style: none;  /* Cacher scrollbar pour IE and Edge */
+    scrollbar-width: none;  /* Cacher scrollbar pour Firefox */
 }
+
+/* Cacher scrollbar pour Chrome, Safari & Opera */
+.window::-webkit-scrollbar {
+    display: none;
+}
+
 .information{
+    margin-top:3%;
     color: rgb(82, 82, 82);
 }
 .window .btn{
@@ -69,16 +80,30 @@ input[type=text]{
     z-index: 99;
     color: #525252;
 }
-.time_selector button{
-    display: block;
+.time_selector{
+    display: inline-block;
     border: none;
     border-radius: 20px;
     padding: 4px;
+    font-size: 15px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 30px;
     background-color:  #d6d6d6;
     color:  #525252;
+    height: 40px;
+}
+.time_selector button{
+    border: none;
+    border-radius: 12px;
+    padding: 4px;
+    padding-bottom: 3px;
+    margin-right: 5px;
+    font-size: 12px;
+    margin-bottom: 10px;
+    background-color:  #0194b9;
+    color:  #d6d6d6;
+    height: 30px;
 }
 
 input[type="datetime-local"]{
@@ -96,8 +121,6 @@ input[type="datetime-local"]{
 .itin-go button{
     border-radius: 40px;
     border: none;
-    margin-left: auto;
-    margin-right: auto;
     padding: 20px;
     color: #fff;
     font-size: 18px;
@@ -105,12 +128,22 @@ input[type="datetime-local"]{
 }
 .itin-go .itin-btn{
     background-color: rgb(108, 168, 118);
+    margin-left: auto;
+    margin-right: auto;
 }
 .itin-go .go-btn{
     background-color: rgb(102, 158, 223);
 }
 .itin-go .filter-btn{
     background-color: rgb(223, 171, 102);
+    display: inline-block;
+    padding: .4em .8em;
+    text-align: left;
+}
+.itin-go .reset-btn{
+    background-color: rgb(178, 207, 206);
+    display: inline-block;
+    padding: .4em .8em;
 }
 .itin-go button:hover{
     background-color:  #969696;
@@ -212,30 +245,120 @@ input[type="datetime-local"]{
 /* .option-bar img{
     margin: 0 100px 0 0;
 } */
-
-
+.filterbox {
+    margin-top:3%;
+}
 .sliders {
-    margin:15px;
+    margin:2%;
 }
-
 .slider {
-    margin-top: 10px;
     height: 10px;
-    padding: 0 9px;
+    padding: 0 2%;
 }
-
 .slider .noUi-connect {
     background: #ac382b;
 }
-
+.slider.notactive .noUi-connect {
+    background: #a8a8a8;
+}
 .slider .noUi-handle {
     box-shadow: none;
     height: 18px;
     width: 18px;
     border-radius: 9px;
 }
-
 .slider .noUi-handle::before,
 .noUi-handle::after {
     display: none;
+}
+.buttons_type{
+    display: inline-block;
+    padding: .4em .8em;
+    width: 90px;
+    background: #b6b6b6;
+    border: 0;
+    color: #ddd;
+    font-size: 12px;
+    font-weight: 300;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.buttons_type.transp_filters.active{
+    background: rgb(165, 192, 67);
+}
+.buttons_type.type_filters{
+    width: 120px;
+}
+.buttons_type.type_filters.active{
+    background: rgb(192, 67, 67);
+}
+.buttons_type.info{
+    background: rgb(165, 192, 67);
+}
+
+.controls_transports{
+    padding: 12px;
+    padding-bottom: 20px;
+}
+.controls_filters{
+    padding: 20px;
+}
+
+.ele_info{
+    font-size: 0;
+    width: 50%;
+    height: 120px;
+    padding: 20px;
+    margin-right: 50px;
+ }
+
+.image{
+    text-align: right;
+    width: 50%;
+    margin-top : 10px;
+}
+
+.left{
+    text-align: left;
+}
+
+.nome{
+    color: rgb(70, 97, 76);
+    font-size: 24pt;
+    padding: 5px;
+    padding-bottom: 15px;
+}
+
+
+
+#infos{
+    overflow: scroll;
+}
+
+.imagem{
+    text-align: center;
+    padding-bottom:10px;
+}
+.infobox{
+    margin: 10px;
+}
+
+.legend{
+float: left;
+}
+.legend.unactive{
+color: transparent;
+}
+
+
+
+.customPopup{
+    border: none;
+    border-radius: 12px;
+    padding: 4px;
+    font-size: 12px;
+    margin: 10px;
+    background-color:  #5b99e0;
+    color:  #ffffff;
+    height: 30px;
 }

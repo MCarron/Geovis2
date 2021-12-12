@@ -10,11 +10,12 @@
 		<script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
     	<script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
     	<script src="polyline.js"></script>
+		<script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.2.27/jquery.autocomplete.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.js"></script>
 		<script src="https://cdn.rawgit.com/leongersen/noUiSlider/c8a70344bebb0b69a09adf12a1e7cc08894f8c3b/distribute/jquery.nouislider.all.min.js"></script>
-		
+
     	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
 		<link href="https://cdn.rawgit.com/leongersen/noUiSlider/c8a70344bebb0b69a09adf12a1e7cc08894f8c3b/distribute/jquery.nouislider.min.css" rel="stylesheet"/>
 		<link rel="stylesheet" href="style.css"/>
@@ -24,23 +25,26 @@
     	<link rel="stylesheet" href="dist/leaflet.contextmenu.min.css"/>
 		<link href="https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css"/>
+		<link type="text/css" rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+		<link type="text/css" rel="stylesheet" href="https://unpkg.com/leaflet-sidebar@0.2.0/src/L.Control.Sidebar.css" />		
+		<link type="text/css" rel="stylesheet" href="style.css" />	
 		
 	</head>
 	<body>
         <div id="map"></div>
 
+		<!-- Itineraire -->
 		<div id="itinerary" class="window">
 			<div class="information">
-				<!-- On utilise ici des unicodes prédéfinis pour créer le symbole de la croix
-				et du menu plus bas -->
-				<a href="javascript:" class="btn">&times;</a>
+				<!-- On utilise ici des unicodes prédéfinis pour créer le symbole de la croix et du menu plus bas -->
+				<a href="javascript:" class="btn btnx">&times;</a>
 				<div class="from_to">
 					<div class="form-group">
-						<!-- on ajout un input inactif qui dit "current position"-->
+						<!-- On ajoute un input inactif qui dit "current position" -->
 						<i class='bx bx-map-pin'></i>
 						<input type="text" class="form-control" id="fromName" placeholder="Current position">
 					</a>
-						<!-- puis on ajoute un input actif qui fonctionnera avec notre script-->
+						<!-- On ajoute un input actif qui fonctionnera avec notre script -->
 						<input type="hidden" class="form-control" id="fromPoint">
 						<small id="fromPointHelp" class="form-text text-muted"></small>
 					</div>
@@ -57,15 +61,21 @@
 					</div>
 				</div>
 
-
-				<div class="options">
-					<!-- Dropdown menu pour le choix des mode de transport-->
-					<select class="mode-select" id="mode-select">
-						<option value="CAR">Car</option>
-						<option value="TRANSIT,WALK">Public transport</option>
-						<option value="BICYCLE">Bicycle</option>
-						<option value="WALK">Walk</option>
-					</select>
+				<div class="controls_transports">
+					<!-- <label>Transport &nbsp;&nbsp; </label> -->
+					<button id="transport_type_1" class="buttons_type transp_filters active" value="CAR">
+						<label>Car <br></label>
+						<i class="bx bx-car"></i></button>
+					<button id="transport_type_2" class="buttons_type transp_filters" value="TRANSIT,WALK">
+						<label>Transit <br></label>
+						<i class="bx bxs-bus"></i></button>
+					<button id="transport_type_3" class="buttons_type transp_filters" value="BICYCLE">
+						<label>Bike <br></label>
+						<i class="bx bx-cycling"></i></button>						
+					<button id="transport_type_4" class="buttons_type transp_filters" value="WALK">
+						<label>Walk <br></label>
+						<i class="bx bx-walk"></i></button>							
+					</div>
 				</div>
 
 				<div class="time_selector">
@@ -86,34 +96,83 @@
 				<div class="dist">
 					<p id="dist"></p>
 				</div>
-				<button onclick="#" class="go-btn">Go</button>
+				<button class="go-btn">Go</button> <!-- !! onclick="#" rajouter la fonction -->
 		</div>
 
+		<!-- Filtres -->
 		<div id="filters" class="window">
 			<div class="information">
 				<!-- On utilise ici des unicodes prédéfinis pour créer le symbole de la croix
 				et du menu plus bas -->
-				<a href="javascript:" class="btn">&times;</a>
-				<!-- On introduit les différents filtres -->
+				<a href="javascript:" class="btn btnx">&times;</a>
+				<!-- On introduit les différents filtres coulissants -->
 				<div class="sliders">
-					<div id="slider1" class="slider"></div>
-					<div id="output1">1er output</div>
-					<div id="slider2" class="slider"></div>
-					<div id="output2">2e output</div>
+					
+					<div class="filterbox">
+						<label>Distance </label>
+						<div id="slider1" class="slider notactive"></div>
+						<div id="output1">0 - 300 km</div>
+					</div>
+					
+					<div class="filterbox">
+						<label>Nombre de voies </label>
+						<div id="slider2" class="slider"></div>
+						<div id="output2">0 - 250</div>
+					</div>
+
+					<div class="filterbox">
+						<label>Altitude </label>
+						<div id="slider3" class="slider"></div>
+						<div id="output3">0 - 3000 m</div>
+					</div>
+
+				<!-- On introduit les différents filtres en boutons -->
+				<div class="controls_filters">
+					<label>Type &nbsp;&nbsp; </label>
+						
+					<button id="filter_type_1" class="buttons_type type_filters active" value="Couennes">Couennes</button>
+					<button id="filter_type_2" class="buttons_type type_filters active" value="Longues voies">Longues voies</button>
+					<button id="filter_type_3" class="buttons_type type_filters active" value="Salle">Salle</button>
+					</div>
 				</div>
 
-				<div class="itin-go" id="filter-go">
-					<button onclick="applyFilters()" class="filter-btn">Apply filters</button>
-				</div>
+					<div class="itin-go">
+						<button id="filter-go" onclick="applyFilters()" class="filter-btn">Apply filters</button>
+						<button id="reset-go" onclick="resetFilters()" class="reset-btn">Reset filters</button>
+					</div>
 
 			</div>
 		</div>
 
-		<div id="infos" class="window">
-			<div>Informations générales</div>
-		</div>
 
-					<!-- <input type="text" class="eta" disabled> -->
+		<!-- Informations - On definit ici les elements pour le dernier bouton du slidebar (info sur les spots) -->
+		<div id="infos" class="window">
+			<div class="infobox">
+				<div class="column">
+					<b><div class="nome">Informations générales</div></b>
+				</div>
+
+				<div id="left" class="left">
+					<small><div class="descricao">Cliquez sur un des spots pour plus d'infos sur ce lieu.</div></small><br>
+				</div>
+
+				<div class="column">
+					<div class="imagem"></div>
+					<div id="left" class="left"><small>
+						<div class="legend unactive"> <b>Type de voies : &nbsp;</b></div>
+						<div class="type"> <b></b></div>
+						<div class="legend unactive"> <b>Nombre de voies : &nbsp;</b></div>
+						<div class="nbr"> <b></b></div>
+					</div>
+					<br><br><br>
+				</div>
+
+			</div>
+		
+			<!-- On utilise ici des unicodes prédéfinis pour créer le symbole de la croix et du menu plus bas -->
+		<a href="javascript:" class="btn btnx">&times;</a>
+		</div>
+		<!-- <input type="text" class="eta" disabled> -->
 		<div class="container" id="container">
         	<!-- <div class="bouton"> -->
         		<!-- <img width="45" height="45" src="figs/filtre2.png" onclick="openNav()"></img> -->
@@ -126,6 +185,12 @@
 				<!-- </div> -->
 			</div>
 		</div>
+
+
+		<div id="sidebar"></div>
+		<script src="https://unpkg.com/leaflet/dist/leaflet-src.js"></script>
+		<script src="https://unpkg.com/leaflet-sidebar@0.2.0/src/L.Control.Sidebar.js"></script>
+
 		<script src="dist/leaflet.contextmenu.min.js"></script>
         <script src="dist/L.Control.Locate.js" ></script>
         <script src="spots.js"></script>

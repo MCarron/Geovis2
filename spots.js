@@ -7,9 +7,10 @@ var spots = {
       "properties": {
         "id": 1,
         "Nom": "Verschiez (Dalle à Besson)",
-        "Type_voies": "Couenes",
-        "nbr_voies": 40,
-        "img": "img/Besson.jpg"
+        "Type_voies": "Couennes",
+        "nbr_voies": 20,
+        "description": "Très jolie petite dalle situé à 15min de Verschiez à pied. Il est composé d'une quinzaines de voies orientées Sud",
+        "img": "<img src='img/Besson.jpg' alt='maptime logo gif' width='300px' height='200px'/>"
       },
       "geometry": {
         "type": "Point",
@@ -25,8 +26,9 @@ var spots = {
         "id": 2,
         "Nom": "Versciez (Les Noces)",
         "Type_voies": "Couennes",
-        "nbr_voies": 45,
-        "img": "img/Noces.jpg"
+        "nbr_voies": 8,
+        "description": "Très jolie petite dalle situé à 15min à pied de Verschiez. Il est composé de 6-7 voies orientées Sud",
+        "img": "<img src='img/Noce.jpg' alt='maptime logo gif' width='150px' height='200px'/>",
       },
       "geometry": {
         "type": "Point",
@@ -42,7 +44,9 @@ var spots = {
         "id": 3,
         "Nom": "Aigle",
         "Type_voies": "Couennes",
-        "nbr_voies": 3
+        "nbr_voies": 3,
+        "description": "Joli secteur de grimpe situé à 5min à pied du parking. Il est composé d'une vingtaine de voie relativement engagée. Il est idéal pour l'été car orienté Ouest/Nord-Ouest",
+        "img": "<img src='img/aigle.jpg' alt='maptime logo gif' width='300px' height='150px'/>",
       },
       "geometry": {
         "type": "Point",
@@ -58,7 +62,9 @@ var spots = {
         "id": 4,
         "Nom": "Drapel",
         "Type_voies": "Couennes",
-        "nbr_voies": 60
+        "nbr_voies": 60,
+        "description":"Le secteur de Drapel se situe juste en-dessus d'Yvorne et surplombe la pleine du Rhône. Le spot est divisé en plusieurs secteurs qui sont composés de plus d'une centaine de voies. L'approche se fait le long d'un sentier (env. 20min à pied).",
+        "img": "<img src='img/drapel.jpg' alt='maptime logo gif' width='250px' height='150px'/>",
       },
       "geometry": {
         "type": "Point",
@@ -73,8 +79,10 @@ var spots = {
       "properties": {
         "id": 5,
         "Nom": "Roc de Veyges",
-        "Type_voies": "Couenes",
-        "nbr_voies": 32
+        "Type_voies": "Couennes",
+        "nbr_voies": 70,
+        "description": "Située à plus de 1000m d'altitude, le spot du Roc de Veyge est un endroit idéal pour grimper avec une magnifique vue surplombante la plein du Rhône. Le spot est divisé en trois secteurs et propose plus d'une cinquantaine de voies de tous les niveaux.",
+        "img": "<img src='img/RcVeyge2.jpg' alt='maptime logo gif' width='250px' height='175px'/>",
       },
       "geometry": {
         "type": "Point",
@@ -88,9 +96,11 @@ var spots = {
       "type": "Feature",
       "properties": {
         "id": 6,
-        "Nom": "Jardin suspendu",
+        "Nom": "Jardin Perdu",
         "Type_voies": "Couennes",
-        "nbr_voies": 56
+        "nbr_voies": 56,
+        "description": "Le secteur du Jardin perdu est un secteur engagé avec un difficulté de voies commençant à  '6a'. Le spot propose ainsi une vingtaine de voies sur un calcaire relativement peu marqué. Ce dernier est situé à plus de 1000m d'altitude et se pratique donc uniquement en été.",
+        "img": "<img src='img/RcVeyge1.jpg' alt='maptime logo gif' width='200px' height='250px'/>",
       },
       "geometry": {
         "type": "Point",
@@ -106,7 +116,9 @@ var spots = {
         "id": 7,
         "Nom": "Vers-Cor",
         "Type_voies": "Couennes",
-        "nbr_voies": 56
+        "nbr_voies": 80,
+        "description": "Ce spot est apprécié pour les initiations et sortie en famille en raison en son accèssibilité et des voies relativement simple qu'on y trouve. Le secteur offre tout de même de joli défis pour tous les niveaux.",
+        "img": "<img src='img/ver_cor.jpg' alt='maptime logo gif' width='250px' height='165px'/>",
       },
       "geometry": {
         "type": "Point",
@@ -123,7 +135,8 @@ var spots = {
         "Nom": "Yvorne",
         "Type_voies": "Couennes",
         "nbr_voies": 45,
-        "img": "img/Yorne.jpg"
+        "description":"Ce secteur situé en plaine chablaisienne offre de nombreuses voies des tous les niveaux. Ce secteur est orienté Sud-Est et est idéal pour les chaudes journées d'été en raison de la protection qu'offrent les arbres.",
+        "img" : "<img src='img/Yorne.jpg' alt='maptime logo gif' width='250px' height='165px'/>"
       },
       "geometry": {
         "type": "Point",
@@ -139,7 +152,9 @@ var spots = {
         "id": 9,
         "Nom": "Falaise de la Feuille",
         "Type_voies": "Couennes",
-        "nbr_voies": 23
+        "nbr_voies": 23,
+        "description":"La falaise de la feuille est un spot idéal pour les chaudes journées d'été en raison de son orientation Nord-Ouest. L'accès au secteur ce fait le long d'un petit sentier parfois bien escarpé et mérite de se faire de façon calme et réfléchie.",
+        "img" : "<img src='img/feuille.jpg' alt='maptime logo gif' width='250px' height='300px'/>"
       },
       "geometry": {
         "type": "Point",
@@ -154,8 +169,10 @@ var spots = {
       "properties": {
         "id": 10,
         "Nom": "Roche",
-        "Type_voies": "Couennes ()",
-        "nbr_voies": 10
+        "Type_voies": "Couennes",
+        "nbr_voies": 20,
+        "description":"Le spot de grimpe de roche est un spot relativement avancé ou le niveau des voies commence uniquement en '6a'. De plus, l'accès au secteur est relativement compliqué et ne convient pas aux enfants et personnes peu expérimentée",
+        "img" : "<img src='img/Noces.jpg' alt='maptime logo gif' width='250px' height='300px'/>"
       },
       "geometry": {
         "type": "Point",
@@ -170,8 +187,9 @@ var spots = {
       "properties": {
         "id": 11,
         "Nom": "Scex des Nombrieux",
-        "Type_voies": "Longues voies et couenes",
-        "nbr_voies": 23
+        "Type_voies": "Longues voies et Couennes",
+        "nbr_voies": 23,
+        "Description":"",
       },
       "geometry": {
         "type": "Point",
