@@ -257,7 +257,7 @@ input[type="datetime-local"]{
 .noUi-handle::after {
     display: none;
 }
-.filter_type{
+.buttons_type{
     display: inline-block;
     padding: .4em .8em;
     background: #b6b6b6;
@@ -268,12 +268,15 @@ input[type="datetime-local"]{
     border-radius: 4px;
     cursor: pointer;
 }
-.filter_type.active{
+.buttons_type.t_filters.active{
+    background: rgb(165, 192, 67);
+}
+.buttons_type.active{
     background: rgb(192, 67, 67);
 }
 .controls{
     padding: 5%;
-  }
+}
 
 .ele_info{
     font-size: 0;

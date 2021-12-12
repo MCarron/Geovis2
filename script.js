@@ -568,7 +568,7 @@ $('#slider1').noUiSlider({
 }).on('slide', function() {
     if ($(this).hasClass("notactive")) {
 		$("#slider1").val([ "0.00", "300.00" ]);
-		alert("Chose a location on the map or activate your location to use this filter.")
+		alert("Chose a location on the map or activate your location to use this filter.");
 	}
 	else {
 		let valueF = [parseInt($(this).val()[0]),parseInt($(this).val()[1])];
@@ -607,12 +607,12 @@ $('#slider3').noUiSlider({
 let filter_type_val = ["Couennes", "Longues voies", "Salle"];
 
 // Filtre des types de voies
-$(".filter_type").click(function(e){
+$(".buttons_type").click(function(e){
 	$(this).toggleClass("active");
 	
 	// Actualisation de la liste des filtres actives
 	filter_type_val = [];
-	let filter_types = document.querySelectorAll(".filter_type");
+	let filter_types = document.querySelectorAll(".buttons_type");
 	filter_types.forEach(filtertype => {	
 		if (filtertype.classList.contains("active")) {
 			filter_type_val.push(filtertype.value);
@@ -703,7 +703,10 @@ function applyFilters(){
 	let maxextent = Math.min(latextent,lngextent);
 
 	// Changement de zoom sur la carte en fonction des parametres calcules
-	myMap.setView([latcenter, lngcenter], 11);
+	if (latfiltered.length != 0) {
+		myMap.setView([latcenter, lngcenter], 11);
+	}
+	else alert("No location matches these conditions.");
 };
 
 // Fonction de reinitialisation des filtres
