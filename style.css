@@ -30,8 +30,17 @@ html, body{
     text-align: center;
     box-shadow: 0px 0px 30px rgba(65, 65, 65, 0.308);
     overflow: scroll;
+    -ms-overflow-style: none;  /* Cacher scrollbar pour IE and Edge */
+    scrollbar-width: none;  /* Cacher scrollbar pour Firefox */
 }
+
+/* Cacher scrollbar pour Chrome, Safari & Opera */
+.window::-webkit-scrollbar {
+    display: none;
+}
+
 .information{
+    margin-top:3%;
     color: rgb(82, 82, 82);
 }
 .window .btn{
