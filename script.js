@@ -551,6 +551,36 @@ function calculateRouteError(error){
 //////////// GESTION DES FILTRES /////////////////
 /////////////////////////////////////////////////
 
+// Filtre des types de transport et des types de voies
+$(".buttons_type").click(function(e){
+	
+	// Filtre des types de transport
+	if ($(this).hasClass("transp_filters")) {
+		// Desactiver tous les filtres
+		let filtertransports = document.querySelectorAll(".transp_filters");
+		filtertransports.forEach(filtertransport => {	
+			filtertransport.classList.remove("active");
+		});
+		// Activer filtre selectionne
+		$(this).addClass("active");
+	};
+
+	// Filtre des types de voies
+	if ($(this).hasClass("type_filters")) {
+		// Changer etat du filtre selectionne
+		$(this).toggleClass("active");
+	
+		// Actualisation de la liste des filtres actives
+		filter_type_val = [];
+		let filter_types = document.querySelectorAll(".buttons_type");
+		filter_types.forEach(filtertype => {	
+			if (filtertype.classList.contains("active")) {
+				filter_type_val.push(filtertype.value);
+			};
+		});
+	};
+});
+
 // Valeur des filtres coulissants
 var output1 = $('#output1'); // distance
 var output2 = $('#output2'); // nombre de voies
@@ -605,20 +635,6 @@ $('#slider3').noUiSlider({
 
 // Initialisation de la liste contenant les types de voie actuellement selectionnes par le filtre
 let filter_type_val = ["Couennes", "Longues voies", "Salle"];
-
-// Filtre des types de voies
-$(".buttons_type").click(function(e){
-	$(this).toggleClass("active");
-	
-	// Actualisation de la liste des filtres actives
-	filter_type_val = [];
-	let filter_types = document.querySelectorAll(".buttons_type");
-	filter_types.forEach(filtertype => {	
-		if (filtertype.classList.contains("active")) {
-			filter_type_val.push(filtertype.value);
-		};
-	});
-});
 
 // Fonction d'application des filtres aux marqueurs
 function applyFilters(){

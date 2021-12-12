@@ -268,10 +268,10 @@ input[type="datetime-local"]{
     border-radius: 4px;
     cursor: pointer;
 }
-.buttons_type.t_filters.active{
+.buttons_type.transp_filters.active{
     background: rgb(165, 192, 67);
 }
-.buttons_type.active{
+.buttons_type.type_filters.active{
     background: rgb(192, 67, 67);
 }
 .controls{
