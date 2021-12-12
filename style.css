@@ -14,7 +14,7 @@ html, body{
 }
 .window.active {
     height: 50%;
-    padding-bottom: 10%;
+    padding-bottom: 60px;
 }
 .window {
     height: 0;
@@ -80,16 +80,31 @@ input[type=text]{
     z-index: 99;
     color: #525252;
 }
-.time_selector button{
-    display: block;
+.time_selector{
+    display: inline-block;
     border: none;
     border-radius: 20px;
     padding: 4px;
+    font-size: 15px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 30px;
     background-color:  #d6d6d6;
     color:  #525252;
+    height: 40px;
+}
+.time_selector button{
+    display: inline-block;
+    border: none;
+    border-radius: 12px;
+    padding: 4px;
+    padding-bottom: 3px;
+    margin-right: 5px;
+    font-size: 12px;
+    margin-bottom: 10px;
+    background-color:  #0194b9;
+    color:  #d6d6d6;
+    height: 30px;
 }
 
 input[type="datetime-local"]{
@@ -260,22 +275,30 @@ input[type="datetime-local"]{
 .buttons_type{
     display: inline-block;
     padding: .4em .8em;
+    width: 90px;
     background: #b6b6b6;
     border: 0;
     color: #ddd;
     font-size: 12px;
     font-weight: 300;
-    border-radius: 4px;
+    border-radius: 15px;
     cursor: pointer;
 }
 .buttons_type.transp_filters.active{
     background: rgb(165, 192, 67);
 }
+.buttons_type.type_filters{
+    width: 120px;
+}
 .buttons_type.type_filters.active{
     background: rgb(192, 67, 67);
 }
-.controls{
-    padding: 5%;
+.controls_transports{
+    padding: 12px;
+    padding-bottom: 20px;
+}
+.controls_filters{
+    padding: 20px;
 }
 
 .ele_info{

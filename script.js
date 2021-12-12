@@ -282,15 +282,12 @@ function calculateRoute(){
   	let fromPoint = $('#fromPoint').val();
   	let toPoint = $('#toPoint').val();
 
-  	// Mode de transport choisi par l'utilisateur
-  	let chosenMode = $('#mode-select').val();
-
 	// Heure customisée indiquée par l'utilisateur
 	let selectedDateTime = $('#time-select').val();
 
 	// Conversion de la date indiquée
-	selectedDateTime = new Date(selectedDateTime)
-	console.log(selectedDateTime)
+	selectedDateTime = new Date(selectedDateTime);
+	console.log(selectedDateTime);
 
 	// Recupération de la date et heure indiquée dans un format convenable pour OTP
 	let selectedDate = selectedDateTime.getFullYear() + '-' + (selectedDateTime.getMonth()+1) + '-' + selectedDateTime.getDate();
@@ -551,10 +548,13 @@ function calculateRouteError(error){
 //////////// GESTION DES FILTRES /////////////////
 /////////////////////////////////////////////////
 
-// Filtre des types de transport et des types de voies
+// Initialisation du type de transport
+let chosenMode = "CAR";
+
+// Filtre des modes de transport et des types de voies
 $(".buttons_type").click(function(e){
 	
-	// Filtre des types de transport
+	// Filtre des modes de transport
 	if ($(this).hasClass("transp_filters")) {
 		// Desactiver tous les filtres
 		let filtertransports = document.querySelectorAll(".transp_filters");
@@ -563,6 +563,9 @@ $(".buttons_type").click(function(e){
 		});
 		// Activer filtre selectionne
 		$(this).addClass("active");
+
+		// Actualisation du mode de transport
+		chosenMode = $(this).val();
 	};
 
 	// Filtre des types de voies
