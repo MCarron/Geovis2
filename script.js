@@ -683,11 +683,27 @@ function applyFilters(){
 	// Calcul de l'extent de la carte = largeur & hauteur (coordonnees horizontale et verticale)
 	let latextent = (Math.max.apply(Math,latfiltered) - Math.min.apply(Math,latfiltered))*110.574;
 	let lngextent = (Math.max.apply(Math,lngfiltered) - Math.min.apply(Math,lngfiltered))*111.320*Math.cos(latcenter * (Math.PI/180));
+
+	// Obtention de la largeur & hauteur de l'ecran du device
+	let width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+	let height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
+
+	// Calcul du ratio le plus critique entre largeur & hauteur
+	let wRatio = width/latextent;
+	let hRatio = height/lngextent;
+	let maxRatio = Math.min(wRatio,hRatio);
+
+	// Determination du nombre de pixels necessaires a recouvrir
+	
+
+
+
+	// metresPerPixel = 40075016.686 * Math.abs(Math.cos(map.getCenter().lat * Math.PI/180)) / Math.pow(2, map.getZoom()+8);
+
 	let maxextent = Math.min(latextent,lngextent);
-	console.log(maxextent)
 
 	// Changement de zoom sur la carte en fonction des parametres calcules
-	myMap.setView([latcenter, lngcenter], 12);
+	myMap.setView([latcenter, lngcenter], 11);
 };
 
 // Fonction de reinitialisation des filtres
