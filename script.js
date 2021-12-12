@@ -128,6 +128,18 @@ let lieux_grimpe = new L.geoJson(spots, {
   	}
 }).addTo(myMap);
 
+
+let btnEdit = document.createElement('button');
+	btnEdit.textContent = 'INFORMATIONS';
+    btnEdit.className = 'customPopup';
+    //btnEdit.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Information-icon.svg/768px-Information-icon.svg.png";
+    btnEdit.onclick = function () {
+		document.querySelector("#itinerary").classList.remove("active");
+		document.querySelector("#filters").classList.remove("active");
+		document.querySelector("#infos").classList.add("active");
+		popup.close()
+	}
+
 // Fonction pour afficher les infos (contenues dans nos marqueurs) dans le dernier onglet du slidebar
 function onEachFeature(feature, layer) {
   layer.on('click', function(e) {
@@ -136,11 +148,19 @@ function onEachFeature(feature, layer) {
 	$(".type").html(feature.properties.Type_voies);
 	$(".nbr").html(feature.properties.nbr_voies);
 	$(".descricao").html(feature.properties.description);
+	let btnDiv = document.createElement('div');
+
+	// Options de popup
+	btnDiv.append(feature.properties.Nom);
+	btnDiv.append(btnEdit);
+	btnDiv.style.fontSize = "20px";
+	btnDiv.style.display = "block";
+
+	document.querySelector("#infos").classList.remove("active");
 	if (feature.properties) {
-		layer.bindPopup("<h1>" + feature.properties.Nom + "</h1>");	
+		popup = layer.bindPopup(btnDiv).openPopup();	
   }});
 }
-
 
 
 //////////////////////////////////////////////////
