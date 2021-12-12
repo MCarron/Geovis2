@@ -23,7 +23,7 @@ $(function() {
 			document.querySelector("#filters").classList.remove("active");
 			document.querySelector("#infos").classList.toggle("active");
 		}
-		else {
+		if (this.classList.contains("btnx")) {
 			document.querySelector("#itinerary").classList.remove("active");
 			document.querySelector("#filters").classList.remove("active");
 			document.querySelector("#infos").classList.remove("active");
