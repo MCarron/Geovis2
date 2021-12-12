@@ -234,6 +234,22 @@ function choseStartPoint (e) {
 // Fonction lors de clic sur lieu de destination
 lieux_grimpe.on('click', function(e){
 
+	// Highlight du marqueur
+	switch (e.layer._icon.src) {
+  
+		case 'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.png':
+			e.layer._icon.src = 'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge_h.png';
+
+		case 'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge_h.png':
+			e.layer._icon.src =  'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.png';
+
+		case 'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.png':
+			e.layer._icon.src =  'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune_h.png';
+	
+		case 'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune_h.png':
+			e.layer._icon.src =  'https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.png';
+  		}
+
   	// Coordonnées lat long du marqueur sur lequel on a cliqué
   	let pt = e.latlng;
 
@@ -742,11 +758,8 @@ function resetFilters(){
 	// Redefinition du style de base pour tous les marqueurs
 	for (layer in lieux_grimpe._layers) {
 		lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.svg"
-	};
-	if (layer.properties.Nom == $(".nome").val()) {
-		lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.svg"
+		if (lieux_grimpe._layers[layer].feature.properties.Nom == $(".nome").html()) {
+			lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.svg"
+		};
 	};
 }
-
-var element2 = document.getElementById('infos');
-element.scrollTop = element.scrollHeight;
