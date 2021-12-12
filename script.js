@@ -386,6 +386,12 @@ $("#toName").autocomplete({
 	// Changement du texte de l'input pour qu'il corresponde au site sur lequel on a cliqué
 	$('#'+toSelectedName).val(content);
 	toSelectedName == 'toName';
+
+	// Activer legendes d'infos
+	let infosLegends = document.querySelectorAll(".unactive");
+		infosLegends.forEach(infosLegend => {	
+			infosLegend.classList.remove("unactive");
+		});
 });
 
 // Indication du chemin pour OTP

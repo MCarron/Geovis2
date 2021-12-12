@@ -36,16 +36,15 @@
 		<!-- Itineraire -->
 		<div id="itinerary" class="window">
 			<div class="information">
-				<!-- On utilise ici des unicodes prédéfinis pour créer le symbole de la croix
-				et du menu plus bas -->
+				<!-- On utilise ici des unicodes prédéfinis pour créer le symbole de la croix et du menu plus bas -->
 				<a href="javascript:" class="btn">&times;</a>
 				<div class="from_to">
 					<div class="form-group">
-						<!-- on ajout un input inactif qui dit "current position"-->
+						<!-- On ajoute un input inactif qui dit "current position" -->
 						<i class='bx bx-map-pin'></i>
 						<input type="text" class="form-control" id="fromName" placeholder="Current position">
 					</a>
-						<!-- puis on ajoute un input actif qui fonctionnera avec notre script-->
+						<!-- On ajoute un input actif qui fonctionnera avec notre script -->
 						<input type="hidden" class="form-control" id="fromPoint">
 						<small id="fromPointHelp" class="form-text text-muted"></small>
 					</div>
@@ -146,40 +145,34 @@
 		</div>
 
 
-		<!-- Informations - On Définis ici les éléments pour le dernier bouton du slidebar (info sur les spots)-->
+		<!-- Informations - On definit ici les elements pour le dernier bouton du slidebar (info sur les spots) -->
 		<div id="infos" class="window">
-			<div>
-				<p>
-					<font size="4">
-						<b>Informations générales</b>
-					</font><br>
-					<font size="2">-- Click sur un des spots pour plus d'infos sur ce lieu  --</font>
-				</p>
-				<div class="column" style="background-color:#fff;">
-				<b><div class="nome"></div></b>
-			</div>
-
-			<div id="left" class="left">
-				<small><b>Description:</b>
-					<div class="descricao"></div></small><br>
-			</div>
-			<div class="column" style="background-color:#fff;">
-				<div class="imagem"></div>
-				<div id="left" class="left">
-				<small><b>Types de voies:</b><div class="type"></div></small>
-				<small><b>Nombre de voies:</b><div class="nbr"></div></small>
+			<div class="infobox">
+				<div class="column">
+					<b><div class="nome">Informations générales</div></b>
 				</div>
-				<br><br><br>
-			</div>
+
+				<div id="left" class="left">
+					<small><div class="descricao">Cliquez sur un des spots pour plus d'infos sur ce lieu.</div></small><br>
+				</div>
+
+				<div class="column">
+					<div class="imagem"></div>
+					<div id="left" class="left"><small>
+						<div class="legend unactive"> <b>Type de voies : &nbsp;</b></div>
+						<div class="type"> <b></b></div>
+						<div class="legend unactive"> <b>Nombre de voies : &nbsp;</b></div>
+						<div class="nbr"> <b></b></div>
+					</div>
+					<br><br><br>
+				</div>
 
 			</div>
-			<!-- On utilise ici des unicodes prédéfinis pour créer le symbole de la croix
-				et du menu plus bas -->
-				<a href="javascript:" class="btn">&times;</a>
 		
+			<!-- On utilise ici des unicodes prédéfinis pour créer le symbole de la croix et du menu plus bas -->
+		<a href="javascript:" class="btn">&times;</a>
 		</div>
-
-			<!-- <input type="text" class="eta" disabled> -->
+		<!-- <input type="text" class="eta" disabled> -->
 		<div class="container" id="container">
         	<!-- <div class="bouton"> -->
         		<!-- <img width="45" height="45" src="figs/filtre2.png" onclick="openNav()"></img> -->

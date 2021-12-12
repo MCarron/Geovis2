@@ -316,13 +316,13 @@ input[type="datetime-local"]{
 
 .left{
     text-align: left;
-    background-color: #fff;
 }
 
 .nome{
     color: rgb(70, 97, 76);
     font-size: 24pt;
-    padding-top: 5px;
+    padding: 5px;
+    padding-bottom: 15px;
 }
 
 
@@ -333,4 +333,16 @@ input[type="datetime-local"]{
 
 .imagem{
     text-align: center;
+    padding-bottom:10px;
 }
+.infobox{
+    margin: 10px;
+}
+
+.legend{
+float: left;
+}
+.legend.unactive{
+color: transparent;
+}
+
