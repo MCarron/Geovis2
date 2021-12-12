@@ -3,31 +3,22 @@
 /////////////////////////////////////////////////
 
 // Invocation des differentes fenetres
-let windows = document.querySelectorAll(".window");
 let eta_dist = document.querySelector(".eta-dist");
 
 // Fonction pour relier boutons du menu a actions de fenetres
 $(function() {
 	$(".btn").click(function(e){
-		
-		// Fermeture d'une eventuelle fenetre ouverte (height retablie a 0)
-		windows.forEach(window => {
-			console.log(window)
-	  		if (window.classList.contains("active")) {
-        		window.classList.remove("active");
-      		};
-		});
 
 		// Ajout de l'attribut "active" à la classe window (ajout 60% de height)
 		// Depend de l'id du bouton sur lequel on appuie
 		if (this.id == "bmap") {
-			document.querySelector("#itinerary").classList.add("active");
+			document.querySelector("#itinerary").classList.toggle("active");
 		}	
 		if (this.id == "bfilter") {
-			document.querySelector("#filters").classList.add("active");
+			document.querySelector("#filters").classList.toggle("active");
 		}
 		if (this.id == "bgroup") {
-			document.querySelector("#infos").classList.add("active");
+			document.querySelector("#infos").classList.toggle("active");
 		}
 
 		// Suppression de l'attribut active pour la classe eta-dist
@@ -693,7 +684,8 @@ function applyFilters(){
 	let hRatio = height/lngextent;
 	let maxRatio = Math.min(wRatio,hRatio);
 
-	// Determination du nombre de pixels necessaires a recouvrir
+	// Determination du nombre de pixels recouvert par niveau de zoom
+
 	
 
 
