@@ -733,15 +733,18 @@ function resetFilters(){
 	
 	// Retablissement des valeurs par defaut des differents filtres
 	$("#slider1").val([ "0", "300" ]);
-	output1.html($("#slider1").val().join(' - ') + " km");
+	output1.html("0 - 300 km");
 	$("#slider2").val([ "0", "250" ]);
-	output2.html($("#slider2").val().join(' - '));
+	output2.html("0 - 250");
 	$("#slider3").val([ "0", "3000" ]);
-	output3.html($("#slider3").val().join(' - ') + " m");
+	output3.html("0 - 3000 m");
 
 	// Redefinition du style de base pour tous les marqueurs
 	for (layer in lieux_grimpe._layers) {
-		lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.png"
+		lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_rouge.svg"
+	};
+	if (layer.properties.Nom == $(".nome").val()) {
+		lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.svg"
 	};
 }
 

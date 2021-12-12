@@ -94,7 +94,6 @@ input[type=text]{
     height: 40px;
 }
 .time_selector button{
-    display: inline-block;
     border: none;
     border-radius: 12px;
     padding: 4px;
