@@ -13,11 +13,17 @@ $(function() {
 		// Depend de l'id du bouton sur lequel on appuie
 		if (this.id == "bmap") {
 			document.querySelector("#itinerary").classList.toggle("active");
+			document.querySelector("#filters").classList.remove("active");
+			document.querySelector("#infos").classList.remove("active");
 		}	
 		if (this.id == "bfilter") {
+			document.querySelector("#itinerary").classList.remove("active");
 			document.querySelector("#filters").classList.toggle("active");
+			document.querySelector("#infos").classList.remove("active");
 		}
 		if (this.id == "bgroup") {
+			document.querySelector("#itinerary").classList.remove("active");
+			document.querySelector("#filters").classList.remove("active");
 			document.querySelector("#infos").classList.toggle("active");
 		}
 
