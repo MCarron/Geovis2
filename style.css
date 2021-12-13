@@ -403,4 +403,7 @@ color: #fff;
 
 .leaflet-popup-content-wrapper, .leaflet-popup.tip {
     opacity: 0.9;
+    text-align: center;
+    width: 230px;
   }
+
