@@ -718,6 +718,7 @@ $('#slider4').noUiSlider({
 	step: 1,
 	connect: true
 }).on('slide', function() {
+	console.log($(this).val())
 	let valueF = [difficulte[parseInt($(this).val()[0])],difficulte[parseInt($(this).val()[1])]];
 	output4.html(valueF.join(' - '));});
 
@@ -762,6 +763,9 @@ function applyFilters(){
 		
 		// Extraction de la difficulte
 		let diff_level = lieux_grimpe._layers[layer].feature.properties.diff;
+		diff_level = diff_level.slice(3).split(" au ");
+		diff_level[0] = difficulte.indexOf(diff_level[0]);
+		diff_level[1] = difficulte.indexOf(diff_level[1]);
 
 		// Identification des sites respectant les différentes conditions de filtre
 		
@@ -774,7 +778,9 @@ function applyFilters(){
 		
 		// Condition du type de voies
 		//&& filter_type_val.includes(t_voies)
-		//&& diff_level >= $('#slider4').val()[0] && diff_level <= $('#slider4').val()[1]
+		&& (!(diff_level[0] <= $('#slider4').val()[0] && diff_level[1] <= $('#slider4').val()[1]
+		|| diff_level[0] >= $('#slider4').val()[0] && diff_level[1] >= $('#slider4').val()[1])
+		|| diff_level[0] < 0)
 		){
 			// Mise en evidence des icones correspondantes
 			lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.svg";

@@ -239,7 +239,7 @@ var spots = {
         "nbr_voies": 15,
         "description": "Ce spot se situe peu après le début de la montée en direction de Leysin et demande un accès motorisé. La paroie propose une vingtaine de voies dont l'hauteur maximum vaut 22m. Le spot est facil d'accès et bien sécurisé.",
         "img" : "<img src='img/ponty.jpg' alt='maptime logo gif' width='300px' height='250px'/>",
-        "diff": "Du 5c au 7b ",
+        "diff": "Du 5c au 7b",
       },
       "geometry": {
         "type": "Point",
