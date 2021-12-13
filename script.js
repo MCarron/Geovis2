@@ -153,6 +153,7 @@ function onEachFeature(feature, layer) {
 	$(".type").html(feature.properties.Type_voies);
 	$(".nbr").html(feature.properties.nbr_voies);
 	$(".descricao").html(feature.properties.description);
+	$(".diff").html(feature.properties.diff);
 	let btnDiv = document.createElement('div');
 
 	// Options de popup
