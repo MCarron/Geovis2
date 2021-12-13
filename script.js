@@ -162,7 +162,7 @@ function onEachFeature(feature, layer) {
 		btnDiv.style.display = "block";
 
 		//if (!(document.querySelector("#infos").classList.contains("active"))) {
-			popup = layer.bindPopup(btnDiv).openPopup();
+		layer.bindPopup(btnDiv).openPopup();
   		//};
 		
 		//if (document.querySelector("#infos").classList.contains("active")) {
@@ -190,8 +190,6 @@ let toSelectedName ='toName';
 // ces coordonnees sont invisibles pour l'utilisateur
 let fromCurrentPos = 'fromPoint';
 let toSelectedMarker = 'toPoint';
-
-let popup = L.popup();
 
 // Calcul de notre localisation actuelle pour calculer l'itinéraire depuis notre position
 currentPos = null;

@@ -361,4 +361,9 @@ color: transparent;
     background-color:  #5b99e0;
     color:  #ffffff;
     height: 30px;
+    opacity: 1;
 }
+
+.leaflet-popup-content-wrapper, .leaflet-popup.tip {
+    opacity: 0.9;
+  }
