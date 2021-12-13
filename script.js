@@ -142,7 +142,6 @@ let btnEdit = document.createElement('button');
 		document.querySelector("#itinerary").classList.remove("active");
 		document.querySelector("#filters").classList.remove("active");
 		document.querySelector("#infos").classList.add("active");
-		popup.close()
 	}
 
 // Fonction pour afficher les infos (contenues dans nos marqueurs) dans le dernier onglet du slidebar
@@ -162,10 +161,11 @@ function onEachFeature(feature, layer) {
 	btnDiv.style.fontSize = "20px";
 	btnDiv.style.display = "block";
 
-	document.querySelector("#infos").classList.remove("active");
-	if (feature.properties) {
-		popup = layer.bindPopup(btnDiv).openPopup();	
-  }});
+	//document.querySelector("#infos").classList.remove("active");
+	//if (feature.properties) {
+		layer.bindPopup(btnDiv).openPopup();	
+  	} //}
+	);
 }
 
 
