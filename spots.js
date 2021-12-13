@@ -162,7 +162,7 @@ var spots = {
         "Type_voies": "Couennes",
         "nbr_voies": 23,
         "description":"La falaise de la feuille est un spot idéal pour les chaudes journées d'été en raison de son orientation Nord-Ouest. L'accès au secteur ce fait le long d'un petit sentier parfois bien escarpé et mérite de se faire de façon calme et réfléchie.",
-        "img" : "<img src='img/feuille.jpg' alt='maptime logo gif' width='300px' height='10px'/>",
+        "img" : "<img src='img/feuille.jpg' alt='maptime logo gif' width='250px' height='300px'/>",
         "diff":"Du 5a au 8a"
       },
       "geometry": {
@@ -275,7 +275,7 @@ var spots = {
         "Nom": "Grimper.ch",
         "Type_voies": "Salle intérieure (Couennes et blocs)",
         "nbr_voies": 250,
-        "description":"La salle à ouverte ses portent fin 2019 et propose désormais un complexe de plus de 1000m^2 qui permet de grimper tant à l'intérieur qu'à l'extérieur. L'ambiance de la salle est magique et il est vivement recommander de s'arrêter boire une bière à la sortie pour parler de sa session en groupe!",
+        "description":"La salle à ouverte ses portent fin 2019 et propose désormais un complexe de plus de 1000 mètre carré qui permet de grimper tant à l'intérieur qu'à l'extérieur. L'ambiance de la salle est magique et il est vivement recommander de s'arrêter boire une bière à la sortie pour parler de sa session en groupe!",
         "img" : "<img src='img/grimper_ch.jpg' alt='maptime logo gif' width='350px' height='300px'/>",
         "diff": "Tous types de difficultés",
       },
@@ -349,10 +349,11 @@ var spots = {
       "type": "Feature",
       "properties": {
         "id": 20,
-        "Nom": "Miroir de l'Argentine",
+        "Nom": "Miroir d'Argentine",
         "Type_voies": "Longues voies",
         "nbr_voies": 25,
-        "description": "Le Miroir de l'Argentine se situe en plein coeur des Alpes vaudoise et attire chaque années des centaines de grimpeurs. La paroie haute de plus de 500m est en effet connue depuis des dizaines d'années pour sa beauté majestueuse. Attention il est courant d'avoir des sections plus longues que 10m entre les relais. Il faut donc bien savoir ce que l'on fait lorsqu'on grimpe en tête!",
+        "description": "Le Miroir d'Argentine se situe en plein coeur des Alpes vaudoise et attire chaque années des centaines de grimpeurs. La paroie haute de plus de 500m est en effet connue depuis des dizaines d'années pour sa beauté majestueuse. Attention il est courant d'avoir des sections plus longues que 10m entre les relais. Il faut donc bien savoir ce que l'on fait lorsqu'on grimpe en tête!",
+        "img" : "<img src='img/miroir.jfif' alt='maptime logo gif' width='350px' height='250px'/>",
         "diff":"Du 4a au 7b",
 
       },
