@@ -696,6 +696,19 @@ $('#slider3').noUiSlider({
 	output3.html(valueF.join(' - ')  + " m");});
 
 // Filtre de la difficulté
+
+// Valeurs de difficulte pour conversion de la valeur numerique du filtre en valeur de difficulte
+let difficulte = ["1a","1b","1c",
+				  "2a","2b","2c",
+				  "3a","3b","3c",
+				  "4a","4b","4c",
+				  "5a","5b","5c",
+				  "6a","6b","6c",
+				  "7a","7b","7c",
+				  "8a","8b","8c",
+				  "9a","9b","9c"
+				]
+
 $('#slider4').noUiSlider({
     start: [0, 26], 
     range: {
@@ -705,8 +718,10 @@ $('#slider4').noUiSlider({
 	step: 1,
 	connect: true
 }).on('slide', function() {
-	let valueF = [parseInt($(this).val()[0]),parseInt($(this).val()[1])];
+	let valueF = [difficulte[parseInt($(this).val()[0])],difficulte[parseInt($(this).val()[1])]];
 	output4.html(valueF.join(' - '));});
+
+
 
 // Initialisation de la liste contenant les types de voie actuellement selectionnes par le filtre
 let filter_type_val = ["Couennes", "Longues voies", "Salle"];
@@ -745,6 +760,9 @@ function applyFilters(){
 		// Extraction du type de voies
 		let t_voies = lieux_grimpe._layers[layer].feature.properties.Type_voies;
 		
+		// Extraction de la difficulte
+		let diff_level = lieux_grimpe._layers[layer].feature.properties.diff;
+
 		// Identification des sites respectant les différentes conditions de filtre
 		
 		// Conditions de distance : si currentPos n'est pas identifie, la distance n'a aucune incidence
@@ -756,6 +774,7 @@ function applyFilters(){
 		
 		// Condition du type de voies
 		//&& filter_type_val.includes(t_voies)
+		//&& diff_level >= $('#slider4').val()[0] && diff_level <= $('#slider4').val()[1]
 		){
 			// Mise en evidence des icones correspondantes
 			lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.svg";
