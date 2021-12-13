@@ -646,6 +646,7 @@ $(".buttons_type").click(function(e){
 var output1 = $('#output1'); // distance
 var output2 = $('#output2'); // nombre de voies
 var output3 = $('#output3'); // altitude
+var output4 = $('#output4'); // difficulte
 
 // Filtre des distances
 $('#slider1').noUiSlider({
@@ -693,6 +694,19 @@ $('#slider3').noUiSlider({
 }).on('slide', function() {
 	let valueF = [parseInt($(this).val()[0]),parseInt($(this).val()[1])];
 	output3.html(valueF.join(' - ')  + " m");});
+
+// Filtre de la difficulté
+$('#slider4').noUiSlider({
+    start: [0, 26], 
+    range: {
+        'min': [0],
+        'max': [26],
+    },
+	step: 1,
+	connect: true
+}).on('slide', function() {
+	let valueF = [parseInt($(this).val()[0]),parseInt($(this).val()[1])];
+	output4.html(valueF.join(' - '));});
 
 // Initialisation de la liste contenant les types de voie actuellement selectionnes par le filtre
 let filter_type_val = ["Couennes", "Longues voies", "Salle"];
@@ -796,6 +810,8 @@ function resetFilters(){
 	output2.html("0 - 250");
 	$("#slider3").val([ "0", "3000" ]);
 	output3.html("0 - 3000 m");
+	$("#slider4").val([ "0", "26" ]);
+	output3.html("1a - 9c");
 
 	// Redefinition du style de base pour tous les marqueurs
 	for (layer in lieux_grimpe._layers) {
