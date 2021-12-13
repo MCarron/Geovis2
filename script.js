@@ -633,7 +633,7 @@ $(".buttons_type").click(function(e){
 	
 		// Actualisation de la liste des filtres actives
 		filter_type_val = [];
-		let filter_types = document.querySelectorAll(".buttons_type");
+		let filter_types = document.querySelectorAll(".type_filters");
 		filter_types.forEach(filtertype => {	
 			if (filtertype.classList.contains("active")) {
 				filter_type_val.push(filtertype.value);
@@ -760,6 +760,9 @@ function applyFilters(){
 
 		// Extraction du type de voies
 		let t_voies = lieux_grimpe._layers[layer].feature.properties.Type_voies;
+		t_voies = t_voies.split(" et ");
+		console.log(t_voies.filter(Set.prototype.has, new Set(filter_type_val)).length)
+
 		
 		// Extraction de la difficulte
 		let diff_level = lieux_grimpe._layers[layer].feature.properties.diff;
@@ -777,7 +780,7 @@ function applyFilters(){
 		&& n_voies >= $('#slider2').val()[0] && n_voies <= $('#slider2').val()[1]
 		
 		// Condition du type de voies
-		//&& filter_type_val.includes(t_voies)
+		&& t_voies.filter(Set.prototype.has, new Set(filter_type_val)).length != 0
 		&& (!(diff_level[0] <= $('#slider4').val()[0] && diff_level[1] <= $('#slider4').val()[1]
 		|| diff_level[0] >= $('#slider4').val()[0] && diff_level[1] >= $('#slider4').val()[1])
 		|| diff_level[0] < 0)
@@ -821,6 +824,7 @@ function applyFilters(){
 	// Changement de zoom sur la carte en fonction des parametres calcules
 	if (latfiltered.length != 0) {
 		myMap.setView([latcenter, lngcenter], 11);
+		alert(latfiltered.length + " sites have been found.");
 	}
 	else alert("No location matches these conditions.");
 };
