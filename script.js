@@ -133,7 +133,7 @@ let lieux_grimpe = new L.geoJson(spots, {
   	}
 }).addTo(myMap);
 
-
+// Fonction pour le bouton du popup
 let btnEdit = document.createElement('button');
 	btnEdit.textContent = 'INFORMATIONS';
     btnEdit.className = 'customPopup';
@@ -142,29 +142,34 @@ let btnEdit = document.createElement('button');
 		document.querySelector("#itinerary").classList.remove("active");
 		document.querySelector("#filters").classList.remove("active");
 		document.querySelector("#infos").classList.add("active");
-		popup.close()
+		popup.close();
 	}
 
 // Fonction pour afficher les infos (contenues dans nos marqueurs) dans le dernier onglet du slidebar
 function onEachFeature(feature, layer) {
-  layer.on('click', function(e) {
-	$(".nome").html(feature.properties.Nom);
-	$(".imagem").html(feature.properties.img);
-	$(".type").html(feature.properties.Type_voies);
-	$(".nbr").html(feature.properties.nbr_voies);
-	$(".descricao").html(feature.properties.description);
-	let btnDiv = document.createElement('div');
+  	layer.on('click', function(e) {
+		$(".nome").html(feature.properties.Nom);
+		$(".imagem").html(feature.properties.img);
+		$(".type").html(feature.properties.Type_voies);
+		$(".nbr").html(feature.properties.nbr_voies);
+		$(".descricao").html(feature.properties.description);
+	
+		// Options de popup
+		let btnDiv = document.createElement('div');
+		btnDiv.append(feature.properties.Nom);
+		btnDiv.append(btnEdit);
+		btnDiv.style.fontSize = "20px";
+		btnDiv.style.display = "block";
 
-	// Options de popup
-	btnDiv.append(feature.properties.Nom);
-	btnDiv.append(btnEdit);
-	btnDiv.style.fontSize = "20px";
-	btnDiv.style.display = "block";
-
-	document.querySelector("#infos").classList.remove("active");
-	if (feature.properties) {
-		popup = layer.bindPopup(btnDiv).openPopup();	
-  }});
+		//if (!(document.querySelector("#infos").classList.contains("active"))) {
+			popup = layer.bindPopup(btnDiv).openPopup();
+  		//};
+		
+		//if (document.querySelector("#infos").classList.contains("active")) {
+			// popup = layer.bindPopup(btnDiv).openPopup();
+			// popup.close;
+		//};
+	});
 }
 
 
