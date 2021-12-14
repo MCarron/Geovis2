@@ -273,7 +273,7 @@ var spots = {
       "properties": {
         "id": 16,
         "Nom": "Grimper.ch",
-        "Type_voies": "Salle intérieure (Couennes et blocs)",
+        "Type_voies": "Salle",
         "nbr_voies": 250,
         "description":"La salle à ouverte ses portent fin 2019 et propose désormais un complexe de plus de 1000 mètre carré qui permet de grimper tant à l'intérieur qu'à l'extérieur. L'ambiance de la salle est magique et il est vivement recommander de s'arrêter boire une bière à la sortie pour parler de sa session en groupe!",
         "img" : "<img src='img/grimper_ch.jpg' alt='maptime logo gif' width='350px' height='300px'/>",
