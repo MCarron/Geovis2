@@ -870,7 +870,9 @@ function applyFilters(){
 	// Changement de zoom sur la carte en fonction des parametres calcules
 	if (latfiltered.length != 0) {
 
-		document.getElementById("filter-nval").append(latfiltered.length + " sites found");
+		document.getElementById("filter-nval").append(latfiltered.length + " sites ont été trouvés :");
+		document.getElementById("filter-nval").classList.add("filter_nval")
+
 		myMap.setView([latcenter, lngcenter], 10);
 		$(".window").animate({ scrollTop: 0 }, "slow");
 		//alert(latfiltered.length + " sites have been found.");
@@ -884,7 +886,7 @@ function resetFilters(){
 	// Reinitialisation div contenant sites precedemment trouves
 	document.getElementById('filter-results').textContent = '';
 	document.getElementById("filter-nval").textContent = '';
-	
+
 	// Retablissement des valeurs par defaut des differents filtres
 	$("#slider1").val([ "0", "300" ]);
 	output1.html("0 - 300 km");

@@ -445,6 +445,7 @@ color: #fff;
     color:  #ffffff;
     height: 50px;
     opacity: 1;
+    cursor: pointer;
 }
     
 .clipped_img {
@@ -458,4 +459,11 @@ color: #fff;
 .clipped_img img {
     width: 400px;
     margin: -75px 0 0 -100px;
+}
+
+.filter_nval {
+    text-align: left;
+    margin-left: 30px;
+    font-size: 24px;
+    color: #58943c;
 }
