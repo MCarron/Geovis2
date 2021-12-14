@@ -844,7 +844,7 @@ function applyFilters(){
 				$(".diff").html(name6);
 
 				// Changement de position de la carte
-				myMap.setView([name7-0.055, name8], 12);
+				myMap.setView([name7-0.045, name8], 12);
 				
 				// Changement de highlight
 				for (layer in lieux_grimpe._layers) {
