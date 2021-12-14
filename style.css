@@ -350,11 +350,12 @@ input[type="datetime-local"]{
 .infobox{
 
     position: relative;
-    height: 900px;
+    min-height: 400px;
     text-align: center;
     background-color: #fff;
     border-radius: 20px;
     padding: 10px;
+    margin-top: 20px;
 }
 
 .center{
