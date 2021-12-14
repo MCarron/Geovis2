@@ -255,7 +255,8 @@ input[type="datetime-local"]{
 }
 .slider {
     height: 10px;
-    padding: 0 2%;
+    padding: 5 0%;
+    margin-left: 10px;
 }
 .slider .noUi-connect {
     background: #ac382b;
