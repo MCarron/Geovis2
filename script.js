@@ -62,11 +62,11 @@ let myMap = L.map('map', {
 });
 
 // Ajout de nos couches de base (layers)
-const mapboxTiles = L.tileLayer('https://api.mapbox.com/styles/v1/theogerritsen/cktvgvy4d294h18lp92dm804n/tiles/512/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoidGhlb2dlcnJpdHNlbiIsImEiOiJja3R2Zzkybzkwa25oMm5tcGp1MWY0enh1In0.n_ye_r9ELbLqxyWl-giSlA', {
+/*const mapboxTiles = L.tileLayer('https://api.mapbox.com/styles/v1/theogerritsen/cktvgvy4d294h18lp92dm804n/tiles/512/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoidGhlb2dlcnJpdHNlbiIsImEiOiJja3R2Zzkybzkwa25oMm5tcGp1MWY0enh1In0.n_ye_r9ELbLqxyWl-giSlA', {
     attribution: '© <a href="https://www.mapbox.com/feedback/">Mapbox</a>',
     tileSize: 512,
        oomOffset: -1
-});
+});*/
 
 const osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
   	attribution: '&copy; OpenStreetMap contributors'
@@ -88,7 +88,7 @@ osmLayer.addTo(myMap);
 // Ajout des 4 couches dans une letiables pour le baseMaps controller
 const baseMaps = {
   	"OpenStreetMap": osmLayer,
-  	"Mapbox": mapboxTiles,
+  	//"Mapbox": mapboxTiles,
   	"Satellite": googleSat,
   	"Terrain": googleTerrain
 };
@@ -327,7 +327,7 @@ function calculateRoute(){
 	$("#itinerary").removeClass("active");
 	// Ouverture du menu eta-dist (seulement si currentPos existant)
 	if (currentPos != null) {
-		eta_dist.classList.toggle("active");
+		document.querySelector(".eta-dist").classList.toggle("active");
 	}
 
   	// Point de départ & d'arrivee
@@ -514,6 +514,8 @@ function drawRoute(data){
   	let dist = Math.round((itin.walkDistance/1000)*100) / 100
 	$('#dist').html('Total distance : ' + dist + ' km')
 }
+
+
 
 /*
 // Fonction pour definir le temps actuel
