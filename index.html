@@ -126,13 +126,19 @@
 						<div id="output3">0 - 3000 m</div>
 					</div>
 
+					<div class="filterbox">
+						<label>Difficulté </label>
+						<div id="slider4" class="slider"></div>
+						<div id="output4">1a - 9c</div>
+					</div>
+
 				<!-- On introduit les différents filtres en boutons -->
 				<div class="controls_filters">
 					<label>Type &nbsp;&nbsp; </label>
 						
 					<button id="filter_type_1" class="buttons_type type_filters active" value="Couennes">Couennes</button>
-					<button id="filter_type_2" class="buttons_type type_filters active" value="Longues voies">Longues voies</button>
-					<button id="filter_type_3" class="buttons_type type_filters active" value="Salle">Salle</button>
+					<button id="filter_type_2" class="buttons_type type_filters active" value="Longues voies">Longues voies</button><br>
+					&emsp;&emsp;&ensp;<button id="filter_type_3" class="buttons_type type_filters active" value="Salle">Salle</button>
 					</div>
 				</div>
 
@@ -153,24 +159,27 @@
 				</div>
 
 				<div id="left" class="left">
-					<small><div class="descricao">Cliquez sur un des spots pour plus d'infos sur ce lieu.</div></small><br>
+					<small><div class="descricao">Cliquez sur un des spots pour plus d'infos sur ce lieu.</div></small>
 				</div>
 
 				<div class="column">
 					<div class="imagem"></div>
 					<div id="left" class="left"><small>
-						<div class="legend unactive"> <b>Type de voies : &nbsp;</b></div>
+						<div class="legend unactive"> Type de voies : &nbsp;</div>
 						<div class="type"> <b></b></div>
-						<div class="legend unactive"> <b>Nombre de voies : &nbsp;</b></div>
+						<div class="legend unactive"> Nombre de voies : &nbsp;</div>
 						<div class="nbr"> <b></b></div>
+						<div class="legend unactive"> Difficulté : &nbsp;</div>
+						<div class="diff"> <b></b></div>
 					</div>
 					<br><br><br>
+					<a href="javascript:" class="btn btnx">&times;</a>
 				</div>
-
+				
 			</div>
 		
 			<!-- On utilise ici des unicodes prédéfinis pour créer le symbole de la croix et du menu plus bas -->
-		<a href="javascript:" class="btn btnx">&times;</a>
+		
 		</div>
 		<!-- <input type="text" class="eta" disabled> -->
 		<div class="container" id="container">
@@ -181,12 +190,12 @@
 				<!-- <div class="bouton"> -->
 					<i id="bmap" class='btn bx bx-map-alt' ></i></button>
 					<i id="bfilter" class='btn bx bx-filter-alt'></i>
-					<i id="bgroup" class='btn bx bx-group'></i>
+					<i id="bgroup" class='btn bx bx-info-circle'></i>
 				<!-- </div> -->
 			</div>
 		</div>
 
-
+		
 		<div id="sidebar"></div>
 		<script src="https://unpkg.com/leaflet/dist/leaflet-src.js"></script>
 		<script src="https://unpkg.com/leaflet-sidebar@0.2.0/src/L.Control.Sidebar.js"></script>

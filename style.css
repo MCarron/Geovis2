@@ -291,6 +291,7 @@ input[type="datetime-local"]{
 }
 .buttons_type.type_filters.active{
     background: rgb(192, 67, 67);
+    text-align: center;
 }
 .buttons_type.info{
     background: rgb(165, 192, 67);
@@ -302,6 +303,7 @@ input[type="datetime-local"]{
 }
 .controls_filters{
     padding: 20px;
+    text-align: center;
 }
 
 .ele_info{
@@ -319,14 +321,18 @@ input[type="datetime-local"]{
 }
 
 .left{
-    text-align: left;
+    text-align: justify;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .nome{
     color: rgb(70, 97, 76);
-    font-size: 24pt;
+    font-size: 26pt;
     padding: 5px;
-    padding-bottom: 15px;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    font-family: 'Poppins', sans-serif;font-family: 'Poppins', sans-serif;
 }
 
 
@@ -341,13 +347,54 @@ input[type="datetime-local"]{
 }
 .infobox{
     margin: 10px;
+    padding-left: 7px;
+    padding-right:4px ;
+    height: 850px;
+    width: 380px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+.nbr{
+    font-size: 14px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.diff{
+    font-size: 14px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.type{
+    font-size: 14px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.descricao{
+    margin: 10px;
+    font-size: 14px;
+    padding: 10px;
 }
 
 .legend{
-float: left;
+text-align: center;
+font-size: 16px;
+color: #fff;
+height: 30px;
+width: 300px;
+padding-top: 5px;
+border-radius: 10px;
+margin-left: 45px;
+margin-top: 5px;
+background-color: rgb(108, 168, 118);
+font-family: 'Poppins', sans-serif;
 }
 .legend.unactive{
-color: transparent;
+color: #fff;
 }
 
 
@@ -361,4 +408,12 @@ color: transparent;
     background-color:  #5b99e0;
     color:  #ffffff;
     height: 30px;
+    opacity: 1;
 }
+
+.leaflet-popup-content-wrapper, .leaflet-popup.tip {
+    opacity: 0.9;
+    text-align: center;
+    width: 230px;
+  }
+

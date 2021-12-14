@@ -142,7 +142,6 @@ let btnEdit = document.createElement('button');
 		document.querySelector("#itinerary").classList.remove("active");
 		document.querySelector("#filters").classList.remove("active");
 		document.querySelector("#infos").classList.add("active");
-		popup.close()
 	}
 
 // Fonction pour afficher les infos (contenues dans nos marqueurs) dans le dernier onglet du slidebar
@@ -153,6 +152,7 @@ function onEachFeature(feature, layer) {
 	$(".type").html(feature.properties.Type_voies);
 	$(".nbr").html(feature.properties.nbr_voies);
 	$(".descricao").html(feature.properties.description);
+	$(".diff").html(feature.properties.diff);
 	let btnDiv = document.createElement('div');
 
 	// Options de popup
@@ -161,10 +161,11 @@ function onEachFeature(feature, layer) {
 	btnDiv.style.fontSize = "20px";
 	btnDiv.style.display = "block";
 
-	document.querySelector("#infos").classList.remove("active");
-	if (feature.properties) {
-		popup = layer.bindPopup(btnDiv).openPopup();	
-  }});
+	//document.querySelector("#infos").classList.remove("active");
+	//if (feature.properties) {
+		layer.bindPopup(btnDiv).openPopup();	
+  	} //}
+	);
 }
 
 
@@ -632,7 +633,7 @@ $(".buttons_type").click(function(e){
 	
 		// Actualisation de la liste des filtres actives
 		filter_type_val = [];
-		let filter_types = document.querySelectorAll(".buttons_type");
+		let filter_types = document.querySelectorAll(".type_filters");
 		filter_types.forEach(filtertype => {	
 			if (filtertype.classList.contains("active")) {
 				filter_type_val.push(filtertype.value);
@@ -645,6 +646,7 @@ $(".buttons_type").click(function(e){
 var output1 = $('#output1'); // distance
 var output2 = $('#output2'); // nombre de voies
 var output3 = $('#output3'); // altitude
+var output4 = $('#output4'); // difficulte
 
 // Filtre des distances
 $('#slider1').noUiSlider({
@@ -693,6 +695,35 @@ $('#slider3').noUiSlider({
 	let valueF = [parseInt($(this).val()[0]),parseInt($(this).val()[1])];
 	output3.html(valueF.join(' - ')  + " m");});
 
+// Filtre de la difficulté
+
+// Valeurs de difficulte pour conversion de la valeur numerique du filtre en valeur de difficulte
+let difficulte = ["1a","1b","1c",
+				  "2a","2b","2c",
+				  "3a","3b","3c",
+				  "4a","4b","4c",
+				  "5a","5b","5c",
+				  "6a","6b","6c",
+				  "7a","7b","7c",
+				  "8a","8b","8c",
+				  "9a","9b","9c"
+				]
+
+$('#slider4').noUiSlider({
+    start: [0, 26], 
+    range: {
+        'min': [0],
+        'max': [26],
+    },
+	step: 1,
+	connect: true
+}).on('slide', function() {
+	console.log($(this).val())
+	let valueF = [difficulte[parseInt($(this).val()[0])],difficulte[parseInt($(this).val()[1])]];
+	output4.html(valueF.join(' - '));});
+
+
+
 // Initialisation de la liste contenant les types de voie actuellement selectionnes par le filtre
 let filter_type_val = ["Couennes", "Longues voies", "Salle"];
 
@@ -729,7 +760,16 @@ function applyFilters(){
 
 		// Extraction du type de voies
 		let t_voies = lieux_grimpe._layers[layer].feature.properties.Type_voies;
+		t_voies = t_voies.split(" et ");
+		console.log(t_voies.filter(Set.prototype.has, new Set(filter_type_val)).length)
+
 		
+		// Extraction de la difficulte
+		let diff_level = lieux_grimpe._layers[layer].feature.properties.diff;
+		diff_level = diff_level.slice(3).split(" au ");
+		diff_level[0] = difficulte.indexOf(diff_level[0]);
+		diff_level[1] = difficulte.indexOf(diff_level[1]);
+
 		// Identification des sites respectant les différentes conditions de filtre
 		
 		// Conditions de distance : si currentPos n'est pas identifie, la distance n'a aucune incidence
@@ -740,7 +780,10 @@ function applyFilters(){
 		&& n_voies >= $('#slider2').val()[0] && n_voies <= $('#slider2').val()[1]
 		
 		// Condition du type de voies
-		//&& filter_type_val.includes(t_voies)
+		&& t_voies.filter(Set.prototype.has, new Set(filter_type_val)).length != 0
+		&& (!(diff_level[0] <= $('#slider4').val()[0] && diff_level[1] <= $('#slider4').val()[1]
+		|| diff_level[0] >= $('#slider4').val()[0] && diff_level[1] >= $('#slider4').val()[1])
+		|| diff_level[0] < 0)
 		){
 			// Mise en evidence des icones correspondantes
 			lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.svg";
@@ -781,6 +824,7 @@ function applyFilters(){
 	// Changement de zoom sur la carte en fonction des parametres calcules
 	if (latfiltered.length != 0) {
 		myMap.setView([latcenter, lngcenter], 11);
+		alert(latfiltered.length + " sites have been found.");
 	}
 	else alert("No location matches these conditions.");
 };
@@ -795,6 +839,8 @@ function resetFilters(){
 	output2.html("0 - 250");
 	$("#slider3").val([ "0", "3000" ]);
 	output3.html("0 - 3000 m");
+	$("#slider4").val([ "0", "26" ]);
+	output3.html("1a - 9c");
 
 	// Redefinition du style de base pour tous les marqueurs
 	for (layer in lieux_grimpe._layers) {
