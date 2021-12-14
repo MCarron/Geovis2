@@ -788,46 +788,73 @@ function applyFilters(){
 			latfiltered.push(Number(lieux_grimpe._layers[layer]._latlng.lat));
 			lngfiltered.push(Number(lieux_grimpe._layers[layer]._latlng.lng));
 
-			// Creer div pour contenir differents sites
+			// Creer div pour contenir le site et definir le style
 			let siteDiv = document.createElement('div');
 				siteDiv.style.display = "inline-block";
 	
+			// Creer div pour contenir l'image du site
 			let imageDiv = document.createElement('div');
 			
+			// Creer img pour extraire l'image du site
 			let imageImg = document.createElement('img');
-			//document.getElementById("imageDiv").classList.add('MyClass');
+			
+			// Extraire la source de l'image et l'annexer à l'element img
 			let imageFiltered = lieux_grimpe._layers[layer].feature.properties.img;
 				imageFiltered = imageFiltered.match(/'([^']+)'/)[1]
 				imageImg.setAttribute("src", imageFiltered);
-				imageDiv.appendChild(imageImg);
-				imageDiv.classList.add("clipped_img");
 
+			// Integrer l'element img au div et definir le style
+			imageDiv.appendChild(imageImg);
+			imageDiv.classList.add("clipped_img");
+
+			// Creer div pour contenir le nom du site et definir le style
 			let textDiv = document.createElement('div');
 				textDiv.append(lieux_grimpe._layers[layer].feature.properties.Nom);
 				textDiv.style.fontSize = "18px";
 				textDiv.style.textAlign = "right";
 
+			// Integrer les 2 div au div principal et definir le style
 			siteDiv.appendChild(imageDiv);
 			siteDiv.appendChild(textDiv);
 			siteDiv.classList.add("filter_result");
 
+			// Extraction des attributs du site concerne
 			let name1 = lieux_grimpe._layers[layer].feature.properties.Nom
 			let name2 = lieux_grimpe._layers[layer].feature.properties.img
 			let name3 = lieux_grimpe._layers[layer].feature.properties.Type_voies
 			let name4 = lieux_grimpe._layers[layer].feature.properties.nbr_voies
 			let name5 = lieux_grimpe._layers[layer].feature.properties.description
 			let name6 = lieux_grimpe._layers[layer].feature.properties.diff
+			let name7 = lieux_grimpe._layers[layer]._latlng.lat
+			let name8 = lieux_grimpe._layers[layer]._latlng.lng
 
+			// Generation d'event sur div du site
 			siteDiv.addEventListener('click', event => {
+				
+				// Changement des fenetres
 				document.querySelector("#filters").classList.toggle("active");
 				document.querySelector("#infos").classList.toggle("active");
-				console.log("fgsdfgf");
+				
+				// Changement des infos
 				$(".nome").html(name1);
 				$(".imagem").html(name2);
 				$(".type").html(name3);
 				$(".nbr").html(name4);
 				$(".descricao").html(name5);
 				$(".diff").html(name6);
+
+				// Changement de position de la carte
+				myMap.setView([name7-0.055, name8], 12);
+				
+				// Changement de highlight
+				for (layer in lieux_grimpe._layers) {
+					if (lieux_grimpe._layers[layer]._icon.src == "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune_h.svg") {
+						lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.svg"
+					};
+					if (lieux_grimpe._layers[layer].feature.properties.Nom == $(".nome").html()) {
+						lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune_h.svg"
+					};
+				};
 			});
 
 			document.getElementById("filter-results").appendChild(siteDiv);
@@ -864,7 +891,7 @@ function applyFilters(){
 		document.getElementById("filter-nval").classList.add("filter_nval")
 
 		// Changement de position de la carte
-		myMap.setView([latcenter, lngcenter], 10);
+		myMap.setView([latcenter, lngcenter], 11);
 		
 		// Scroll au sommet de la fenetre
 		$(".window").animate({ scrollTop: 0 }, "slow");
