@@ -867,22 +867,28 @@ function applyFilters(){
 
 	let maxextent = Math.min(latextent,lngextent);
 
-	// Changement de zoom sur la carte en fonction des parametres calcules
 	if (latfiltered.length != 0) {
 
+		// Indication du nombre de sites identifie
 		document.getElementById("filter-nval").append(latfiltered.length + " sites ont été trouvés :");
 		document.getElementById("filter-nval").classList.add("filter_nval")
 
+		// Changement de position de la carte
 		myMap.setView([latcenter, lngcenter], 10);
+		
+		// Scroll au sommet de la fenetre
 		$(".window").animate({ scrollTop: 0 }, "slow");
-		//alert(latfiltered.length + " sites have been found.");
 	}
+
 	else alert("No location matches these conditions.");
 };
 
 // Fonction de reinitialisation des filtres
 function resetFilters(){
 	
+	// Scroll au sommet de la fenetre
+	$(".window").animate({ scrollTop: 0 }, "slow");
+
 	// Reinitialisation div contenant sites precedemment trouves
 	document.getElementById('filter-results').textContent = '';
 	document.getElementById("filter-nval").textContent = '';
