@@ -433,3 +433,29 @@ color: #fff;
     width: 230px;
   }
 
+
+.filter_result{
+    display: inline-block;
+    width: 90%;
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    margin: 10px;
+    background-color:  #98d17d;
+    color:  #ffffff;
+    height: 50px;
+    opacity: 1;
+}
+    
+.clipped_img {
+    float: left;
+    width: 180px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 12px;   
+}
+
+.clipped_img img {
+    width: 400px;
+    margin: -75px 0 0 -100px;
+}

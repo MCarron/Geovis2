@@ -733,7 +733,11 @@ let filter_type_val = ["Couennes", "Longues voies", "Salle"];
 function applyFilters(){
 
 	// Fermeture de la fenetre de filtres
-	$("#filters").removeClass("active");
+	// $("#filters").removeClass("active");
+	
+	// Reinitialisation div contenant sites precedemment trouves
+	document.getElementById('filter-results').textContent = '';
+	document.getElementById("filter-nval").textContent = '';
 
 	// Preparation des vecteurs pour accueillir les valeurs de longitude et latitude
 	let latfiltered = [];
@@ -793,6 +797,50 @@ function applyFilters(){
 			// Stockage des infos de longitude-latitude pour ajuster par la suite la carte aux icones concernees
 			latfiltered.push(Number(lieux_grimpe._layers[layer]._latlng.lat));
 			lngfiltered.push(Number(lieux_grimpe._layers[layer]._latlng.lng));
+
+			// Creer div pour contenir differents sites
+			let siteDiv = document.createElement('div');
+				siteDiv.style.display = "inline-block";
+	
+			let imageDiv = document.createElement('div');
+			
+			let imageImg = document.createElement('img');
+			//document.getElementById("imageDiv").classList.add('MyClass');
+			let imageFiltered = lieux_grimpe._layers[layer].feature.properties.img;
+				imageFiltered = imageFiltered.match(/'([^']+)'/)[1]
+				imageImg.setAttribute("src", imageFiltered);
+				imageDiv.appendChild(imageImg);
+				imageDiv.classList.add("clipped_img");
+
+			let textDiv = document.createElement('div');
+				textDiv.append(lieux_grimpe._layers[layer].feature.properties.Nom);
+				textDiv.style.fontSize = "18px";
+				textDiv.style.textAlign = "right";
+
+			siteDiv.appendChild(imageDiv);
+			siteDiv.appendChild(textDiv);
+			siteDiv.classList.add("filter_result");
+
+			let name1 = lieux_grimpe._layers[layer].feature.properties.Nom
+			let name2 = lieux_grimpe._layers[layer].feature.properties.img
+			let name3 = lieux_grimpe._layers[layer].feature.properties.Type_voies
+			let name4 = lieux_grimpe._layers[layer].feature.properties.nbr_voies
+			let name5 = lieux_grimpe._layers[layer].feature.properties.description
+			let name6 = lieux_grimpe._layers[layer].feature.properties.diff
+
+			siteDiv.addEventListener('click', event => {
+				document.querySelector("#filters").classList.toggle("active");
+				document.querySelector("#infos").classList.toggle("active");
+				console.log("fgsdfgf");
+				$(".nome").html(name1);
+				$(".imagem").html(name2);
+				$(".type").html(name3);
+				$(".nbr").html(name4);
+				$(".descricao").html(name5);
+				$(".diff").html(name6);
+			});
+
+			document.getElementById("filter-results").appendChild(siteDiv);
 		}
 	}
 
@@ -815,24 +863,27 @@ function applyFilters(){
 
 	// Determination du nombre de pixels recouvert par niveau de zoom
 
-	
-
-
-
 	// metresPerPixel = 40075016.686 * Math.abs(Math.cos(map.getCenter().lat * Math.PI/180)) / Math.pow(2, map.getZoom()+8);
 
 	let maxextent = Math.min(latextent,lngextent);
 
 	// Changement de zoom sur la carte en fonction des parametres calcules
 	if (latfiltered.length != 0) {
-		myMap.setView([latcenter, lngcenter], 11);
-		alert(latfiltered.length + " sites have been found.");
+
+		document.getElementById("filter-nval").append(latfiltered.length + " sites found");
+		myMap.setView([latcenter, lngcenter], 10);
+		$(".window").animate({ scrollTop: 0 }, "slow");
+		//alert(latfiltered.length + " sites have been found.");
 	}
 	else alert("No location matches these conditions.");
 };
 
 // Fonction de reinitialisation des filtres
 function resetFilters(){
+	
+	// Reinitialisation div contenant sites precedemment trouves
+	document.getElementById('filter-results').textContent = '';
+	document.getElementById("filter-nval").textContent = '';
 	
 	// Retablissement des valeurs par defaut des differents filtres
 	$("#slider1").val([ "0", "300" ]);
@@ -842,7 +893,7 @@ function resetFilters(){
 	$("#slider3").val([ "0", "3000" ]);
 	output3.html("0 - 3000 m");
 	$("#slider4").val([ "0", "26" ]);
-	output3.html("1a - 9c");
+	output4.html("1a - 9c");
 
 	// Redefinition du style de base pour tous les marqueurs
 	for (layer in lieux_grimpe._layers) {
