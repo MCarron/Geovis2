@@ -327,7 +327,7 @@ function calculateRoute(){
 	$("#itinerary").removeClass("active");
 	// Ouverture du menu eta-dist (seulement si currentPos existant)
 	if (currentPos != null) {
-		eta_dist.classList.toggle("active");
+		document.querySelector(".eta-dist").classList.toggle("active");
 	}
 
   	// Point de départ & d'arrivee
