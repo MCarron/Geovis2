@@ -328,6 +328,7 @@ input[type="datetime-local"]{
     color: rgb(70, 97, 76);
     font-size: 26pt;
     padding: 5px;
+    padding-top: 15px;
     padding-bottom: 5px;
     font-family: 'Poppins', sans-serif;font-family: 'Poppins', sans-serif;
 }
@@ -344,6 +345,13 @@ input[type="datetime-local"]{
 }
 .infobox{
     margin: 10px;
+    padding-left: 7px;
+    padding-right:4px ;
+    height: 850px;
+    width: 380px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 20px;
 }
 
 .nbr{

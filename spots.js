@@ -10,7 +10,7 @@ var spots = {
         "Type_voies": "Couennes",
         "nbr_voies": 20,
         "description": "Très jolie petite dalle situé à 15min de Verschiez à pied. Il est composé d'une quinzaines de voies orientées Sud",
-        "img": "<img src='img/Besson.jpg' alt='maptime logo gif' width='300px' height='200px'/>",
+        "img": "<img src='img/Besson.jpg' alt='maptime logo gif' width='350px' height='200px'/>",
         "diff":"Du 5a au 7b"
       },
       "geometry": {
@@ -29,7 +29,7 @@ var spots = {
         "Type_voies": "Couennes",
         "nbr_voies": 8,
         "description": "Très jolie petite dalle situé à 15min à pied de Verschiez. Il est composé de 6-7 voies orientées Sud",
-        "img": "<img src='img/Noce.jpg' alt='maptime logo gif' width='150px' height='200px'/>",
+        "img": "<img src='img/Noce.jpg' alt='maptime logo gif' width='350px' height='400px'/>",
         "diff":"Du 5a au 7c"
       },
       "geometry": {
@@ -48,7 +48,7 @@ var spots = {
         "Type_voies": "Couennes",
         "nbr_voies": 3,
         "description": "Joli secteur de grimpe situé à 5min à pied du parking. Il est composé d'une vingtaine de voie relativement engagée. Il est idéal pour l'été car orienté Ouest/Nord-Ouest",
-        "img": "<img src='img/aigle.jpg' alt='maptime logo gif' width='300px' height='150px'/>",
+        "img": "<img src='img/aigle.jpg' alt='maptime logo gif' width='350px' height='250px'/>",
         "diff":"Du 5a au 8b"
       },
       "geometry": {
@@ -67,7 +67,7 @@ var spots = {
         "Type_voies": "Couennes",
         "nbr_voies": 60,
         "description":"Le secteur de Drapel se situe juste en-dessus d'Yvorne et surplombe la pleine du Rhône. Le spot est divisé en plusieurs secteurs qui sont composés de plus d'une centaine de voies. L'approche se fait le long d'un sentier (env. 20min à pied).",
-        "img": "<img src='img/drapel.jpg' alt='maptime logo gif' width='250px' height='150px'/>",
+        "img": "<img src='img/drapel.jpg' alt='maptime logo gif' width='350px' height='250px'/>",
         "diff":"Du 5a au 8b"
       },
       "geometry": {
@@ -86,7 +86,7 @@ var spots = {
         "Type_voies": "Couennes",
         "nbr_voies": 70,
         "description": "Située à plus de 1000m d'altitude, le spot du Roc de Veyge est un endroit idéal pour grimper avec une magnifique vue surplombante la plein du Rhône. Le spot est divisé en trois secteurs et propose plus d'une cinquantaine de voies de tous les niveaux.",
-        "img": "<img src='img/RcVeyge2.jpg' alt='maptime logo gif' width='250px' height='175px'/>",
+        "img": "<img src='img/RcVeyge2.jpg' alt='maptime logo gif' width='350px' height='275px'/>",
         "diff":"Du 5a au 6c"
       },
       "geometry": {
@@ -105,7 +105,7 @@ var spots = {
         "Type_voies": "Couennes",
         "nbr_voies": 56,
         "description": "Le secteur du Jardin perdu est un secteur engagé avec un difficulté de voies commençant à  '6a'. Le spot propose ainsi une vingtaine de voies sur un calcaire relativement peu marqué. Ce dernier est situé à plus de 1000m d'altitude et se pratique donc uniquement en été.",
-        "img": "<img src='img/RcVeyge1.jpg' alt='maptime logo gif' width='200px' height='250px'/>",
+        "img": "<img src='img/RcVeyge1.jpg' alt='maptime logo gif' width='350px' height='400px'/>",
         "diff":"Du 5a au 7a"
       },
       "geometry": {
@@ -124,7 +124,7 @@ var spots = {
         "Type_voies": "Couennes",
         "nbr_voies": 80,
         "description": "Ce spot est apprécié pour les initiations et sortie en famille en raison en son accèssibilité et des voies relativement simple qu'on y trouve. Le secteur offre tout de même de joli défis pour tous les niveaux.",
-        "img": "<img src='img/ver_cor.jpg' alt='maptime logo gif' width='250px' height='165px'/>",
+        "img": "<img src='img/ver_cor.jpg' alt='maptime logo gif' width='350px' height='275px'/>",
         "diff":"Du 4a au 7b"
       },
       "geometry": {
@@ -143,7 +143,7 @@ var spots = {
         "Type_voies": "Couennes",
         "nbr_voies": 45,
         "description":"Ce secteur situé en plaine chablaisienne offre de nombreuses voies des tous les niveaux. Ce secteur est orienté Sud-Est et est idéal pour les chaudes journées d'été en raison de la protection qu'offrent les arbres.",
-        "img" : "<img src='img/Yorne.jpg' alt='maptime logo gif' width='250px' height='165px'/>",
+        "img" : "<img src='img/Yorne.jpg' alt='maptime logo gif' width='350px' height='275px'/>",
         "diff":"Du 5a au 7b"
       },
       "geometry": {
@@ -162,7 +162,7 @@ var spots = {
         "Type_voies": "Couennes",
         "nbr_voies": 23,
         "description":"La falaise de la feuille est un spot idéal pour les chaudes journées d'été en raison de son orientation Nord-Ouest. L'accès au secteur ce fait le long d'un petit sentier parfois bien escarpé et mérite de se faire de façon calme et réfléchie.",
-        "img" : "<img src='img/feuille.jpg' alt='maptime logo gif' width='250px' height='300px'/>",
+        "img" : "<img src='img/feuille.jpg' alt='maptime logo gif' width='350px' height='400px'/>",
         "diff":"Du 5a au 8a"
       },
       "geometry": {
@@ -181,7 +181,7 @@ var spots = {
         "Type_voies": "Couennes",
         "nbr_voies": 20,
         "description":"Le spot de grimpe de roche est un spot relativement avancé ou le niveau des voies commence uniquement en '6a'. De plus, l'accès au secteur est relativement compliqué et ne convient pas aux enfants et personnes peu expérimentée",
-        "img" : "<img src='img/Noces.jpg' alt='maptime logo gif' width='250px' height='300px'/>",
+        "img" : "<img src='img/Noces.jpg' alt='maptime logo gif' width='350px' height='400px'/>",
         "diff":"Du 6a au 7b"
       },
       "geometry": {
@@ -200,7 +200,7 @@ var spots = {
         "Type_voies": "Longues voies et Couennes",
         "nbr_voies": 23,
         "description":"Le site du Scex des Nombrieux se situe a plus de 1500m d'altitude et requiert une bonne heure de marche pour y accéder. Le spot est relativement engagé et demande un niveau de grimpe déjà avancé. Attention, voies de plusieurs longueur et paroie parfois mal équipée.",
-        "img" : "<img src='img/Scex.jpg' alt='maptime logo gif' width='250px' height='300px'/>",
+        "img" : "<img src='img/Scex.jpg' alt='maptime logo gif' width='350px' height='350px'/>",
         "diff":"Du 6a au 7c",
       },
       "geometry": {
@@ -219,7 +219,7 @@ var spots = {
         "Type_voies": "Couennes",
         "nbr_voies": 12,
         "description": "Le domain viticol du Scex du Châtelard offre une petite paroie rocheuse orientée Nord-Est qui convient parfaitement pour les petites sessions de grimpes de fin d'après-midi. De plus le site est protégé de la pluie et très facil d'accès depuis la gare de Villeneuve",
-        "img" : "<img src='img/villeneuve.jpg' alt='maptime logo gif' width='250px' height='300px'/>",
+        "img" : "<img src='img/villeneuve.jpg' alt='maptime logo gif' width='350px' height='350px'/>",
         "diff" : "Du 5c au 8a",
       },
       "geometry": {
@@ -238,7 +238,7 @@ var spots = {
         "Type_voies": "Couennes",
         "nbr_voies": 15,
         "description": "Ce spot se situe peu après le début de la montée en direction de Leysin et demande un accès motorisé. La paroie propose une vingtaine de voies dont l'hauteur maximum vaut 22m. Le spot est facil d'accès et bien sécurisé.",
-        "img" : "<img src='img/ponty.jpg' alt='maptime logo gif' width='300px' height='250px'/>",
+        "img" : "<img src='img/ponty.jpg' alt='maptime logo gif' width='350px' height='300px'/>",
         "diff": "Du 5c au 7b",
       },
       "geometry": {
@@ -315,7 +315,7 @@ var spots = {
         "Type_voies": "Couennes",
         "nbr_voies": 15,
         "description": "Le site de grimpe de Planpraz situé sur les hauts de Leysins est un lieux reservé aux grimpeurs de bons niveaux. Le spot offre une vingtaine de voie de type dévers, dont la hauteur max est de 18m. Attention une via ferrata passe le long des voies, il faut donc faire attention à son équipement et celui des autres.",
-        "img" : "<img src='img/planpraz.jfif' alt='maptime logo gif' width='300px' height='250px'/>",
+        "img" : "<img src='img/planpraz.jfif' alt='maptime logo gif' width='350px' height='300px'/>",
         "diff": "Du 6b au 7c",
       },
       "geometry": {
