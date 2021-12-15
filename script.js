@@ -855,7 +855,15 @@ function applyFilters(){
 						lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune_h.svg"
 					};
 				};
-			});
+
+  				// Ajout des coordonnées lat long du marqueur dans l'input hidden pour calculer l'itinéraire
+  				$('#'+toSelectedMarker).val(name7 + ',' + name8);
+  				toSelectedMarker == 'toPoint';
+
+  				// Changement du texte de l'input pour qu'il corresponde au site sur lequel on a cliqué
+  				$('#'+toSelectedName).val(name1);
+  				toSelectedName == 'toName';
+				});
 
 			document.getElementById("filter-results").appendChild(siteDiv);
 		}
