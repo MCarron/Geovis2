@@ -375,20 +375,22 @@ input[type="datetime-local"]{
 .nbr{
     font-size: 14px;
     text-align: center;
-    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .diff{
     font-size: 14px;
     text-align: center;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;   
 }
 
 .type{
     font-size: 14px;
     text-align: center;
-    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 .descricao{
@@ -403,9 +405,10 @@ text-align: center;
 font-size: 16px;
 color: #fff;
 height: 30px;
-width: 100%;
+margin: 20px;
 border-radius: 10px;
 margin-top: 5px;
+margin-bottom: 5px;
 background-color: rgb(108, 168, 118);
 font-family: 'Poppins', sans-serif;
 }
