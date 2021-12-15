@@ -1,2 +1,2 @@
 # Geovis2
-Projet de geovisualisation avec le ted 
+Projet de geovisualisation réaliser avec Theo et Maxime 
