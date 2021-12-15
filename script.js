@@ -895,7 +895,12 @@ function applyFilters(){
 	if (latfiltered.length != 0) {
 
 		// Indication du nombre de sites identifie
-		document.getElementById("filter-nval").append(latfiltered.length + " sites ont été trouvés :");
+		if (latfiltered.length > 1) {
+			document.getElementById("filter-nval").append(latfiltered.length + " sites ont été trouvés :");
+		}
+		if (latfiltered.length == 1) {
+			document.getElementById("filter-nval").append(latfiltered.length + " site a été trouvé :");
+		}	
 		document.getElementById("filter-nval").classList.add("filter_nval")
 
 		// Changement de position de la carte
