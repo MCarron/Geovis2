@@ -1,9 +1,11 @@
 
 # Geovis2
 
-Ce projet prend place dans le cadre du cours de "Géovisualisation 2" donné par le Porfesseur Mr.  Christian Kaiser à l'Université de Lausanne. L'idée de ce projet était de réaliser une application de cartographie interactive dont la thématique se porte sur les différents lieux de grimpe que nous pouvons rencontrer dans le Chablaise Suisse. Cette dernière permet ainsi à l'utilisateur de repérer les différents lieux de grimpe présents dans cette région
+Ce projet prend place dans le cadre du cours de "Géovisualisation 2" donné par le Porfesseur Mr.  Christian Kaiser à l'Université de Lausanne. L'idée de ce projet était de réaliser une application de cartographie interactive dont la thématique se porte sur les différents lieux de grimpe que nous pouvons rencontrer dans le Chablaise Suisse. Cette dernière permet ainsi à l'utilisateur de repérer les différents lieux de grimpe présents dans cette région.
 
 ## 1. Objectif de l'application
+
+
 
 ## 2. Application réalisée
 
@@ -68,6 +70,10 @@ Il est nécessaire de monter un serveur (ici en local), afin d'utiliser OTP. Pui
 ### 2.3 Système de filtre
 
 ### 2.4 Informations sur les sites de grimpe
+
+La base de données contenant les informations relatives aux différents site de grimpe présents dans le Chablais a été réalisée directement à partir d'un système d'information géographique (SIG). Dans le cadre de ce travail, nous avons utilisé le logiciel QGIS. Ce dernier nous a permis de créer un fichier GeoJSON qui contient l'ensemble des données.
+
+#### Création du GeoJSON
 
 ## 3. Points forts et faiblesses
 
