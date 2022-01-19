@@ -193,7 +193,7 @@ myMap.on('locationfound', function (evt) {
   	fromCurrentPos == 'fromPoint';
 
   	// Correspond à l'input visible
-  	$('#'+fromSelectedPos).val('Current position');
+  	$('#'+fromSelectedPos).val('Position actuelle');
   	fromSelectedPos == 'fromName';
 	
   	// On rend actif le filtre de distance
@@ -498,11 +498,11 @@ function drawRoute(data){
 	let eta = new Date(itin.endTime);
 	let etaTime = ('0'+ eta.getHours()).slice(-2) + 
 	":" + ('0' + eta.getMinutes()).slice(-2);
-	$('#eta').html('Arriving at '+etaTime+', duration : '+duree+' minutes');
+	$('#eta').html('Arrivée à '+etaTime+', durée : '+duree+' minutes');
 
   	// Distance en km du trajet
   	let dist = Math.round((itin.walkDistance/1000)*100) / 100
-	$('#dist').html('Total distance : ' + dist + ' km')
+	$('#dist').html('Distance totale : ' + dist + ' km')
 }
 
 

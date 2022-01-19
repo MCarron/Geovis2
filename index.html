@@ -42,7 +42,7 @@
 					<div class="form-group">
 						<!-- On ajoute un input inactif qui dit "current position" -->
 						<i class='bx bx-map-pin'></i>
-						<input type="text" class="form-control" id="fromName" placeholder="Current position">
+						<input type="text" class="form-control" id="fromName" placeholder="Position actuelle">
 					</a>
 						<!-- On ajoute un input actif qui fonctionnera avec notre script -->
 						<input type="hidden" class="form-control" id="fromPoint">
@@ -64,27 +64,27 @@
 				<div class="controls_transports">
 					<!-- <label>Transport &nbsp;&nbsp; </label> -->
 					<button id="transport_type_1" class="buttons_type transp_filters active" value="CAR">
-						<label>Car <br></label>
+						<label>Voiture <br></label>
 						<i class="bx bx-car"></i></button>
 					<button id="transport_type_2" class="buttons_type transp_filters" value="TRANSIT,WALK">
-						<label>Transit <br></label>
+						<label>Transports <br></label>
 						<i class="bx bxs-bus"></i></button>
 					<button id="transport_type_3" class="buttons_type transp_filters" value="BICYCLE">
-						<label>Bike <br></label>
+						<label>Vélo <br></label>
 						<i class="bx bx-cycling"></i></button>						
 					<button id="transport_type_4" class="buttons_type transp_filters" value="WALK">
-						<label>Walk <br></label>
+						<label>Marche <br></label>
 						<i class="bx bx-walk"></i></button>							
 					</div>
 				</div>
 
 				<div class="time_selector">
 					<input type="datetime-local" id="time-select">
-					<button onclick="setCurrentTime()">Use current time</button>
+					<button onclick="setCurrentTime()">Maintenant</button>
 				</div>
 
 				<div class="itin-go" id="stop-go">
-					<button onclick="calculateRoute()" class="itin-btn">Show itinerary</button>
+					<button onclick="calculateRoute()" class="itin-btn">Montrer itinéraire</button>
 				</div>
 
 			</div>
@@ -150,8 +150,8 @@
 				</div>
 
 					<div class="itin-go">
-						<button id="filter-go" onclick="applyFilters()" class="filter-btn">Apply filters</button>
-						<button id="reset-go" onclick="resetFilters()" class="reset-btn">Reset filters</button>
+						<button id="filter-go" onclick="applyFilters()" class="filter-btn">Appliquer filtres</button>
+						<button id="reset-go" onclick="resetFilters()" class="reset-btn">Recharger</button>
 					</div>
 
 			</div>
