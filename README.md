@@ -53,11 +53,11 @@ Afin d'utiliser notre application, il est nécessaire de monter un serveur OTP e
 
 `java -Xmx8G -jar otp_shaded.jar --load .`
 
-`java` indique que vous allez utiliser un programme écrit dans le langage
-`-Xmx8G` indique la quantité de mémoire vive que vous souhaitez allouer au programme (ici 8Go)
-`-jar` indique le type de fichier qui va être lu
-`otp_shaded.jar` correspond au programme OTP qui sera lu et executé
-`--load` charge les fichiers `.obj` préalablement créés
+`java` indique que vous allez utiliser un programme écrit dans le langage\
+`-Xmx8G` indique la quantité de mémoire vive que vous souhaitez allouer au programme (ici 8Go)\
+`-jar` indique le type de fichier qui va être lu\
+`otp_shaded.jar` correspond au programme OTP qui sera lu et executé\
+`--load` charge les fichiers `.obj` préalablement créés\
 `.` indique que tout cela se passe dans le fichier actuel (d'où le changement du chemin relatif plus haut)
 
 Après quelques secondes (ou minutes selon votre machine), la dernière ligne de commande devrait indiquer : `Grizzly server running`. Cela veut dire que votre serveur est près à l'emploi et que vous pouvez utiliser notre application.
@@ -81,7 +81,7 @@ La base de données contenant les informations relatives aux différents site de
 * Complétion automatique des lieux de destination
 
 
-### 3.2 Faiblesses
+### 3.2 Faiblesses (à améliorer)
 
 * Certains spots de grimpe ne sont pas accessible via OTP car ne se trouvent pas à côté d'une route praticable. Une solution possible aurait été d'indiquer le parking le plus proche pour qu'OTP puisse calculer l'itinéraire.
 * Certains points de départ sont invalides : on ne peut pas choisir le milieu d'une autoroute comme point de départ pour un trajet en transport en commun. Impossibilité de calculer un itinéraire si l'utilisateur se trouve dans un corps d'eau. Une solution aurait été de calculer le plus cours chemin (à vol d'oiseau) de l'utilisateur au premier point valide pour OTP et calculer l'itinéraire à partir de là.
