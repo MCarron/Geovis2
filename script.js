@@ -6,6 +6,8 @@
 $(function() {
 	$(".btn").click(function(e){
 
+		document.querySelector("#information-box").classList.remove("active");
+
 		// Ajout de l'attribut "active" à la classe window (ajout 60% de height)
 		// Depend de l'id du bouton sur lequel on appuie
 		if (this.id == "bmap") {
@@ -344,46 +346,6 @@ function calculateRoute(){
     	mode: chosenMode
   	});
 }
-
-/**
- * AUTOCOMPLETE DE LA DESTINATION
- */
- var options = [{
-	"label": "46.308767920299452, 6.978613659578678",
-	"value": "Verschiez (Dalle à Besson)"
-},
-{
-	"label": " 46.306903847814702, 6.976375793764475",
-	"value": "Versciez (Les Noces)"
-},
-{
-	"label": "46.308629544862868, 6.972804361990741",
-	"value": "Aigle"
-},
-{
-	"label": "46.321872864773226, 6.978318141740336",
-	"value": "Drapel"
-},
-{
-	"label": "46.329283379218218, 6.97922262741458",
-	"value": "Roc des Veyges"
-},
-{
-	"label": "46.33108581757196, 6.978411650326897",
-	"value": "Jardin suspendu"
-},
-{
-	"label": "46.34140823995979, 6.95448726592305",
-	"value": "Vers-Cor"
-}
-];
-
-$("#toName").autocomplete({
-	lookup: options,
-	onSelect: function (suggestion) {
-		$('#toPoint').val(suggestion.label);
-	}
-});
 
 /**
  * Lieu de destination (uniquement marqueur sélectionnable)
@@ -941,3 +903,92 @@ function resetFilters(){
 		};
 	};
 }
+
+/**
+ * AUTOCOMPLETE DE LA DESTINATION
+ */
+ var options = [{
+	"label": "46.308767920299452, 6.978613659578678",
+	"value": "Verschiez (Dalle à Besson)"
+},
+{
+	"label": " 46.306903847814702, 6.976375793764475",
+	"value": "Versciez (Les Noces)"
+},
+{
+	"label": "46.308629544862868, 6.972804361990741",
+	"value": "Aigle"
+},
+{
+	"label": "46.321872864773226, 6.978318141740336",
+	"value": "Drapel"
+},
+{
+	"label": "46.329283379218218, 6.97922262741458",
+	"value": "Roc des Veyges"
+},
+{
+	"label": "46.33108581757196, 6.978411650326897",
+	"value": "Jardin suspendu"
+},
+{
+	"label": "46.34140823995979, 6.95448726592305",
+	"value": "Vers-Cor"
+},
+{
+	"label": "46.33781478008316, 6.95357800961455",
+	"value": "Yvorne"
+},
+{
+	"label": "46.3521078473799, 6.950908026304785",
+	"value": "Falaise de la Feuille"
+},
+{
+	"label": "46.35953647191191, 6.937594005887904",
+	"value": "Roche"
+},
+{
+	"label": "46.362774728207526, 6.963040989571881",
+	"value": "Scex des Nombrieux"
+},
+{
+	"label": "46.3971939585448, 6.93489308365926",
+	"value": "Scex du Châtelard"
+},
+{
+	"label": "46.32456338463541, 7.00416970487557",
+	"value": "Ponty"
+},
+{
+	"label": "46.29520105919199, 6.977676035232792",
+	"value": "St-Triphon"
+},
+{
+	"label": "46.386063703253264, 6.930554634109375",
+	"value": "Grimper.ch"
+},
+{
+	"label": "46.342680713627985, 6.999526297136597",
+	"value": "Carrière des Chamois"
+},
+{
+	"label": "46.3508986718375, 7.012762636048781",
+	"value": "Planpraz"
+},
+
+{
+	"label": "46.36582457532338, 7.007721819314087",
+	"value": "Leysin"
+},
+{
+	"label": "46.27781301846096, 7.143120710173434",
+	"value": "Miroir de l'Argentine"
+}
+];
+
+$("#toName").autocomplete({
+	lookup: options,
+	onSelect: function (suggestion) {
+		$('#toPoint').val(suggestion.label);
+	}
+});

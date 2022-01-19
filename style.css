@@ -43,6 +43,9 @@ html, body{
     margin-top:3%;
     color: rgb(82, 82, 82);
 }
+.information .list{
+    padding: 20px;
+}
 .window .btn{
     position: absolute;
     top: 0;
@@ -67,6 +70,27 @@ input[type=text]{
     color:  #525252;
     /* margin: 10px; */
 }
+.autocomplete-suggestions :hover{
+    cursor: pointer;
+}
+.autocomplete-suggestions {
+    border: 2px solid #999;
+    border-radius: 20px;
+    background: #FFF;
+    overflow: auto;
+}
+.autocomplete-suggestion {
+    padding: 2px 5px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.autocomplete-selected {
+    background: #F0F0F0;
+}
+.autocomplete-suggestions strong {
+    font-weight: normal;
+    text-decoration: underline; 
+}
 .dist{
     position: relative;
 }
@@ -79,6 +103,9 @@ input[type=text]{
     position: absolute;
     z-index: 99;
     color: #525252;
+}
+.bx-info-circle{
+    font-size: 40px;
 }
 .time_selector{
     display: inline-block;

@@ -33,6 +33,23 @@
 	<body>
         <div id="map"></div>
 
+		<!-- Information -->
+
+		<div id="information-box" class="window active">
+			<div class="information">
+				<a href="javascript:" class="btn btnx">&times;</a>
+				<i class='bx bx-info-circle'></i>
+				<p>Bienvenue dans l'application <i>Climing in the Swiss Chablais</i></p>
+				<p>Voici quelques informations pour la prise en main de cette application</p>
+				<br>
+				<ul class="list">
+					<li>Indiquez et sélectionnez votre position actuelle comme point de départ en appuyant sur le bouton <i>cible</i> en haut à gauche de l'écran</li>
+					<li>Définissez un autre lieu de départ en faisant un clic droit de la souris (pression longue sur smartphone)</li>
+					<li>Il est possible d'utiliser un compléteur automatique pour choisir la destination</li>
+				</ul>
+			</div>
+		</div>
+
 		<!-- Itineraire -->
 		<div id="itinerary" class="window">
 			<div class="information">
@@ -54,7 +71,7 @@
 						<!-- on va afficher le nom du spot auquel on veut aller-->
 							<i class='bx bx-search' ></i>
 							<label for="toName"></label>
-							<input type="text" class="form-control" id="toName" placeholder="Destination">
+							<input type="text" class="form-control" id="toName" placeholder="Destination" onClick="this.select();">
 						<!-- on cache l'input avec les coordonnées mais on le garde pour calculer l'itinéraire -->
 						<input type="hidden" class="form-control" id="toPoint">
 						<small id="fromPointHelp" class="form-text text-muted"></small>
@@ -96,7 +113,7 @@
 				<div class="dist">
 					<p id="dist"></p>
 				</div>
-				<button class="go-btn">Go</button> <!-- !! onclick="#" rajouter la fonction -->
+				<!-- <button class="go-btn">Go</button> !! onclick="#" rajouter la fonction -->
 		</div>
 
 		<!-- Filtres -->
