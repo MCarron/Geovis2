@@ -9,7 +9,7 @@ var spots = {
         "Nom": "Verschiez (Dalle à Besson)",
         "Type_voies": "Couennes",
         "nbr_voies": 20,
-        "description": "Très jolie petite dalle situé à 15min de Verschiez à pied. Il est composé d'une quinzaines de voies orientées Sud",
+        "description": "Très jolie petite dalle située à 15min de Verschiez à pied. Il est composé d'une quinzaines de voies orientées Sud",
         "img": "<img src='img/Besson.jpg' alt='maptime logo gif' width='350px' height='200px'/>",
         "diff":"Du 5a au 7b"
       },
