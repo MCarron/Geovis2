@@ -11,6 +11,21 @@ Ce projet prend place dans le cadre du cours de "Géovisualisation 2" donné par
 
 ### 2.2 Système GPS
 
+#### Open Trip Planner (OTP)
+
+[Open Trip Planner](http://docs.opentripplanner.org/en/latest/) est un planificateur multi-modal de trajet. Il s'agit d'un projet open source qui a commencé en 2009 à l'issue d'un work shop à Portland (Oregon). David Emory, Brian Ferris et Brandon Martin-Anderson en sont les trois principaux fondateurs. Le projet a connu un développement rapide et de un nombre d'utilisateurs croissant. Une deuxième version (OpenTripPlanner 2) a vu le jour en 2020. La communauté est encore active aujourd'hui et continue de développer le projet.
+
+#### Problèmes rencontrés lors de l'implémentation d'OTP
+
+* 1. Installer la bonne version de Java
+    Après plusieurs essais, il s'est avéré préférable d'utiliser la version 11 de Java et non une plus récente
+
+* 2. Monter le serveur OTP
+    blalba
+
+#### Implémentation d'OTP
+
+Il est nécessaire de monter un serveur (ici en local), afin d'utiliser OTP. Puisqu'il s'agit d'un programme Java, OTP doit être utilisé dans une machine virtuelle Java. 
 ### 2.3 Système de filtre
 
 ### 2.4 Informations sur les sites de grimpe
