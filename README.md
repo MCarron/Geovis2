@@ -66,7 +66,9 @@ Après quelques secondes (ou minutes selon votre machine), la dernière ligne de
 
 ### 2.4 Informations sur les sites de grimpe
 
-La base de données contenant les informations relatives aux différents site de grimpe présents dans le Chablais a été réalisée directement à partir d'un système d'information géographique (SIG). Dans le cadre de ce travail, nous avons utilisé le logiciel QGIS. Ce dernier nous a permis de créer un fichier GeoJSON qui contient l'ensemble des données.
+Plusieurs sources ont été utilisées pour obtenir les différentes informations relatives aux spots de grimpe que nous pouvons rencontrer dans le Chablais vaudois. En effet, il existe de nombreux manuels de grimpe spécialisés sur les secteurs que l'on trouve dans cette région. Ces derniers fournissent généralement des informations importantes sur le type de voies que l'on peut rencontrer sur un secteur (longue voie, couenne, bloc), sur l'accessibilité lié à ces derniers ainsi que de nombreuses informations relatives aux niveaux de difficultés des voies présentent sur les paroies. 
+
+les informations relatives aux différents site de grimpe présents dans le Chablais a été regroupée directement à partir d'un système d'information géographique (SIG). Dans le cadre de ce travail, nous avons utilisé le logiciel QGIS. Ce dernier nous a permis de créer un fichier GeoJSON qui contient l'ensemble des données.
 
 #### Création du GeoJSON
 
