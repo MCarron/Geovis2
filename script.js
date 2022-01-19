@@ -929,7 +929,7 @@ function resetFilters(){
 },
 {
 	"label": "46.33108581757196, 6.978411650326897",
-	"value": "Jardin suspendu"
+	"value": "Jardin perdu"
 },
 {
 	"label": "46.34140823995979, 6.95448726592305",
@@ -982,7 +982,7 @@ function resetFilters(){
 },
 {
 	"label": "46.27781301846096, 7.143120710173434",
-	"value": "Miroir de l'Argentine"
+	"value": "Miroir d'Argentine"
 }
 ];
 

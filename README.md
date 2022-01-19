@@ -62,11 +62,6 @@ Afin d'utiliser notre application, il est nécessaire de monter un serveur OTP e
 
 Après quelques secondes (ou minutes selon votre machine), la dernière ligne de commande devrait indiquer : `Grizzly server running`. Cela veut dire que votre serveur est près à l'emploi et que vous pouvez utiliser notre application.
 
-
-
-#### Implémentation d'OTP
-
-Il est nécessaire de monter un serveur (ici en local), afin d'utiliser OTP. Puisqu'il s'agit d'un programme Java, OTP doit être utilisé dans une machine virtuelle Java. 
 ### 2.3 Système de filtre
 
 ### 2.4 Informations sur les sites de grimpe
@@ -76,6 +71,24 @@ La base de données contenant les informations relatives aux différents site de
 #### Création du GeoJSON
 
 ## 3. Points forts et faiblesses
+
+### 3.1 Points forts
+
+* Possibilité de choisir sa localisation actuelle ou une localisation personalisée
+* Possibilité de changer de moyen de transport grâce à la fonction multimodale d'OTP
+* Possibilité de calculer des itinéraires avec des transports en commun et des horaires précis
+* UI intuitive
+* Complétion automatique des lieux de destination
+
+
+### 3.2 Faiblesses
+
+* Certains spots de grimpe ne sont pas accessible via OTP car ne se trouvent pas à côté d'une route praticable. Une solution possible aurait été d'indiquer le parking le plus proche pour qu'OTP puisse calculer l'itinéraire.
+* Certains points de départ sont invalides : on ne peut pas choisir le milieu d'une autoroute comme point de départ pour un trajet en transport en commun. Impossibilité de calculer un itinéraire si l'utilisateur se trouve dans un corps d'eau. Une solution aurait été de calculer le plus cours chemin (à vol d'oiseau) de l'utilisateur au premier point valide pour OTP et calculer l'itinéraire à partir de là.
+* Pas de système de GPS avec une vue aérienne oblique
+* Nécessité de monter un serveur en local pour faire tourner OTP (possibilité d'un hébergement en ligne par la suite)
+* *Distance totale* incorrecte pour le mode TRANSIT : OTP n'indique que la distance pour les trajets à pieds
+* 
 
 ## 4. Tests utilisateurs
 
