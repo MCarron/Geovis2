@@ -6,6 +6,8 @@
 $(function() {
 	$(".btn").click(function(e){
 
+		document.querySelector("#information-box").classList.remove("active");
+
 		// Ajout de l'attribut "active" à la classe window (ajout 60% de height)
 		// Depend de l'id du bouton sur lequel on appuie
 		if (this.id == "bmap") {
@@ -344,46 +346,6 @@ function calculateRoute(){
     	mode: chosenMode
   	});
 }
-
-/**
- * AUTOCOMPLETE DE LA DESTINATION
- */
- var options = [{
-	"label": "46.308767920299452, 6.978613659578678",
-	"value": "Verschiez (Dalle à Besson)"
-},
-{
-	"label": " 46.306903847814702, 6.976375793764475",
-	"value": "Versciez (Les Noces)"
-},
-{
-	"label": "46.308629544862868, 6.972804361990741",
-	"value": "Aigle"
-},
-{
-	"label": "46.321872864773226, 6.978318141740336",
-	"value": "Drapel"
-},
-{
-	"label": "46.329283379218218, 6.97922262741458",
-	"value": "Roc des Veyges"
-},
-{
-	"label": "46.33108581757196, 6.978411650326897",
-	"value": "Jardin suspendu"
-},
-{
-	"label": "46.34140823995979, 6.95448726592305",
-	"value": "Vers-Cor"
-}
-];
-
-$("#toName").autocomplete({
-	lookup: options,
-	onSelect: function (suggestion) {
-		$('#toPoint').val(suggestion.label);
-	}
-});
 
 /**
  * Lieu de destination (uniquement marqueur sélectionnable)
@@ -788,47 +750,82 @@ function applyFilters(){
 			latfiltered.push(Number(lieux_grimpe._layers[layer]._latlng.lat));
 			lngfiltered.push(Number(lieux_grimpe._layers[layer]._latlng.lng));
 
-			// Creer div pour contenir differents sites
+			// Creer div pour contenir le site et definir le style
 			let siteDiv = document.createElement('div');
 				siteDiv.style.display = "inline-block";
 	
+			// Creer div pour contenir l'image du site
 			let imageDiv = document.createElement('div');
 			
+			// Creer img pour extraire l'image du site
 			let imageImg = document.createElement('img');
-			//document.getElementById("imageDiv").classList.add('MyClass');
+			
+			// Extraire la source de l'image et l'annexer à l'element img
 			let imageFiltered = lieux_grimpe._layers[layer].feature.properties.img;
 				imageFiltered = imageFiltered.match(/'([^']+)'/)[1]
 				imageImg.setAttribute("src", imageFiltered);
-				imageDiv.appendChild(imageImg);
-				imageDiv.classList.add("clipped_img");
 
+			// Integrer l'element img au div et definir le style
+			imageDiv.appendChild(imageImg);
+			imageDiv.classList.add("clipped_img");
+
+			// Creer div pour contenir le nom du site et definir le style
 			let textDiv = document.createElement('div');
 				textDiv.append(lieux_grimpe._layers[layer].feature.properties.Nom);
 				textDiv.style.fontSize = "18px";
 				textDiv.style.textAlign = "right";
 
+			// Integrer les 2 div au div principal et definir le style
 			siteDiv.appendChild(imageDiv);
 			siteDiv.appendChild(textDiv);
 			siteDiv.classList.add("filter_result");
 
+			// Extraction des attributs du site concerne
 			let name1 = lieux_grimpe._layers[layer].feature.properties.Nom
 			let name2 = lieux_grimpe._layers[layer].feature.properties.img
 			let name3 = lieux_grimpe._layers[layer].feature.properties.Type_voies
 			let name4 = lieux_grimpe._layers[layer].feature.properties.nbr_voies
 			let name5 = lieux_grimpe._layers[layer].feature.properties.description
 			let name6 = lieux_grimpe._layers[layer].feature.properties.diff
+			let name7 = lieux_grimpe._layers[layer]._latlng.lat
+			let name8 = lieux_grimpe._layers[layer]._latlng.lng
 
+			// Generation d'event sur div du site
 			siteDiv.addEventListener('click', event => {
+				
+				// Changement des fenetres
 				document.querySelector("#filters").classList.toggle("active");
 				document.querySelector("#infos").classList.toggle("active");
-				console.log("fgsdfgf");
+				
+				// Changement des infos
 				$(".nome").html(name1);
 				$(".imagem").html(name2);
 				$(".type").html(name3);
 				$(".nbr").html(name4);
 				$(".descricao").html(name5);
 				$(".diff").html(name6);
-			});
+
+				// Changement de position de la carte
+				myMap.setView([name7-0.045, name8], 12);
+				
+				// Changement de highlight
+				for (layer in lieux_grimpe._layers) {
+					if (lieux_grimpe._layers[layer]._icon.src == "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune_h.svg") {
+						lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune.svg"
+					};
+					if (lieux_grimpe._layers[layer].feature.properties.Nom == $(".nome").html()) {
+						lieux_grimpe._layers[layer]._icon.src = "https://raw.githubusercontent.com/ssuter6/Geovis2/main/figs/icone_jaune_h.svg"
+					};
+				};
+
+  				// Ajout des coordonnées lat long du marqueur dans l'input hidden pour calculer l'itinéraire
+  				$('#'+toSelectedMarker).val(name7 + ',' + name8);
+  				toSelectedMarker == 'toPoint';
+
+  				// Changement du texte de l'input pour qu'il corresponde au site sur lequel on a cliqué
+  				$('#'+toSelectedName).val(name1);
+  				toSelectedName == 'toName';
+				});
 
 			document.getElementById("filter-results").appendChild(siteDiv);
 		}
@@ -860,11 +857,16 @@ function applyFilters(){
 	if (latfiltered.length != 0) {
 
 		// Indication du nombre de sites identifie
-		document.getElementById("filter-nval").append(latfiltered.length + " sites ont été trouvés :");
+		if (latfiltered.length > 1) {
+			document.getElementById("filter-nval").append(latfiltered.length + " sites ont été trouvés :");
+		}
+		if (latfiltered.length == 1) {
+			document.getElementById("filter-nval").append(latfiltered.length + " site a été trouvé :");
+		}	
 		document.getElementById("filter-nval").classList.add("filter_nval")
 
 		// Changement de position de la carte
-		myMap.setView([latcenter, lngcenter], 10);
+		myMap.setView([latcenter, lngcenter], 11);
 		
 		// Scroll au sommet de la fenetre
 		$(".window").animate({ scrollTop: 0 }, "slow");
@@ -901,3 +903,92 @@ function resetFilters(){
 		};
 	};
 }
+
+/**
+ * AUTOCOMPLETE DE LA DESTINATION
+ */
+ var options = [{
+	"label": "46.308767920299452, 6.978613659578678",
+	"value": "Verschiez (Dalle à Besson)"
+},
+{
+	"label": " 46.306903847814702, 6.976375793764475",
+	"value": "Versciez (Les Noces)"
+},
+{
+	"label": "46.308629544862868, 6.972804361990741",
+	"value": "Aigle"
+},
+{
+	"label": "46.321872864773226, 6.978318141740336",
+	"value": "Drapel"
+},
+{
+	"label": "46.329283379218218, 6.97922262741458",
+	"value": "Roc des Veyges"
+},
+{
+	"label": "46.33108581757196, 6.978411650326897",
+	"value": "Jardin suspendu"
+},
+{
+	"label": "46.34140823995979, 6.95448726592305",
+	"value": "Vers-Cor"
+},
+{
+	"label": "46.33781478008316, 6.95357800961455",
+	"value": "Yvorne"
+},
+{
+	"label": "46.3521078473799, 6.950908026304785",
+	"value": "Falaise de la Feuille"
+},
+{
+	"label": "46.35953647191191, 6.937594005887904",
+	"value": "Roche"
+},
+{
+	"label": "46.362774728207526, 6.963040989571881",
+	"value": "Scex des Nombrieux"
+},
+{
+	"label": "46.3971939585448, 6.93489308365926",
+	"value": "Scex du Châtelard"
+},
+{
+	"label": "46.32456338463541, 7.00416970487557",
+	"value": "Ponty"
+},
+{
+	"label": "46.29520105919199, 6.977676035232792",
+	"value": "St-Triphon"
+},
+{
+	"label": "46.386063703253264, 6.930554634109375",
+	"value": "Grimper.ch"
+},
+{
+	"label": "46.342680713627985, 6.999526297136597",
+	"value": "Carrière des Chamois"
+},
+{
+	"label": "46.3508986718375, 7.012762636048781",
+	"value": "Planpraz"
+},
+
+{
+	"label": "46.36582457532338, 7.007721819314087",
+	"value": "Leysin"
+},
+{
+	"label": "46.27781301846096, 7.143120710173434",
+	"value": "Miroir de l'Argentine"
+}
+];
+
+$("#toName").autocomplete({
+	lookup: options,
+	onSelect: function (suggestion) {
+		$('#toPoint').val(suggestion.label);
+	}
+});
