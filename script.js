@@ -317,13 +317,13 @@ function calculateRoute(){
 	// Point de départ & d'arrivee
 	let fromPoint = $('#fromPoint').val();
 	let toPoint = $('#toPoint').val();
-
-	let lat_mean = (parseFloat(fromPoint.slice(0, 16)) + parseFloat(toPoint.slice(0, 16))) / 2;
-	let long_mean = (parseFloat(fromPoint.slice(-17)) + parseFloat(toPoint.slice(-16))) / 2;
 	
-	// Dé-zoom et fermeture du menu pour voir l'itinéraire
+	// fitBounds autours des coordonnées de départ et d'arrivée et fermeture du menu pour voir l'itinéraire
 
-	myMap.setView([lat_mean, long_mean], 10);
+	myMap.fitBounds([
+		[parseFloat(fromPoint.split(',')[0]), parseFloat(fromPoint.split(',')[1])],
+		[parseFloat(toPoint.split(',')[0]), parseFloat(toPoint.split(',')[1])]
+	]);
 	$("#itinerary").removeClass("active");
 	// Ouverture du menu eta-dist (seulement si currentPos existant)
 	if (currentPos != null) {
@@ -464,7 +464,9 @@ function drawRoute(data){
 	let eta = new Date(itin.endTime);
 	let etaTime = ('0'+ eta.getHours()).slice(-2) + 
 	":" + ('0' + eta.getMinutes()).slice(-2);
-	$('#eta').html('Arrivée à '+etaTime+', durée : '+duree+' minutes');
+	$('#eta').html('Arrivée à '+etaTime);
+
+	$('#dur').html('Durée du trajet : '+duree+' minutes');
 
   	// Distance en km du trajet
   	let dist = Math.round((itin.walkDistance/1000)*100) / 100

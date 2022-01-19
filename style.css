@@ -181,7 +181,16 @@ input[type="datetime-local"]{
     height: 17%;
     min-height: 200px;
 }
+.eta-dist .btn{
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 32px;
+    text-decoration: none;
+    color: #acacac;
+}
 .eta-dist {
+    text-align: center;
     height: 0;
     width: 100%;
     position: fixed;
@@ -192,30 +201,40 @@ input[type="datetime-local"]{
     color: rgb(82, 82, 82);
     overflow: hidden;
     padding-top: 20px;
+    transition: all 0.5s ease;
 }
 .eta{
-    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
     height: 20px;
     border-radius: 20px;
     background-color:  #d6d6d6;
     font-size: 14px;
     padding: 3px;
     margin-bottom: 10px;
-    margin-left: 20px;
-    text-align: left;
-    padding-left: 10px;
+}
+.dur{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: 20px;
+    border-radius: 20px;
+    background-color:  #d6d6d6;
+    font-size: 14px;
+    padding: 3px;
+    margin-bottom: 10px;
 }
 .dist{
-    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
     height: 20px;
     border-radius: 20px;
     background-color:  #d6d6d6;
     font-size: 14px;
     padding: 3px;
     margin-bottom: 10px;
-    margin-left: 20px;
-    text-align: left;
-    padding-left: 10px;
 }
 .eta-dist button {
     position: absolute;
