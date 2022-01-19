@@ -88,7 +88,7 @@ La base de données contenant les informations relatives aux différents site de
 * Pas de système de GPS avec une vue aérienne oblique
 * Nécessité de monter un serveur en local pour faire tourner OTP (possibilité d'un hébergement en ligne par la suite)
 * *Distance totale* incorrecte pour le mode TRANSIT : OTP n'indique que la distance pour les trajets à pieds
-* 
+* Le flyTo après le calcul d'itinéraire est codé en dur alors qu'il serait possible de prendre les coordonnées du points de départ et d'arrivée, de faire la moyenne des deux et ainsi définir le point moyen pour un flyTo plus cohérent.
 
 ## 4. Tests utilisateurs
 

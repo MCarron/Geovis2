@@ -58,7 +58,7 @@ let myMap = L.map('map', {
 	
 	// Ajout de la fonction pour selectionner un point de depart
 	contextmenuItems: [{
-    	text: 'Define as start point',
+    	text: 'Définir comme point de départ',
     	callback: choseStartPoint
 	}]
 });
@@ -231,7 +231,7 @@ function choseStartPoint (e) {
   	fromCurrentPos == 'fromPoint';
 
 	// Correspond à l'input visible
-  	$('#'+fromSelectedPos).val('Selected position');
+  	$('#'+fromSelectedPos).val('Position sélectionnée');
   	fromSelectedPos == 'fromName';
 
 	// Affichage du popup
@@ -313,18 +313,22 @@ function setCurrentTime() {
  * 2. Rcupération des paramètres voulus pour OTP (makeRoutingQuery)
  */
 function calculateRoute(){
+
+	// Point de départ & d'arrivee
+	let fromPoint = $('#fromPoint').val();
+	let toPoint = $('#toPoint').val();
+
+	let lat_mean = (parseFloat(fromPoint.slice(0, 16)) + parseFloat(toPoint.slice(0, 16))) / 2;
+	let long_mean = (parseFloat(fromPoint.slice(-17)) + parseFloat(toPoint.slice(-16))) / 2;
 	
 	// Dé-zoom et fermeture du menu pour voir l'itinéraire
-	myMap.setView([46.33, 6.79], 10);
+
+	myMap.setView([lat_mean, long_mean], 10);
 	$("#itinerary").removeClass("active");
 	// Ouverture du menu eta-dist (seulement si currentPos existant)
 	if (currentPos != null) {
 		document.querySelector(".eta-dist").classList.toggle("active");
 	}
-
-  	// Point de départ & d'arrivee
-  	let fromPoint = $('#fromPoint').val();
-  	let toPoint = $('#toPoint').val();
 
 	// Heure customisée indiquée par l'utilisateur
 	let selectedDateTime = $('#time-select').val();
@@ -466,21 +470,6 @@ function drawRoute(data){
   	let dist = Math.round((itin.walkDistance/1000)*100) / 100
 	$('#dist').html('Distance totale : ' + dist + ' km')
 }
-
-
-
-/*
-// Fonction pour definir le temps actuel
-function setCurrentTime() {
- 	let d = new Date();
- 	$('#time-select').val(d.getFullYear()+"-"+
- 		('0'+ (d.getMonth() + 1)).slice(-2)+"-"+
- 		('0'+ d.getDate()).slice(-2)+
- 		"T"+ ('0'+d.getHours()).slice(-2)+
- 		":"+ ('0'+d.getMinutes()).slice(-2)+
- 		":"+ ('0'+d.getSeconds()).slice(-2));
-}
-*/
 
 /**
  * Fonction switch pour TRANSIT,WALK et tous les autres modes
