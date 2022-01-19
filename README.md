@@ -15,13 +15,52 @@ Ce projet prend place dans le cadre du cours de "Géovisualisation 2" donné par
 
 [Open Trip Planner](http://docs.opentripplanner.org/en/latest/) est un planificateur multi-modal de trajet. Il s'agit d'un projet open source qui a commencé en 2009 à l'issue d'un work shop à Portland (Oregon). David Emory, Brian Ferris et Brandon Martin-Anderson en sont les trois principaux fondateurs. Le projet a connu un développement rapide et de un nombre d'utilisateurs croissant. Une deuxième version (OpenTripPlanner 2) a vu le jour en 2020. La communauté est encore active aujourd'hui et continue de développer le projet.
 
+OTP est un programme Java et nécessite plusieurs fichiers externes afin de fonctionner, à savoir :
+* Trois fichiers JSON qui définissent les paramètres du serveur monté
+* Un fichier [GTFS](https://opentransportdata.swiss/fr/cookbook/gtfs/) contenant les horaires des transports publics (ici pour la Suisse)
+* Un fichier [PBF](https://download.geofabrik.de/europe/switzerland.html) de la Suisse contenant toutes les informations mises à disposition par OSM pour le territoire voulu
+* Un fichier [JAR](https://repo1.maven.org/maven2/org/opentripplanner/otp/2.0.0/) contenant le programme en Java d'OTP
+* Deux fichiers `.obj` qui représentent le réseau de transport calculé grâce aux fichier GTFS, PBF par le biai du programme OTP (le fichier `.jar`). Ces fichiers `.obj` peuvent être sauvegardé afin de monter plus rapidement le serveur par la suite.
+
 #### Problèmes rencontrés lors de l'implémentation d'OTP
 
 * 1. Installer la bonne version de Java
-    Après plusieurs essais, il s'est avéré préférable d'utiliser la version 11 de Java et non une plus récente
+    * Après plusieurs essais, il s'est avéré préférable d'utiliser la version 11 de Java et non une plus récente
 
 * 2. Monter le serveur OTP
-    blalba
+    * Fichier PBF: il a fallu d'abord utiliser un fichier PBF qui concernait notre zone d'étude. Ces fichiers contiennent énormément d'informations et sont donc très volumineux. Plus le fichier est volumineux, plus le programme demande une performance croissante de la machine (surtout par rapport à la mémoire vive). Puisque nous ne possédons pas de machine assez puissante, nous avons dû restreindre notre zone d'étude au Chablais avec [Osmium](https://osmcode.org/osmium-tool/manual.html#creating-geographic-extracts).
+    * Fichier GTFS : les fichiers GTFS mis à disposition par OpenTransportData.swiss ont dû être modifié car le type de route n°1700 n'était pas reconnu par OTP. Il a été manuellement remplacé par le n°1300 afin qu'OTP le prenne en compte. Ce problème a déjà été indiqué à la communauté OTP [ici](https://github.com/opentripplanner/OpenTripPlanner/issues/2654).
+
+    Pour les données 2022, les fichiers d'OpenTransportData ne fonctionnaient plus car un type d'agence dans le fichier `agency.txt` manquait. Nous avons donc utiliser un fichier GTFS mise à disposition par [geOps](https://gtfs.geops.ch/).
+
+#### Utilisation d'OTP
+
+Afin d'utiliser notre application, il est nécessaire de monter un serveur OTP en local. Toutes les étapes nécessaires sont decrites ici :
+
+* Assurez vous d'avoir la [version 11 de Java](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html). Vous pouvez vérifier votre version de Java en tapant `java -version` dans un terminal.
+
+* [Téléchargez](https://drive.google.com/drive/folders/1F7Za8H5Ypwcle5aLj8_TLj5-Om-KLPgT?usp=sharing) le dossier compressé contenant l'ensemble des fichiers nécessaires à monter le serveur OTP.
+
+* Extrayez l'ensemble des fichiers à l'emplacement de votre choix.
+
+* Ouvrez un terminal sur votre machine
+
+* Changez le répertoire pour le dossier que vous avez téléchargé précedemment
+
+* Une fois dans le dossier, écrivez simplement :
+
+`java -Xmx8G -jar otp_shaded.jar --load .`
+
+`java` indique que vous allez utiliser un programme écrit dans le langage
+`-Xmx8G` indique la quantité de mémoire vive que vous souhaitez allouer au programme (ici 8Go)
+`-jar` indique le type de fichier qui va être lu
+`otp_shaded.jar` correspond au programme OTP qui sera lu et executé
+`--load` charge les fichiers `.obj` préalablement créés
+`.` indique que tout cela se passe dans le fichier actuel (d'où le changement du chemin relatif plus haut)
+
+Après quelques secondes (ou minutes selon votre machine), la dernière ligne de commande devrait indiquer : `Grizzly server running`. Cela veut dire que votre serveur est près à l'emploi et que vous pouvez utiliser notre application.
+
+
 
 #### Implémentation d'OTP
 
