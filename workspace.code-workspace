@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"path": "..\\notebooks"
+		},
+		{
+			"path": "..\\..\\..\\Desktop\\Test site 2"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "..\\..\\..\\Desktop\\site"
+		},
+		{
+			"path": "..\\..\\..\\Desktop\\velo\\INDEX_velorapid\\INDEX_velorapid"
+		},
+		{
+			"path": "..\\..\\..\\Desktop\\projet-geovis-quebec-v3\\visitez-quebec"
+		},
+		{
+			"path": "..\\..\\..\\Desktop\\Geovis2-aaccc53c4cd58b87e57b9bac374e5468be55fb14\\Geovis2-aaccc53c4cd58b87e57b9bac374e5468be55fb14"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Geovis2"
+	}
+}
