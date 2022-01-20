@@ -107,8 +107,8 @@ L'accès aux informations au travers de notre application peut ce faire de deux 
 * Nécessité de monter un serveur en local pour faire tourner OTP (possibilité d'un hébergement en ligne par la suite)
 * *Distance totale* incorrecte pour le mode TRANSIT : OTP n'indique que la distance pour les trajets à pieds
 * Le flyTo après le calcul d'itinéraire est codé en dur alors qu'il serait possible de prendre les coordonnées du points de départ et d'arrivée, de faire la moyenne des deux et ainsi définir le point moyen pour un flyTo plus cohérent.
-* Il serait intéressant de pouvoir ajouter des informations propres à chacune de voies que l'on peut rencontrer sur un secteur de grimpe. En effet l'application permet d'avoir des informations générales sur un secteur mais n'apporte pas d'informations directes sur les voies de grimpe (localisation des voies sur les parois de grimpes, difficultés de chacune des voies, etc.)
-* Il est toujours possible d'apporter des informations générales en plus liées à chaque secteurs (exposition, fréquentation, confort, équipement, etc.)
+* Il serait intéressant de pouvoir ajouter des informations propres à chacune de voies que l'on peut rencontrer sur un secteur de grimpe. En effet l'application permet d'avoir des informations générales sur un secteur mais n'apporte pas d'informations directes sur les voies de grimpe (localisation des voies sur les parois de grimpe, difficultés de chacune des voies, etc.)
+* Il est toujours possible d'apporter des informations générales en plus liées à chaque secteurs (exposition des parois, fréquentation des secteurs de grimpes, confort lié à la zone d'assurage, équipement des parois, etc.)
 
 ## 4. Tests utilisateurs
 
