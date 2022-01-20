@@ -75,9 +75,7 @@ Plusieurs sources ont été utilisées pour obtenir les différentes information
 Dès lors que nous avons pu trié et choisir les informations auxquelles nous souhaitions avoir accès, nous avons regroupé ces dernières au sein d'un fichier GeoJSON que nous avons pu réaliser à partir d'un système d'information géographique (SIG). Dans notre cas nous avons utiliser le programme QGIS. GeoJSON est un format ouvert d’échange de données géospatiales utilisant la norme JSON représentant des entités géographiques simples et leurs attributs non spatiaux. Ce format permet d’encoder diverses structures de données géographiques du fait qu'il utilise un système de référentiel de coordonnées géographiques [ArcGIS](https://doc.arcgis.com/fr/arcgis-online/reference/geojson.htm). Ainsi, une fois que notre fichier GeoJSON a été créer, nous avons pu utiliser ce dernier pour afficher les informations souhaitée sur notre carte interactive.
 
 #### Extrait du fichier GeoJSON
-![](C:\Users\Steven\Desktop\geovis2\GeoJSON.png)
-
-
+![GeoJSON](https://user-images.githubusercontent.com/81638170/150301406-d27a0cc1-783c-481a-9167-3bba693392d4.png)
 
 ## 3. Points forts et faiblesses
 
