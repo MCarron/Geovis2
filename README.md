@@ -116,9 +116,11 @@ L'accès aux informations au travers de notre application peut ce faire de deux 
 
 #### Accès aux informations
 - Au travers des marqueurs
+
 ![info](https://user-images.githubusercontent.com/81638170/150320251-f84143fd-2a53-4994-89b5-398c421f83ca.png)
 
 - Au travers du boutton d'information présent sur le bas côté droite de l'application
+
 ![info2](https://user-images.githubusercontent.com/81638170/150320289-217d2eb4-aaae-4525-84b3-61b51652a6dc.png)
 
 
