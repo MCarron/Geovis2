@@ -114,6 +114,16 @@ L'accès aux informations au travers de notre application peut ce faire de deux 
 
 ## 5. Screenshots
 
+#### Système GPS
+
+- Choix du lieu de départ, de destination, du mode de transport, la date et l'heure
+
+![gps](img/sc1.png)
+
+- Indication de l'itinéraire calculé et des informations relatives
+
+![gps2](img/sc2.png)
+
 #### Accès aux informations
 - Au travers des marqueurs
 
