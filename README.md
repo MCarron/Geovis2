@@ -81,8 +81,8 @@ L'extrait présenté ci-dessous montre à quoi ressemble notre fichier GeoJSON. 
 
 #### Accès aux informations
 L'accès aux informations au travers de notre application peut ce faire de deux façons.
-*Tabspace* 1) Lorsque l'utilisateur click sur un des marqeurs présent sur la carte, une popup s'ouvre affichant le nom du secteur auquel le marqueur fait référence. De plus, en-        dessous de ce nom figure un bouton permettant d'afficher des infromations supplémentaires ainsi qu'une image relatives au secteur selectionné.
-*Tabspace* 2) L'utilisateur peut également choisir de directement afficher les informations (complètes) liées à un secteur de grimpe en selectionnant le bouton d'information présent dans le bas coté droite de l'application. Dès lors une page contenant les informations détaillées du secteur s'ouvre. L'utilisateur peut dès lors cliquer sur n'importe quel secteur pour obtenir les informations qu'il souhaite.
+* 1) Lorsque l'utilisateur click sur un des marqeurs présent sur la carte, une popup s'ouvre affichant le nom du secteur auquel le marqueur fait référence. De plus, en-        dessous de ce nom figure un bouton permettant d'afficher des infromations supplémentaires ainsi qu'une image relatives au secteur selectionné.
+* 2) L'utilisateur peut également choisir de directement afficher les informations (complètes) liées à un secteur de grimpe en selectionnant le bouton d'information présent dans le bas coté droite de l'application. Dès lors une page contenant les informations détaillées du secteur s'ouvre. L'utilisateur peut dès lors cliquer sur n'importe quel secteur pour obtenir les informations qu'il souhaite.
 
 
 
