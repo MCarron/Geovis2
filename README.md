@@ -69,13 +69,15 @@ Après quelques secondes (ou minutes selon votre machine), la dernière ligne de
 
 ### 2.4 Informations sur les sites de grimpe
 
-Plusieurs sources ont été utilisées pour obtenir les différentes informations relatives aux spots de grimpe que nous pouvons rencontrer dans le Chablais vaudois. En effet, il existe de nombreux manuels de grimpe spécialisés sur les différents secteurs que l'on trouve dans cette région. Ces derniers fournissent généralement des informations importantes sur le type de voies que l'on peut rencontrer sur un secteur (longue voie, couenne, bloc), sur l'accessibilité lié à ces derniers ainsi que de nombreuses informations relatives aux niveaux de difficultés des voies présentent sur les paroies. Dans le cadre de ce travail, nous nous sommes principalement inspiré des informations fournient dans le topo de grimpe écrit par Claude et Yves Rémy, deux figurent phare de la grimpe en Suisse.
-
-Dès lors que nous avons pu trié et choisir les informations auxquelles nous souhaitions avoir accès, nous avons regroupé ces dernières au sein d'un fichier GeoJSON que nous avons pu réaliser à partir d'un système d'information géographique (SIG). Dans notre cas nous avons utiliser le programme QGIS.
-
-
+Plusieurs sources ont été utilisées pour obtenir les différentes informations relatives aux spots de grimpe que nous pouvons rencontrer dans le Chablais vaudois. En effet, il existe de nombreux manuels de grimpe spécialisés sur les différents secteurs que l'on trouve dans cette région. Ces derniers fournissent généralement des informations importantes sur le type de voies que l'on peut rencontrer sur un secteur (longue voie, couenne, bloc), sur l'accessibilité lié à ces derniers ainsi que de nombreuses informations relatives aux niveaux de difficultés des voies présentent sur les paroies. Nous pouvons noter que dans le cadre de ce travail, nous nous sommes principalement inspiré des informations fournient dans le [topo](https://sportescalade.com/topo/) de grimpe écrit par Claude et Yves Rémy, deux figurent phare de la grimpe en Suisse.
 
 #### Création du GeoJSON
+Dès lors que nous avons pu trié et choisir les informations auxquelles nous souhaitions avoir accès, nous avons regroupé ces dernières au sein d'un fichier GeoJSON que nous avons pu réaliser à partir d'un système d'information géographique (SIG). Dans notre cas nous avons utiliser le programme QGIS. GeoJSON est un format ouvert d’échange de données géospatiales utilisant la norme JSON représentant des entités géographiques simples et leurs attributs non spatiaux. Ce format permet d’encoder diverses structures de données géographiques du fait qu'il utilise un système de référentiel de coordonnées géographiques [ArcGIS](https://doc.arcgis.com/fr/arcgis-online/reference/geojson.htm). Ainsi, une fois que notre fichier GeoJSON a été créer, nous avons pu utiliser ce dernier pour afficher les informations souhaitée sur notre carte interactive.
+
+#### Extrait du fichier GeoJSON
+![](C:\Users\Steven\Desktop\geovis2\GeoJSON.png)
+
+
 
 ## 3. Points forts et faiblesses
 
