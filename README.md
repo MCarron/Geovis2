@@ -76,8 +76,10 @@ Dès lors que nous avons pu trié et choisir les informations auxquelles nous so
 
 #### Extrait du fichier GeoJSON
 L'extrait présenté ci-dessous montre à quoi resemble notre fichier GeoJSON. Nous pouvons voir que chaque spots de grimpe est associé à des coordonées géographiques précises. De plus, nous pouvons également voir que chacun des spots est associé à un certain nombre d'entité qui ont été définient par nous même. A savoir: `Nom`, `Type de voies`, `nombre de voies`, `description`, `image` ainsi que `difficulté`.
-
 ![GeoJSON](https://user-images.githubusercontent.com/81638170/150301406-d27a0cc1-783c-481a-9167-3bba693392d4.png)
+
+#### Affichage des informations
+
 
 ## 3. Points forts et faiblesses
 
