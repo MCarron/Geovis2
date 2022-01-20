@@ -9,7 +9,7 @@ var spots = {
         "Nom": "Verschiez (Dalle à Besson)",
         "Type_voies": "Couennes",
         "nbr_voies": 20,
-        "description": "Très jolie petite dalle située à 15min de Verschiez à pied. Il est composé d'une quinzaines de voies orientées Sud",
+        "description": "Très jolie petite dalle située à 15 min à pied de Verschiez. Le secteur est composé d'une quinzaine de voies orientées Sud, dont la longueur varie entre 15m et 22m",
         "img": "<img src='img/Besson.jpg' alt='maptime logo gif' width='350px' height='200px'/>",
         "diff":"Du 5a au 7b"
       },
@@ -28,7 +28,7 @@ var spots = {
         "Nom": "Versciez (Les Noces)",
         "Type_voies": "Couennes",
         "nbr_voies": 8,
-        "description": "Très jolie petite dalle situé à 15min à pied de Verschiez. Il est composé de 6-7 voies orientées Sud",
+        "description": "Très jolie petite dalle située à 15min à pied de Verschiez. Le secteur est petit et se compose uniquement de 6-7 voies orientées Sud. Le spot convient donc plus pour une soirée de semaine ou l'affluence sera moindre",
         "img": "<img src='img/Noce.jpg' alt='maptime logo gif' width='350px' height='400px'/>",
         "diff":"Du 5a au 7c"
       },
@@ -47,7 +47,7 @@ var spots = {
         "Nom": "Aigle",
         "Type_voies": "Couennes",
         "nbr_voies": 3,
-        "description": "Joli secteur de grimpe situé à 5min à pied du parking. Il est composé d'une vingtaine de voie relativement engagée. Il est idéal pour l'été car orienté Ouest/Nord-Ouest",
+        "description": "Joli secteur de grimpe situé à 5min à pied du parking. Le secteur est composé d'une vingtaine de voie relativement engagées. Il est idéal pour l'été car orienté Ouest/Nord-Ouest, ce qui permet de ce mettre à l'abri les journées de fortes chaleur",
         "img": "<img src='img/aigle.jpg' alt='maptime logo gif' width='350px' height='250px'/>",
         "diff":"Du 5a au 8b"
       },
@@ -66,7 +66,7 @@ var spots = {
         "Nom": "Drapel",
         "Type_voies": "Couennes",
         "nbr_voies": 60,
-        "description":"Le secteur de Drapel se situe juste en-dessus d'Yvorne et surplombe la pleine du Rhône. Le spot est divisé en plusieurs secteurs qui sont composés de plus d'une centaine de voies. L'approche se fait le long d'un sentier (env. 20min à pied).",
+        "description":"Le magnifique secteur de Drapel se situe juste en dessus d'Yvorne et surplombe la plaine du Rhône. Le spot est divisé en plusieurs secteurs qui sont composés de plus d'une centaine de voies. Il convient donc parfaitement pour les journées de week-end à forte affluence. L'approche se fait le long d'un sentier partant du parking (environ 20min à pied).",
         "img": "<img src='img/drapel.jpg' alt='maptime logo gif' width='350px' height='250px'/>",
         "diff":"Du 5a au 8b"
       },
@@ -85,7 +85,7 @@ var spots = {
         "Nom": "Roc de Veyges",
         "Type_voies": "Couennes",
         "nbr_voies": 70,
-        "description": "Située à plus de 1000m d'altitude, le spot du Roc de Veyge est un endroit idéal pour grimper avec une magnifique vue surplombante la plein du Rhône. Le spot est divisé en trois secteurs et propose plus d'une cinquantaine de voies de tous les niveaux.",
+        "description": "Situé à plus de 1000m d'altitude, le spot du Roc de Veyge est un endroit idéal pour grimper avec une magnifique vue surplombante la plaine du Rhône. Le spot est divisé en trois secteurs et propose plus d'une cinquantaine de voies de tous les niveaux. Attention l'approche ce fait le long d'un sentier étroit.",
         "img": "<img src='img/RcVeyge2.jpg' alt='maptime logo gif' width='350px' height='275px'/>",
         "diff":"Du 5a au 6c"
       },
@@ -104,7 +104,7 @@ var spots = {
         "Nom": "Jardin Perdu",
         "Type_voies": "Couennes",
         "nbr_voies": 56,
-        "description": "Le secteur du Jardin perdu est un secteur engagé avec un difficulté de voies commençant à  '6a'. Le spot propose ainsi une vingtaine de voies sur un calcaire relativement peu marqué. Ce dernier est situé à plus de 1000m d'altitude et se pratique donc uniquement en été.",
+        "description": "Le secteur du Jardin perdu est un secteur engagé avec un niveau de difficulté des voies commençant à  '6a'. Le spot propose ainsi une vingtaine de voies sur un calcaire relativement peu marqué. Ce dernier est situé à plus de 1000m d'altitude et se pratique donc uniquement en été.",
         "img": "<img src='img/RcVeyge1.jpg' alt='maptime logo gif' width='350px' height='400px'/>",
         "diff":"Du 5a au 7a"
       },
