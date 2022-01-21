@@ -618,6 +618,10 @@ function showSteps(){
 				relativedirection = "à gauche"
 			case "HARD_RIGHT":
 				relativedirection = "à droite"
+			case "CIRCLE_CLOCKWISE":
+				relativedirection = "légèrement à gauche"
+			case "CIRCLE_COUNTERCLOCKWISE":
+				relativedirection = "légèrement à gauche"
 			}
 
 		// Convertir la direction absolue de l'etape
@@ -695,6 +699,7 @@ function showSteps(){
 			// Generation d'event sur div du site
 			stepDiv.addEventListener('click', event => {
 				console.log("UUU");
+				myMap.setView([step.lat-0.001,step.lon], 17);
 			});
 
 		document.getElementById("step-results").appendChild(stepDiv);
