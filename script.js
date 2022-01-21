@@ -591,8 +591,12 @@ function showSteps(){
 
 		// Convertir la distance de l'etape
 		let distance
-		if (step.distance < 1000) {
+		if (step.distance < 100) {
 			distance = Math.round(step.distance);
+			distance = distance + ' m'
+		}
+		if ((step.distance >= 100) && (step.distance <= 1000)) {
+			distance = Math.round(step.distance/10)*10;
 			distance = distance + ' m'
 		}
 		if (step.distance >= 1000) {
