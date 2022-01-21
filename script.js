@@ -618,10 +618,8 @@ function showSteps(){
 				relativedirection = "à gauche"
 			case "HARD_RIGHT":
 				relativedirection = "à droite"
-			case "CIRCLE_CLOCKWISE":
-				relativedirection = "légèrement à gauche"
 			case "CIRCLE_COUNTERCLOCKWISE":
-				relativedirection = "légèrement à gauche"
+				relativedirection = "à droite"
 			}
 
 		// Convertir la direction absolue de l'etape
@@ -692,9 +690,6 @@ function showSteps(){
 			// Integrer les 2 div au div principal et definir le style
 			stepDiv.appendChild(textDiv);
 			stepDiv.appendChild(indexDiv);
-
-			// Extraction des attributs du site concerne
-			let name1 = step.relativeDirection
 
 			// Generation d'event sur div du site
 			stepDiv.addEventListener('click', event => {
