@@ -311,8 +311,9 @@ function setCurrentTime() {
  */
 function calculateRoute(){
 	
-	// Reinitialisation de la liste des etapes
+	// Reinitialisation de la liste des etapes et faire figurer le bouton des etapes
 	document.getElementById('step-results').textContent = '';
+	$(".step").addClass("active");
 
 	// Point de départ & d'arrivee
 	let fromPoint = $('#fromPoint').val();
@@ -550,8 +551,10 @@ function showSteps(){
 
 	console.log("initialisation de la fonction");
 	
-	$(".go-btn").removeClass("active");
-
+	// Retirer affichage du bouton
+	$(".step").removeClass("active");
+	$(".eta-dist-content").removeClass("active");
+	
 	// Reinitialisation de la liste des etapes
 	document.getElementById('step-results').textContent = '';
 

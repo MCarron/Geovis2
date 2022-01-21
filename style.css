@@ -164,8 +164,8 @@ input[type="datetime-local"]{
     background-color: rgb(102, 158, 223);
     display: none;
 }
-.go-btn .active{
-    display: none;
+.itin-go .go-btn .active{
+    background-color: rgb(175, 102, 223);
 }
 .itin-go .filter-btn{
     background-color: rgb(223, 171, 102);
@@ -182,8 +182,8 @@ input[type="datetime-local"]{
     background-color:  #969696;
 }
 .eta-dist.active {
-    height: 17%;
-    min-height: 200px;
+    height: 22%;
+    min-height: 240px;
 }
 .eta-dist.steps {
     height: 50%;
@@ -221,6 +221,7 @@ input[type="datetime-local"]{
     transition: all 0.5s ease;
 }
 .eta{
+    float: inline-block;
     margin-left: auto;
     margin-right: auto;
     width: 80%;
@@ -232,6 +233,7 @@ input[type="datetime-local"]{
     margin-bottom: 10px;
 }
 .dur{
+    float: inline-block;
     margin-left: auto;
     margin-right: auto;
     width: 80%;
@@ -243,6 +245,7 @@ input[type="datetime-local"]{
     margin-bottom: 10px;
 }
 .dist{
+    float: inline-block;
     margin-left: auto;
     margin-right: auto;
     width: 80%;
@@ -251,18 +254,26 @@ input[type="datetime-local"]{
     background-color:  #d6d6d6;
     font-size: 14px;
     padding: 3px;
-    margin-bottom: 10px;
+    margin-bottom: 70px;
+}
+.step.active {
+    width: 100%;
+    padding: 3px;
+    display:inline;
+}
+.step {
+    display:none;
 }
 .eta-dist button {
+    margin:0 auto;
     position: absolute;
-    right: 20px;
-    top: 20px;
+    bottom: 50px;
     border-radius: 40px;
     border: none;
+    padding: 10px;
     background-color: rgb(102, 158, 223);
-    font-size: 18px;
-    padding: 20px;
     color: #fff;
+    font-size: 16px;
     cursor: pointer;
 }
 /* .eta-dist button{
