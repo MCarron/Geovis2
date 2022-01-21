@@ -395,10 +395,12 @@ function setHeader(xhr){
 // Letiable contenant l'ensemble de nos polylines (groupées dans une couche)
 let polylineGroup = L.layerGroup().addTo(myMap);
 
+let steps
+
 // Fonction pour dessiner la route
 function drawRoute(data){
   	if (data.error){
-    	alert("Couldn't calculate itinerary, try to change the time");
+    	alert("Calcul d'itinéraire impossible.");
     	return;
   	}
 
@@ -426,13 +428,13 @@ function drawRoute(data){
       	// Obtention du mode de transport pour chaque leg (pour icone surement)
       	let leg_mode = leg.mode
 
-      	let steps = leg.steps;
+      	steps = leg.steps;
 
 		// Etapes de l'itinéraire pour future fonction GPS
-        // for (let f = 0; f < steps.length; f++){
-        //   	let step = steps[f];
-        //   	console.log(step)
-        // }
+		for (let f = 0; f < steps.length; f++){
+           	let step = steps[f];
+           	console.log(step)
+        }
 
         // Conversion chaque point en GeoJson
         let geomLeg = polyline.toGeoJSON(leg.legGeometry.points);
@@ -543,61 +545,57 @@ function showSteps(){
 
 	console.log("initialisation de la fonction");
 
-			// Creer div pour contenir le site et definir le style
-			let siteDiv = document.createElement('div');
-				siteDiv.style.display = "inline-block";
+	// Etapes de l'itinéraire pour future fonction GPS
+	for (let i = 0; i < steps.length; i++){
+		let step = steps[i];
+		console.log(step)
+
+		// Creer div pour contenir le site et definir le style
+		let stepDiv = document.createElement('div');
+		stepDiv.style.display = "inline-block";
 	
-			// Creer div pour contenir l'image du site
-			let imageDiv = document.createElement('div');
+		// Creer div pour contenir l'image du site
+		let imageDiv = document.createElement('div');
 			
-			// Creer img pour extraire l'image du site
-			let imageImg = document.createElement('img');
+		// Creer img pour extraire l'image du site
+		let imageImg = document.createElement('img');
 			
-			// Extraire la source de l'image et l'annexer à l'element img
-			let imageFiltered = lieux_grimpe._layers[layer].feature.properties.img;
-				imageFiltered = imageFiltered.match(/'([^']+)'/)[1]
-				imageImg.setAttribute("src", imageFiltered);
+		// Extraire la source de l'image et l'annexer à l'element img
+		let imageFiltered = lieux_grimpe._layers[layer].feature.properties.img;
+		imageFiltered = imageFiltered.match(/'([^']+)'/)[1]
+		imageImg.setAttribute("src", imageFiltered);
 
-			// Integrer l'element img au div et definir le style
-			imageDiv.appendChild(imageImg);
-			imageDiv.classList.add("clipped_img");
+		// Integrer l'element img au div et definir le style
+		imageDiv.appendChild(imageImg);
+		imageDiv.classList.add("clipped_img");
 
-			// Creer div pour contenir le nom du site et definir le style
-			let textDiv = document.createElement('div');
-				textDiv.append(lieux_grimpe._layers[layer].feature.properties.Nom);
-				textDiv.style.fontSize = "18px";
-				textDiv.style.textAlign = "right";
+		// Creer div pour contenir le nom du site et definir le style
+		let indexDiv = document.createElement('div');
+		indexDiv.append(i);
+		indexDiv.style.fontSize = "20px";
+		indexDiv.style.textAlign = "left";
+
+		// Creer div pour contenir le nom du site et definir le style
+		let textDiv = document.createElement('div');
+		textDiv.append(step.relativeDirection);
+		textDiv.style.fontSize = "18px";
+		textDiv.style.textAlign = "right";
 
 			// Integrer les 2 div au div principal et definir le style
-			siteDiv.appendChild(imageDiv);
-			siteDiv.appendChild(textDiv);
-			siteDiv.classList.add("filter_result");
+			stepDiv.appendChild(indexDiv);
+			stepDiv.appendChild(textDiv);
+			stepDiv.classList.add("filter_result");
 
 			// Extraction des attributs du site concerne
-			let name1 = lieux_grimpe._layers[layer].feature.properties.Nom
-			let name2 = lieux_grimpe._layers[layer].feature.properties.img
-			let name3 = lieux_grimpe._layers[layer].feature.properties.Type_voies
-			let name4 = lieux_grimpe._layers[layer].feature.properties.nbr_voies
-			let name5 = lieux_grimpe._layers[layer].feature.properties.description
-			let name6 = lieux_grimpe._layers[layer].feature.properties.diff
-			let name7 = lieux_grimpe._layers[layer]._latlng.lat
-			let name8 = lieux_grimpe._layers[layer]._latlng.lng
+			let name1 = step.relativeDirection
 
 			// Generation d'event sur div du site
-			siteDiv.addEventListener('click', event => {
-				
-				// Changement des fenetres
-				document.querySelector("#filters").classList.toggle("active");
-				document.querySelector("#infos").classList.toggle("active");
-				
-				// Changement des infos
-				$(".nome").html(name1);
-				$(".imagem").html(name2);
-				$(".type").html(name3);
-				$(".nbr").html(name4);
-				$(".descricao").html(name5);
-				$(".diff").html(name6);
+			stepDiv.addEventListener('click', event => {
+				console.log("UUU");
 			});
+
+		document.getElementById("step-results").appendChild(stepDiv);
+	}
 };
 
 //////////////////////////////////////////////////
