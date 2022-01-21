@@ -539,7 +539,66 @@ function calculateRouteError(error){
   	console.log('Routing error', error);
 }
 
+function showSteps(){
 
+	console.log("initialisation de la fonction");
+
+			// Creer div pour contenir le site et definir le style
+			let siteDiv = document.createElement('div');
+				siteDiv.style.display = "inline-block";
+	
+			// Creer div pour contenir l'image du site
+			let imageDiv = document.createElement('div');
+			
+			// Creer img pour extraire l'image du site
+			let imageImg = document.createElement('img');
+			
+			// Extraire la source de l'image et l'annexer à l'element img
+			let imageFiltered = lieux_grimpe._layers[layer].feature.properties.img;
+				imageFiltered = imageFiltered.match(/'([^']+)'/)[1]
+				imageImg.setAttribute("src", imageFiltered);
+
+			// Integrer l'element img au div et definir le style
+			imageDiv.appendChild(imageImg);
+			imageDiv.classList.add("clipped_img");
+
+			// Creer div pour contenir le nom du site et definir le style
+			let textDiv = document.createElement('div');
+				textDiv.append(lieux_grimpe._layers[layer].feature.properties.Nom);
+				textDiv.style.fontSize = "18px";
+				textDiv.style.textAlign = "right";
+
+			// Integrer les 2 div au div principal et definir le style
+			siteDiv.appendChild(imageDiv);
+			siteDiv.appendChild(textDiv);
+			siteDiv.classList.add("filter_result");
+
+			// Extraction des attributs du site concerne
+			let name1 = lieux_grimpe._layers[layer].feature.properties.Nom
+			let name2 = lieux_grimpe._layers[layer].feature.properties.img
+			let name3 = lieux_grimpe._layers[layer].feature.properties.Type_voies
+			let name4 = lieux_grimpe._layers[layer].feature.properties.nbr_voies
+			let name5 = lieux_grimpe._layers[layer].feature.properties.description
+			let name6 = lieux_grimpe._layers[layer].feature.properties.diff
+			let name7 = lieux_grimpe._layers[layer]._latlng.lat
+			let name8 = lieux_grimpe._layers[layer]._latlng.lng
+
+			// Generation d'event sur div du site
+			siteDiv.addEventListener('click', event => {
+				
+				// Changement des fenetres
+				document.querySelector("#filters").classList.toggle("active");
+				document.querySelector("#infos").classList.toggle("active");
+				
+				// Changement des infos
+				$(".nome").html(name1);
+				$(".imagem").html(name2);
+				$(".type").html(name3);
+				$(".nbr").html(name4);
+				$(".descricao").html(name5);
+				$(".diff").html(name6);
+			});
+};
 
 //////////////////////////////////////////////////
 //////////// GESTION DES FILTRES /////////////////
