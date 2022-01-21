@@ -1,11 +1,17 @@
 
-# Geovis2
-
-Ce projet prend place dans le cadre du cours de "Géovisualisation 2" donné par le Porfesseur Mr.  Christian Kaiser à l'Université de Lausanne. L'idée de ce projet était de réaliser une application de cartographie interactive dont la thématique se porte sur les différents lieux de grimpe que nous pouvons rencontrer dans le Chablaise Suisse. Cette dernière permet ainsi à l'utilisateur de repérer les différents lieux de grimpe présents dans cette région.
+# Climbing in the Swiss Chablais
 
 ## 1. Objectif de l'application
 
+Ce projet a été réalisé dans le cadre du cours Géovisualisation dynamique et traitement de données donné par Pr. Christian Kaiser à l'Univsersité  de Lausanne.
 
+L'idée de ce projet était de réaliser une application de cartographie intéractive portant sur les différents lieux de grimpe qui se trouvent dans le Chablais suisse. Cette application permet ainsi à l'utilisateur de repérer les différents lieux de grimpe présents dans cette région et d'intéragir de plusieurs manières avec ceux-ci :
+
+* un itinéraire entre un lieu choisi et les différents spots de grimpe peut être rapidement calculé. Plusieurs options sont possibles, telles que le mode de transport, la date ou l'heure de transport
+
+* un filtrage des lieux, selon la difficulté, la distance l'altitude, etc ... est possible
+
+* des informations supplémentaires pour chaque spot de grimpe sont disponibles, avec une photo, une description, etc ...
 
 ## 2. Application réalisée
 
@@ -114,9 +120,7 @@ L'accès aux informations au travers de notre application peut ce faire de deux 
 * Il serait intéressant de pouvoir ajouter des informations propres à chacune de voies que l'on peut rencontrer sur un secteur de grimpe. En effet l'application permet d'avoir des informations générales sur un secteur mais n'apporte pas d'informations directes sur les voies de grimpe (localisation des voies sur les parois de grimpe, difficultés de chacune des voies, etc.)
 * Il est toujours possible d'apporter des informations générales en plus liées à chaque secteurs (exposition des parois, fréquentation des secteurs de grimpes, confort lié à la zone d'assurage, équipement des parois, etc.)
 
-## 4. Tests utilisateurs
-
-## 5. Screenshots
+## 4. Screenshots
 
 #### Système GPS
 
@@ -137,8 +141,9 @@ L'accès aux informations au travers de notre application peut ce faire de deux 
 
 ![info2](https://user-images.githubusercontent.com/81638170/150320289-217d2eb4-aaae-4525-84b3-61b51652a6dc.png)
 
-## 6. Source
+## 5. Source
 
+[OpenTripPlanner](http://docs.opentripplanner.org/en/latest/)
 
 
 
