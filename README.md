@@ -63,10 +63,6 @@ Afin d'utiliser notre application, il est nécessaire de monter un serveur OTP e
 Après quelques secondes (ou minutes selon votre machine), la dernière ligne de commande devrait indiquer : `Grizzly server running`. Cela veut dire que votre serveur est près à l'emploi et que vous pouvez utiliser notre application.
 
 ### 2.3 Système de filtre
-
-
-
-
 ### 2.4 Informations sur les sites de grimpe
 
 Plusieurs sources ont été utilisées pour obtenir les différentes informations relatives aux spots de grimpe que nous pouvons rencontrer dans le Chablais vaudois. En effet, il existe de nombreux manuels de grimpe spécialisés sur les différents secteurs que l'on trouve dans cette région. Ces derniers fournissent généralement des informations importantes sur le type de voies que l'on peut rencontrer sur un secteur (longue voie, couenne, bloc), sur l'accessibilité liée à ces derniers ainsi que de nombreuses informations relatives au niveau de difficulté des voies présentent sur les parois. Nous pouvons noter que dans le cadre de ce travail, nous nous sommes principalement inspiré des informations fournies dans le [topo](https://sportescalade.com/topo/) de grimpe écrit par Claude et Yves Rémy, deux figurent phare de la grimpe en Suisse.
@@ -86,6 +82,8 @@ L'accès aux informations au travers de notre application peut ce faire de deux 
 
 
 
+#### Création du GeoJSON
+
 ## 3. Points forts et faiblesses
 
 ### 3.1 Points forts
@@ -103,10 +101,10 @@ L'accès aux informations au travers de notre application peut ce faire de deux 
 
 * Certains spots de grimpe ne sont pas accessible via OTP car ne se trouvent pas à côté d'une route praticable. Une solution possible aurait été d'indiquer le parking le plus proche pour qu'OTP puisse calculer l'itinéraire.
 * Certains points de départ sont invalides : on ne peut pas choisir le milieu d'une autoroute comme point de départ pour un trajet en transport en commun. Impossibilité de calculer un itinéraire si l'utilisateur se trouve dans un corps d'eau. Une solution aurait été de calculer le plus cours chemin (à vol d'oiseau) de l'utilisateur au premier point valide pour OTP et calculer l'itinéraire à partir de là.
+* Puisque nous avons choisi de montrer un seul itinéraire et ne pas laisser le choix à l'utilisateur, cela engendre des problèmes au niveau des transits : le premier itinéraire proposé par OTP avec le mode TRANSIT est toujours un trajet à pied. Nous avons donc décidé de choisir uniquement le deuxième itinéraire proposé par OTP, qui est le plus rapide en utilisant les transports en commun. Or, si on choisit un point de départ proche du point d'arrivée, utiliser les transports en commun ne sera clairement pas plus rentable que de marcher. Il en résulte un temps de trajet beaucoup plus long pour deux points rapprochés.
 * Pas de système de GPS avec une vue aérienne oblique
 * Nécessité de monter un serveur en local pour faire tourner OTP (possibilité d'un hébergement en ligne par la suite)
 * *Distance totale* incorrecte pour le mode TRANSIT : OTP n'indique que la distance pour les trajets à pieds
-* Le flyTo après le calcul d'itinéraire est codé en dur alors qu'il serait possible de prendre les coordonnées du points de départ et d'arrivée, de faire la moyenne des deux et ainsi définir le point moyen pour un flyTo plus cohérent.
 * Il serait intéressant de pouvoir ajouter des informations propres à chacune de voies que l'on peut rencontrer sur un secteur de grimpe. En effet l'application permet d'avoir des informations générales sur un secteur mais n'apporte pas d'informations directes sur les voies de grimpe (localisation des voies sur les parois de grimpe, difficultés de chacune des voies, etc.)
 * Il est toujours possible d'apporter des informations générales en plus liées à chaque secteurs (exposition des parois, fréquentation des secteurs de grimpes, confort lié à la zone d'assurage, équipement des parois, etc.)
 
@@ -132,8 +130,6 @@ L'accès aux informations au travers de notre application peut ce faire de deux 
 - Au travers du boutton d'information présent sur le bas côté droite de l'application
 
 ![info2](https://user-images.githubusercontent.com/81638170/150320289-217d2eb4-aaae-4525-84b3-61b51652a6dc.png)
-
-
 
 ## 6. Source
 
