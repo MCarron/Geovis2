@@ -53,6 +53,7 @@ let myMap = L.map('map', {
 	minZoom: 10,
 	maxZoom: 18,
 	zoom: 13,
+	zoomSnap: 0.1,
 	contextmenu: true,
 	contextmenuWidth: 140,
 	
@@ -323,7 +324,7 @@ function calculateRoute(){
 	myMap.fitBounds([
 		[parseFloat(fromPoint.split(',')[0]), parseFloat(fromPoint.split(',')[1])],
 		[parseFloat(toPoint.split(',')[0]), parseFloat(toPoint.split(',')[1])]
-	]);
+	], {paddingBottomRight: [0, 250], paddingTopLeft: [0,100]});
 	$("#itinerary").removeClass("active");
 	// Ouverture du menu eta-dist (seulement si currentPos existant)
 	if (currentPos != null) {
