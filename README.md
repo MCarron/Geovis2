@@ -5,7 +5,7 @@
 
 Ce projet a été réalisé dans le cadre du cours Géovisualisation dynamique et traitement de données donné par Pr. Christian Kaiser à l'Univsersité  de Lausanne.
 
-L'idée de ce projet était de réaliser une application de cartographie intéractive portant sur les différents lieux de grimpe qui se trouvent dans le Chablais suisse. Cette application permet ainsi à l'utilisateur de repérer les différents lieux de grimpe présents dans cette région et d'intéragir de plusieurs manières avec ceux-ci :
+L'idée de ce projet était de réaliser une application de cartographie interactive portant sur les différents lieux de grimpe qui se trouvent dans le Chablais suisse. Cette application permet ainsi à l'utilisateur de repérer les différents lieux de grimpe présents dans cette région et d'interagir de plusieurs manières avec ceux-ci :
 
 * un itinéraire entre un lieu choisi et les différents spots de grimpe peut être rapidement calculé. Plusieurs options sont possibles, telles que le mode de transport, la date ou l'heure de transport
 
@@ -15,7 +15,7 @@ L'idée de ce projet était de réaliser une application de cartographie intéra
 
 ## 2. Application réalisée
 
-### 2.1 Descrition générale
+### 2.1 Description générale
 
 ### 2.2 Système GPS
 
@@ -43,7 +43,7 @@ OTP est un programme Java et nécessite plusieurs fichiers externes afin de fonc
 
 #### Utilisation d'OTP
 
-Afin d'utiliser notre application, il est nécessaire de monter un serveur OTP en local. Toutes les étapes nécessaires sont decrites ici :
+Afin d'utiliser notre application, il est nécessaire de monter un serveur OTP en local. Toutes les étapes nécessaires sont décrites ici :
 
 * Assurez vous d'avoir la [version 11 de Java](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html). Vous pouvez vérifier votre version de Java en tapant `java -version` dans un terminal.
 
@@ -51,9 +51,9 @@ Afin d'utiliser notre application, il est nécessaire de monter un serveur OTP e
 
 * Extrayez l'ensemble des fichiers à l'emplacement de votre choix.
 
-* Ouvrez un terminal sur votre machine
+* Ouvrez un terminal sur votre machine.
 
-* Changez le répertoire pour le dossier que vous avez téléchargé précedemment
+* Changez le répertoire pour le dossier que vous avez téléchargé précédemment.
 
 * Une fois dans le dossier, écrivez simplement :
 
@@ -62,11 +62,11 @@ Afin d'utiliser notre application, il est nécessaire de monter un serveur OTP e
 `java` indique que vous allez utiliser un programme écrit dans le langage\
 `-Xmx8G` indique la quantité de mémoire vive que vous souhaitez allouer au programme (ici 8Go)\
 `-jar` indique le type de fichier qui va être lu\
-`otp_shaded.jar` correspond au programme OTP qui sera lu et executé\
+`otp_shaded.jar` correspond au programme OTP qui sera lu et exécuté\
 `--load` charge les fichiers `.obj` préalablement créés\
 `.` indique que tout cela se passe dans le fichier actuel (d'où le changement du chemin relatif plus haut)
 
-Après quelques secondes (ou minutes selon votre machine), la dernière ligne de commande devrait indiquer : `Grizzly server running`. Cela veut dire que votre serveur est près à l'emploi et que vous pouvez utiliser notre application.
+Après quelques secondes (ou minutes selon votre machine), la dernière ligne de commande devrait indiquer : `Grizzly server running`. Cela veut dire que votre serveur est prêt à l'emploi et que vous pouvez utiliser notre application.
 
 
 
@@ -81,10 +81,10 @@ Plusieurs sources ont été utilisées pour obtenir les différentes information
 
 #### Création du GeoJSON
 Dès lors que nous avons pu trier et choisir les informations auxquelles nous souhaitions avoir accès, nous avons regroupé ces dernières au sein d'un fichier GeoJSON que nous avons pu réaliser à partir d'un système d'informations géographiques (SIG). Dans notre cas nous avons utilisé le programme QGIS. 
-GeoJSON est un format ouvert d’échange de données géospatiales utilisant la norme JSON représentant des entités géographiques simples et leurs attributs non spatiaux. Ce format permet d’encoder diverses structures de données géographiques du fait qu'il utilise un système de référentiel de coordonnées géographiques [(ArcGIS, 2021)](https://doc.arcgis.com/fr/arcgis-online/reference/geojson.htm). Ainsi, une fois que notre fichier GeoJSON a été créer, nous avons pu utiliser ce dernier pour afficher les informations souhaitées sur notre carte interactive.
+GeoJSON est un format ouvert d’échange de données géospatiales utilisant la norme JSON représentant des entités géographiques simples et leurs attributs non spatiaux. Ce format permet d’encoder diverses structures de données géographiques du fait qu'il utilise un système de référentiel de coordonnées géographiques [(ArcGIS, 2021)](https://doc.arcgis.com/fr/arcgis-online/reference/geojson.htm). Ainsi, une fois que notre fichier GeoJSON a été créé, nous avons pu utiliser ce dernier pour afficher les informations souhaitées sur notre carte interactive.
 
 #### Extrait du fichier GeoJSON
-L'extrait présenté ci-dessous montre à quoi ressemble notre fichier GeoJSON. Nous pouvons noter que chacun des spots de grimpe est associé à des coordonnées géographiques précises. De plus, nous pouvons également voir que chacun des spots est associé à un certain nombre d'entités qui ont été définient par nous-même. A savoir: `Nom`, `Type de voies`, `nombre de voies`, `description`, `image` ainsi que `difficulté`.
+L'extrait présenté ci-dessous montre à quoi ressemble notre fichier GeoJSON. Nous pouvons noter que chacun des spots de grimpe est associé à des coordonnées géographiques précises. De plus, nous pouvons également voir que chacun des spots est associé à un certain nombre d'entités qui ont été définies par nous-mêmes. A savoir: `Nom`, `Type de voies`, `nombre de voies`, `description`, `image` ainsi que `difficulté`.
 ![GeoJSON](https://user-images.githubusercontent.com/81638170/150301406-d27a0cc1-783c-481a-9167-3bba693392d4.png)
 
 #### Accès aux informations
@@ -100,7 +100,7 @@ L'accès aux informations au travers de notre application peut ce faire de deux 
 
 ### 3.1 Points forts
 
-* Possibilité de choisir sa localisation actuelle ou une localisation personalisée
+* Possibilité de choisir sa localisation actuelle ou une localisation personnalisée
 * Possibilité de changer de moyen de transport grâce à la fonction multimodale d'OTP
 * Possibilité de calculer des itinéraires avec des transports en commun et des horaires précis
 * UI intuitive
@@ -111,7 +111,7 @@ L'accès aux informations au travers de notre application peut ce faire de deux 
 
 ### 3.2 Faiblesses (à améliorer)
 
-* Certains spots de grimpe ne sont pas accessible via OTP car ne se trouvent pas à côté d'une route praticable. Une solution possible aurait été d'indiquer le parking le plus proche pour qu'OTP puisse calculer l'itinéraire.
+* Certains spots de grimpe ne sont pas accessibles via OTP car ne se trouvent pas à côté d'une route praticable. Une solution possible aurait été d'indiquer le parking le plus proche pour qu'OTP puisse calculer l'itinéraire.
 * Certains points de départ sont invalides : on ne peut pas choisir le milieu d'une autoroute comme point de départ pour un trajet en transport en commun. Impossibilité de calculer un itinéraire si l'utilisateur se trouve dans un corps d'eau. Une solution aurait été de calculer le plus cours chemin (à vol d'oiseau) de l'utilisateur au premier point valide pour OTP et calculer l'itinéraire à partir de là.
 * Puisque nous avons choisi de montrer un seul itinéraire et ne pas laisser le choix à l'utilisateur, cela engendre des problèmes au niveau des transits : le premier itinéraire proposé par OTP avec le mode TRANSIT est toujours un trajet à pied. Nous avons donc décidé de choisir uniquement le deuxième itinéraire proposé par OTP, qui est le plus rapide en utilisant les transports en commun. Or, si on choisit un point de départ proche du point d'arrivée, utiliser les transports en commun ne sera clairement pas plus rentable que de marcher. Il en résulte un temps de trajet beaucoup plus long pour deux points rapprochés.
 * Pas de système de GPS avec une vue aérienne oblique
