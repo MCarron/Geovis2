@@ -310,6 +310,9 @@ function setCurrentTime() {
  * 2. Rcupération des paramètres voulus pour OTP (makeRoutingQuery)
  */
 function calculateRoute(){
+	
+	// Reinitialisation de la liste des etapes
+	document.getElementById('step-results').textContent = '';
 
 	// Point de départ & d'arrivee
 	let fromPoint = $('#fromPoint').val();
@@ -396,6 +399,7 @@ function setHeader(xhr){
 // Letiable contenant l'ensemble de nos polylines (groupées dans une couche)
 let polylineGroup = L.layerGroup().addTo(myMap);
 
+let itin
 let steps
 
 // Fonction pour dessiner la route
@@ -418,7 +422,7 @@ function drawRoute(data){
     // Application de la fonction choseItin qui switch entre
 	// -> 1 (2e itineraire si TRANSIT,WALK est choisi) et
 	// -> 0 (1er itineraire si autres moyens de transports)
-    let itin = data.plan.itineraries[choseItin(transp_mode)]
+    itin = data.plan.itineraries[choseItin(transp_mode)]
 
 	// Boucle d'iteration parmi les differents points geometrique
     for (let i=0; i < itin.legs.length; i++){
@@ -451,7 +455,13 @@ function drawRoute(data){
         	}
         
 		// Ajout de chaque polyline à notre layergroup
-      	}).addTo(polylineGroup);
+      	})
+		  
+		geojsonLayer.onclick = function () {
+			console.log("SDFSDFSDF");
+		};
+
+		geojsonLayer.addTo(polylineGroup);
     }
 
 	// Durée en minutes du trajet
@@ -545,6 +555,9 @@ function calculateRouteError(error){
 function showSteps(){
 
 	console.log("initialisation de la fonction");
+	
+	// Reinitialisation de la liste des etapes
+	document.getElementById('step-results').textContent = '';
 
 	// Changer style de la fenetre
 	$(".eta-dist").addClass("steps");
@@ -569,6 +582,8 @@ function showSteps(){
 		imageFiltered = imageFiltered.match(/'([^']+)'/)[1]
 		imageImg.setAttribute("src", imageFiltered);
 
+
+
 		// Integrer l'element img au div et definir le style
 		imageDiv.appendChild(imageImg);
 		imageDiv.classList.add("clipped_img");
@@ -579,14 +594,72 @@ function showSteps(){
 		indexDiv.style.fontSize = "20px";
 		indexDiv.style.textAlign = "left";
 
+
+		// Convertir la distance de l'etape
+		let distance
+		if (step.distance < 1000) {
+			distance = Math.round(step.distance);
+			distance = distance + ' m'
+		}
+		if (step.distance >= 1000) {
+			distance = toLocaleString(Math.round(step.distance/100)/10);
+			distance = distance + ' km'
+		}
+
+		// Convertir la direction relative de l'etape
+		let relativedirection
+		
+		switch (step.relativeDirection) {
+			case "SLIGHTLY_LEFT":
+				relativedirection = "légèrement à gauche"
+			case "SLIGHTLY_RIGHT":
+				relativedirection = "légèrement à droite"
+			case "LEFT":
+				relativedirection = "à gauche"
+			case "RIGHT":
+				relativedirection = "à droite"
+			// Voir si necessite de distinguer les cas "HARD"
+			case "HARD_LEFT":
+				relativedirection = "à gauche"
+			case "HARD_RIGHT":
+				relativedirection = "à droite"
+			}
+
+		// Convertir la direction absolue de l'etape
+		let absolutedirection
+		
+		switch (step.absoluteDirection) {
+  
+			case "NORTH":
+				absolutedirection = "nord"
+			case "NORTHEAST":
+				absolutedirection = "nord-est"
+			case "EAST":
+				absolutedirection = "est"
+			case "SOUTHEAST":
+				absolutedirection = "sud-est"
+			case "SOUTH":
+				absolutedirection = "sud"
+			case "SOUTHWEST":
+				absolutedirection = "sud-ouest"
+			case "WEST":
+				absolutedirection = "est"
+			case "NORTHWEST":
+				absolutedirection = "sud-est"	
+			}
+
 		// Creer div pour contenir le nom du site et definir le style
 		let textDiv = document.createElement('div');
 		textDiv.append(i+1);
 		textDiv.append(" - ");
 
-		if ((step.relativeDirection != "CONTINUE") && (step.relativeDirection != "DEPART")) {
-			textDiv.append("Prendre ");
-			textDiv.append(step.relativeDirection);
+		if ((step.relativeDirection != "DEPART") && (step.relativeDirection != "CONTINUE")) {
+			
+			textDiv.append("Après ");
+			textDiv.append(distance);
+			
+			textDiv.append(", tourner ");
+			textDiv.append(relativedirection);
 			
 			if (step.streetName != "route sans nom") {
 			textDiv.append(" sur ");
@@ -595,24 +668,30 @@ function showSteps(){
 		}
 
 		if (step.relativeDirection == "CONTINUE") {
-			textDiv.append("Continuer sur ");
+			textDiv.append("Continuer");
 			
 			if (step.streetName != "route sans nom") {
+			textDiv.append(" sur ");
 			textDiv.append(step.streetName);
 			}
+			textDiv.append(" pendant ");
+			textDiv.append(distance);
 		}
 
 		if (step.relativeDirection == "DEPART") {
-			textDiv.append("Départ de ");
-			textDiv.append(step.streetName)
+			textDiv.append("Prendre ");
+			textDiv.append(step.streetName);
+			textDiv.append(" direction ");
+			textDiv.append(absolutedirection);
 		}
+		textDiv.append(".");
 
-		textDiv.style.fontSize = "16px";
+		textDiv.style.fontSize = "14px";
 		textDiv.style.textAlign = "left";
 
 			// Integrer les 2 div au div principal et definir le style
 			stepDiv.appendChild(textDiv);
-			stepDiv.classList.add("filter_result");
+			stepDiv.classList.add("step_result");
 
 			// Extraction des attributs du site concerne
 			let name1 = step.relativeDirection
