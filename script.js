@@ -550,6 +550,8 @@ function showSteps(){
 
 	console.log("initialisation de la fonction");
 	
+	$(".go-btn").removeClass("active");
+
 	// Reinitialisation de la liste des etapes
 	document.getElementById('step-results').textContent = '';
 
@@ -561,32 +563,24 @@ function showSteps(){
 		let step = steps[i];
 		console.log(step)
 
-		// Creer div pour contenir le site et definir le style
+		// Creer div pour contenir l'etape et definir le style
 		let stepDiv = document.createElement('div');
 		stepDiv.style.display = "inline-block";
-	
-		// Creer div pour contenir l'image du site
-		let imageDiv = document.createElement('div');
-			
-		// Creer img pour extraire l'image du site
-		let imageImg = document.createElement('img');
-			
-		// Extraire la source de l'image et l'annexer à l'element img
-		let imageFiltered = lieux_grimpe._layers[layer].feature.properties.img;
-		imageFiltered = imageFiltered.match(/'([^']+)'/)[1]
-		imageImg.setAttribute("src", imageFiltered);
+		stepDiv.style.verticalAlign = "middle";
+		stepDiv.classList.add("step_result");
 
-
-
-		// Integrer l'element img au div et definir le style
-		imageDiv.appendChild(imageImg);
-		imageDiv.classList.add("clipped_img");
-
-		// Creer div pour contenir le nom du site et definir le style
+		// Creer div pour contenir l'index de l'etape et definir le style
 		let indexDiv = document.createElement('div');
-		indexDiv.append(i);
+		indexDiv.append(i+1);
+		indexDiv.style.backgroundColor = "rgb(41, 92, 151)";
 		indexDiv.style.fontSize = "20px";
-		indexDiv.style.textAlign = "left";
+		indexDiv.style.width = "30px";
+		indexDiv.style.height = "30px";
+		indexDiv.style.borderRadius = "12px";
+		indexDiv.style.textAlign = "middle";
+		indexDiv.style.verticalAlign = "middle";
+		indexDiv.style.lineHeight = "normal";
+
 
 
 		// Convertir la distance de l'etape
@@ -648,8 +642,9 @@ function showSteps(){
 
 		// Creer div pour contenir le nom du site et definir le style
 		let textDiv = document.createElement('div');
-		textDiv.append(i+1);
-		textDiv.append(" - ");
+		textDiv.style.float = "right";
+		textDiv.style.width = "85%";
+
 
 		if ((step.relativeDirection != "DEPART") && (step.relativeDirection != "CONTINUE")) {
 			
@@ -689,7 +684,7 @@ function showSteps(){
 
 			// Integrer les 2 div au div principal et definir le style
 			stepDiv.appendChild(textDiv);
-			stepDiv.classList.add("step_result");
+			stepDiv.appendChild(indexDiv);
 
 			// Extraction des attributs du site concerne
 			let name1 = step.relativeDirection

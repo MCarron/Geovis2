@@ -162,6 +162,10 @@ input[type="datetime-local"]{
 }
 .itin-go .go-btn{
     background-color: rgb(102, 158, 223);
+    display: none;
+}
+.go-btn .active{
+    display: none;
 }
 .itin-go .filter-btn{
     background-color: rgb(223, 171, 102);
@@ -519,9 +523,9 @@ color: #fff;
     border-radius: 12px;
     padding: 6px;
     margin: 5px;
-    background-color:  #7db2d1;
+    background-color: rgb(102, 158, 223);
     color:  #ffffff;
-    height: 50px;
+    min-height: 40px;
     opacity: 1;
     cursor: pointer;
 }
