@@ -35,6 +35,7 @@ $(function() {
 		// Permet d'enelver l'indication de l'ETA + distance si l'utilisateur
 		// appuie à nouveau sur un des boutons du menu
 		$(".eta-dist").removeClass("active");
+		$(".eta-dist").removeClass("steps");
 		e.preventDefault();
 	});
 });
@@ -545,6 +546,9 @@ function showSteps(){
 
 	console.log("initialisation de la fonction");
 
+	// Changer style de la fenetre
+	$(".eta-dist").addClass("steps");
+
 	// Etapes de l'itinéraire pour future fonction GPS
 	for (let i = 0; i < steps.length; i++){
 		let step = steps[i];
@@ -577,12 +581,36 @@ function showSteps(){
 
 		// Creer div pour contenir le nom du site et definir le style
 		let textDiv = document.createElement('div');
-		textDiv.append(step.relativeDirection);
-		textDiv.style.fontSize = "18px";
-		textDiv.style.textAlign = "right";
+		textDiv.append(i+1);
+		textDiv.append(" - ");
+
+		if ((step.relativeDirection != "CONTINUE") && (step.relativeDirection != "DEPART")) {
+			textDiv.append("Prendre ");
+			textDiv.append(step.relativeDirection);
+			
+			if (step.streetName != "route sans nom") {
+			textDiv.append(" sur ");
+			textDiv.append(step.streetName);
+			}
+		}
+
+		if (step.relativeDirection == "CONTINUE") {
+			textDiv.append("Continuer sur ");
+			
+			if (step.streetName != "route sans nom") {
+			textDiv.append(step.streetName);
+			}
+		}
+
+		if (step.relativeDirection == "DEPART") {
+			textDiv.append("Départ de ");
+			textDiv.append(step.streetName)
+		}
+
+		textDiv.style.fontSize = "16px";
+		textDiv.style.textAlign = "left";
 
 			// Integrer les 2 div au div principal et definir le style
-			stepDiv.appendChild(indexDiv);
 			stepDiv.appendChild(textDiv);
 			stepDiv.classList.add("filter_result");
 

@@ -181,6 +181,10 @@ input[type="datetime-local"]{
     height: 17%;
     min-height: 200px;
 }
+.eta-dist.steps {
+    height: 50%;
+    min-height: 200px;
+}
 .eta-dist .btn{
     position: absolute;
     top: 0;
