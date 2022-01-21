@@ -399,7 +399,7 @@ input[type="datetime-local"]{
     position: relative;
     min-height: 400px;
     text-align: center;
-    background-color: #fff;
+    background-color: #ececec;
     border-radius: 20px;
     padding: 10px;
     margin-top: 20px;
@@ -410,6 +410,7 @@ input[type="datetime-local"]{
     font-size: 15px;
 }
 .column{
+    background-color:  #ececec;
     width: 100%;
 }
 

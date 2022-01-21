@@ -65,11 +65,6 @@ let myMap = L.map('map', {
 });
 
 // Ajout de nos couches de base (layers)
-/*const mapboxTiles = L.tileLayer('https://api.mapbox.com/styles/v1/theogerritsen/cktvgvy4d294h18lp92dm804n/tiles/512/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoidGhlb2dlcnJpdHNlbiIsImEiOiJja3R2Zzkybzkwa25oMm5tcGp1MWY0enh1In0.n_ye_r9ELbLqxyWl-giSlA', {
-    attribution: '© <a href="https://www.mapbox.com/feedback/">Mapbox</a>',
-    tileSize: 512,
-       oomOffset: -1
-});*/
 
 const osmLayer = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
   	attribution: '&copy; OpenStreetMap contributors'
@@ -326,6 +321,7 @@ function calculateRoute(){
 		[parseFloat(toPoint.split(',')[0]), parseFloat(toPoint.split(',')[1])]
 	], {paddingBottomRight: [0, 250], paddingTopLeft: [0,100]});
 	$("#itinerary").removeClass("active");
+	$("#infos").removeClass("active");
 	// Ouverture du menu eta-dist (seulement si currentPos existant)
 	if (currentPos != null) {
 		document.querySelector(".eta-dist").classList.toggle("active");
@@ -336,7 +332,6 @@ function calculateRoute(){
 
 	// Conversion de la date indiquée
 	selectedDateTime = new Date(selectedDateTime);
-	console.log(selectedDateTime);
 
 	// Recupération de la date et heure indiquée dans un format convenable pour OTP
 	let selectedDate = selectedDateTime.getFullYear() + '-' + (selectedDateTime.getMonth()+1) + '-' + selectedDateTime.getDate();
@@ -421,10 +416,6 @@ function drawRoute(data){
 	// -> 1 (2e itineraire si TRANSIT,WALK est choisi) et
 	// -> 0 (1er itineraire si autres moyens de transports)
     let itin = data.plan.itineraries[choseItin(transp_mode)]
-    
-	// Verification dans le code
-    console.log('data', data)
-    console.log('itin', itin)
 
 	// Boucle d'iteration parmi les differents points geometrique
     for (let i=0; i < itin.legs.length; i++){
@@ -434,12 +425,14 @@ function drawRoute(data){
 
       	// Obtention du mode de transport pour chaque leg (pour icone surement)
       	let leg_mode = leg.mode
-      	console.log(leg_mode)
+
       	let steps = leg.steps;
-        for (let f = 0; f < steps.length; f++){
-          	let step = steps[f];
-          	console.log(step)
-        }
+
+		// Etapes de l'itinéraire pour future fonction GPS
+        // for (let f = 0; f < steps.length; f++){
+        //   	let step = steps[f];
+        //   	console.log(step)
+        // }
 
         // Conversion chaque point en GeoJson
         let geomLeg = polyline.toGeoJSON(leg.legGeometry.points);
