@@ -123,11 +123,7 @@ var spots = {
         "Nom": "Vers-Cor",
         "Type_voies": "Couennes",
         "nbr_voies": 80,
-<<<<<<< Updated upstream
-        "description": "Ce spot est apprécié pour les initiations et sortie en famille en raison de son accessibilité et des voies relativement simples qu'on y trouve. Le secteur offre tout de même de jolis défis pour tous les niveaux.",
-=======
         "description": "Ce spot est apprécié pour les initiations et les sortie en famille en raison en son accessibilité (situé à 3min. de marche du parking le long d'un sentier) et des voies relativement simples qu'on y trouve. Le secteur offre tout de même de jolis défis pour tous les niveaux. Attention les journées de week-end le spot est souvent très occupé.",
->>>>>>> Stashed changes
         "img": "<img src='img/ver_cor.jpg' alt='maptime logo gif' width='350px' height='275px'/>",
         "diff":"Du 4a au 7b"
       },
@@ -165,11 +161,7 @@ var spots = {
         "Nom": "Falaise de la Feuille",
         "Type_voies": "Couennes",
         "nbr_voies": 23,
-<<<<<<< Updated upstream
-        "description":"La Falaise de la Feuille est un spot idéal pour les chaudes journées d'été en raison de son orientation Nord-Ouest. L'accès au secteur se fait le long d'un petit sentier parfois bien escarpé et mérite de se faire de façon calme et réfléchie.",
-=======
         "description":"La falaise de la feuille est un spot idéal pour les chaudes journées d'été en raison de son orientation Nord-Ouest. L'accès au secteur se fait le long d'un petit sentier parfois bien escarpé et mérite de se faire de façon calme et réfléchie.",
->>>>>>> Stashed changes
         "img" : "<img src='img/feuille.jpg' alt='maptime logo gif' width='350px' height='400px'/>",
         "diff":"Du 5a au 8a"
       },
@@ -188,11 +180,7 @@ var spots = {
         "Nom": "Roche",
         "Type_voies": "Couennes",
         "nbr_voies": 20,
-<<<<<<< Updated upstream
-        "description":"Le spot de grimpe de Roche est un spot relativement avancé où le niveau des voies commence uniquement avec du '6a'. De plus, l'accès au secteur est relativement compliqué et ne convient pas aux enfants et personnes peu expérimentées",
-=======
-        "description":"Le spot de grimpe de roche est un spot relativement avancé ou le niveau des voies commence uniquement en '6a'. De plus, l'accès au secteur est relativement compliqué et ne convient pas aux enfants et personnes peu expérimentées",
->>>>>>> Stashed changes
+        "description":"Le spot de grimpe de Roche est un spot relativement avancé ou le niveau des voies commence uniquement en '6a'. De plus, l'accès au secteur est relativement compliqué et ne convient pas aux enfants et personnes peu expérimentées",
         "img" : "<img src='img/Noces.jpg' alt='maptime logo gif' width='350px' height='400px'/>",
         "diff":"Du 6a au 7b"
       },
@@ -211,11 +199,7 @@ var spots = {
         "Nom": "Scex des Nombrieux",
         "Type_voies": "Longues voies et Couennes",
         "nbr_voies": 23,
-<<<<<<< Updated upstream
-        "description":"Le site du Scex des Nombrieux se situe à plus de 1500m d'altitude et requiert une bonne heure de marche pour y accéder. Le spot est relativement engagé et demande un niveau de grimpe déjà avancé. Attention, voies de plusieurs longueurs et paroie parfois mal équipée.",
-=======
         "description":"Le site du Scex des Nombrieux se situe à plus de 1500m d'altitude et requiert une bonne heure de marche pour y accéder. Le spot est relativement engagé et demande un niveau de grimpe déjà avancé. Attention, voies de plusieurs longueurs et parois parfois mal équipée.",
->>>>>>> Stashed changes
         "img" : "<img src='img/Scex.jpg' alt='maptime logo gif' width='350px' height='350px'/>",
         "diff":"Du 6a au 7c",
       },
@@ -234,11 +218,7 @@ var spots = {
         "Nom": "Scex du Châtelard",
         "Type_voies": "Couennes",
         "nbr_voies": 12,
-<<<<<<< Updated upstream
-        "description": "Le domain viticol du Scex du Châtelard offre une petite paroie rocheuse orientée Nord-Est qui convient parfaitement pour les petites sessions de grimpes de fin d'après-midi. De plus, le site est protégé de la pluie et très facile d'accès depuis la gare de Villeneuve",
-=======
         "description": "Le domaine viticole du Scex du Châtelard offre une petite paroi rocheuse orientée Nord-Est qui convient parfaitement pour les petites sessions de grimpes de fin d'après-midi. De plus le site est protégé de la pluie et très facile d'accès depuis la gare de Villeneuve (compter environ 10min. de marche depuis la gare).",
->>>>>>> Stashed changes
         "img" : "<img src='img/villeneuve.jpg' alt='maptime logo gif' width='350px' height='350px'/>",
         "diff" : "Du 5c au 8a",
       },
@@ -257,11 +237,7 @@ var spots = {
         "Nom": "Ponty",
         "Type_voies": "Couennes",
         "nbr_voies": 15,
-<<<<<<< Updated upstream
-        "description": "Ce spot se situe peu après le début de la montée en direction de Leysin et demande un accès motorisé. La paroie propose une vingtaine de voies dont la hauteur maximum atteint 22m. Le spot est facile d'accès et bien sécurisé.",
-=======
         "description": "Ce spot se situe peu après le début de la montée en direction de Leysin et demande un accès motorisé. La paroi propose une vingtaine de voies dont la hauteur maximum vaut 22m.. Le spot est facile d'accès et bien sécurisé.",
->>>>>>> Stashed changes
         "img" : "<img src='img/ponty.jpg' alt='maptime logo gif' width='350px' height='300px'/>",
         "diff": "Du 5c au 7b",
       },
@@ -280,11 +256,7 @@ var spots = {
         "Nom": "St-Triphon",
         "Type_voies": "Couennes",
         "nbr_voies": 150,
-<<<<<<< Updated upstream
-        "description": "Le secteur de grimpe de St-triphon est connu mondialement depuis maintenant plusieurs décennies. Ce spot situé à la porte des Alpes, offre une variété impressionnante de différents type de grimpe et de voies, allant de la simple dalle au devers engagé. Il est extrêment facile d'accès et convient à toute personne aimant la grimpe!",
-=======
         "description": "Le secteur de grimpe de St-triphon est connu mondialement depuis maintenant plusieurs décennies. Ce spot situé à la porte des Alpes, offre une variété impressionnante de différents types de grimpe et de voies, allant de la simple dalle au devers engagé. Il est extrêment facile d'accès et convient vraiment à toute personne aimant la grimpe!",
->>>>>>> Stashed changes
         "img" : "<img src='img/st_triph.jpg' alt='maptime logo gif' width='350px' height='300px'/>",
         "diff": "Du 4a au 9a",
       },
@@ -303,11 +275,7 @@ var spots = {
         "Nom": "Grimper.ch",
         "Type_voies": "Salle",
         "nbr_voies": 250,
-<<<<<<< Updated upstream
-        "description":"La salle à ouvert ses portes en fin 2019 et propose désormais un complexe de plus de 1000 mètres carré qui permet de grimper tant à l'intérieur qu'à l'extérieur. L'ambiance de la salle est magique et il est vivement recommandé de s'arrêter boire une bière à la sortie pour parler de sa session en groupe!",
-=======
         "description":"La salle à ouvert ses portent fin 2019 et propose désormais un complexe de plus de 1000 mètres carrés qui permet de grimper tant à l'intérieur qu'à l'extérieur. L'ambiance de la salle est magique et il est vivement recommandé de s'arrêter boire une bière à la sortie pour parler de sa session en groupe!",
->>>>>>> Stashed changes
         "img" : "<img src='img/grimper_ch.jpg' alt='maptime logo gif' width='350px' height='300px'/>",
         "diff": "Tous types de difficultés",
       },
@@ -326,11 +294,7 @@ var spots = {
         "Nom": "Carrière des Chamois",
         "Type_voies": "Couennes",
         "nbr_voies": 45,
-<<<<<<< Updated upstream
-        "description": "Située juste après Leysin du côté de Prafandaz, la Carrière des Chamois est un lieu de grimpe idéal pour les chaudes journées d'été en raion de l'altitude à laquelle on se situe (1500m). Le spot offre une vingtaine de voies de niveau débutant et convient donc parfaitement pour une première sortie en extérieur ou pour les enfants.",
-=======
         "description": "Située juste après Leysin du côté de Prafandaz, la carrière des Chamois est un lieu de grimpe idéal pour les chaudes journées d'été en raion de l'altitude à laquelle on se situe (1500m.). Le spot offre une vingtaine de voies de niveau débutant et convient donc parfaitement pour une première sortie en extérieur ou pour les enfants.",
->>>>>>> Stashed changes
         "img" : "<img src='img/car_chamoix.jpg' alt='maptime logo gif' width='350px' height='300px'/>",
         "diff":"3b au 6a",
 
@@ -350,7 +314,7 @@ var spots = {
         "Nom": "Planpraz",
         "Type_voies": "Couennes",
         "nbr_voies": 15,
-        "description": "Le site de grimpe de Planpraz, situé sur les hauts de Leysin, est un lieux reservé aux grimpeurs de bon niveau. Le spot offre une vingtaine de voies de type dévers, dont la hauteur maximum est de 18m. Attention: une via ferrata passe le long des voies, il faut donc faire attention à son équipement et celui des autres.",
+        "description": "Le site de grimpe de Planpraz, situé sur les hauts de Leysin, est un lieu reservé aux grimpeurs de bon niveau. Le spot offre une vingtaine de voies de type dévers, dont la hauteur maximum est de 18m. Attention: une via ferrata passe le long des voies, il faut donc faire attention à son équipement et celui des autres.",
         "img" : "<img src='img/planpraz.jfif' alt='maptime logo gif' width='350px' height='300px'/>",
         "diff": "Du 6b au 7c",
       },
@@ -388,7 +352,7 @@ var spots = {
         "Nom": "Miroir d'Argentine",
         "Type_voies": "Longues voies",
         "nbr_voies": 25,
-        "description": "Le Miroir d'Argentine se situe en plein coeur des Alpes vaudoises et attire chaque année des centaines de grimpeurs. La paroie haute de plus de 500m est en effet connue depuis des dizaines d'années pour sa beauté majestueuse. Attention: il est courant d'avoir des sections plus longues que 10m entre les relais. Il faut donc bien savoir ce que l'on fait lorsqu'on grimpe en tête!",
+        "description": "Le Miroir d'Argentine se situe en plein coeur des Alpes vaudoises et attire chaque année des centaines de grimpeurs. La paroi haute de plus de 500m est en effet connue depuis des dizaines d'années pour sa beauté majestueuse. Attention: il est courant de rencontrer des sections longues de plus de 10m entre les relais. Il faut donc bien savoir ce que l'on fait lorsqu'on grimpe en tête!",
         "img" : "<img src='img/miroir.jfif' alt='maptime logo gif' width='350px' height='250px'/>",
         "diff":"Du 4a au 7b",
 
