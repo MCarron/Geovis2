@@ -62,7 +62,13 @@ Afin d'utiliser notre application, il est nécessaire de monter un serveur OTP e
 
 Après quelques secondes (ou minutes selon votre machine), la dernière ligne de commande devrait indiquer : `Grizzly server running`. Cela veut dire que votre serveur est près à l'emploi et que vous pouvez utiliser notre application.
 
+
+
 ### 2.3 Système de filtre
+
+
+
+
 ### 2.4 Informations sur les sites de grimpe
 
 Plusieurs sources ont été utilisées pour obtenir les différentes informations relatives aux spots de grimpe que nous pouvons rencontrer dans le Chablais vaudois. En effet, il existe de nombreux manuels de grimpe spécialisés sur les différents secteurs que l'on trouve dans cette région. Ces derniers fournissent généralement des informations importantes sur le type de voies que l'on peut rencontrer sur un secteur (longue voie, couenne, bloc), sur l'accessibilité liée à ces derniers ainsi que de nombreuses informations relatives au niveau de difficulté des voies présentent sur les parois. Nous pouvons noter que dans le cadre de ce travail, nous nous sommes principalement inspiré des informations fournies dans le [topo](https://sportescalade.com/topo/) de grimpe écrit par Claude et Yves Rémy, deux figurent phare de la grimpe en Suisse.
@@ -82,7 +88,7 @@ L'accès aux informations au travers de notre application peut ce faire de deux 
 
 
 
-#### Création du GeoJSON
+
 
 ## 3. Points forts et faiblesses
 
