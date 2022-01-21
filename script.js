@@ -455,13 +455,7 @@ function drawRoute(data){
         	}
         
 		// Ajout de chaque polyline à notre layergroup
-      	})
-		  
-		geojsonLayer.onclick = function () {
-			console.log("SDFSDFSDF");
-		};
-
-		geojsonLayer.addTo(polylineGroup);
+      	}).addTo(polylineGroup);
     }
 
 	// Durée en minutes du trajet
@@ -602,7 +596,7 @@ function showSteps(){
 			distance = distance + ' m'
 		}
 		if (step.distance >= 1000) {
-			distance = toLocaleString(Math.round(step.distance/100)/10);
+			distance = Math.round(step.distance/100)/10;
 			distance = distance + ' km'
 		}
 
