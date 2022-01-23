@@ -72,17 +72,19 @@ Après quelques secondes (ou minutes selon votre machine), la dernière ligne de
 
 ### 2.3 Système de filtre
 
-L'application dispose d'une fonctionnalité de filtres afin de sélectionner les sites selon des critères de préférence. Les différents filtres applicables sont les suivants :
-* Distance : distance entre la position de départ et le site, en km. À noter que ce filtre n'est pas activé si l'utilisateur n'a pas défini de position sur la carte
-* Nombre de voies : nombre de voies pour l'ensemble du site 
-* Altitude : l'altitude (maximale) du site, en m (N.B. : information à ajouter dans une version ultérieure)
-* Difficulté : la difficulté des sites. La nomenclature est calquée sur [les échelles de difficulté CAS](https://www.sac-cas.ch/fr/formation-et-securite/planification-de-la-course/echelles-de-difficulte/), et permettent donc à l'utilisateur de choisir un site adapté à ses compétences ou de prévoir le matériel nécessaire
+L'application dispose d'une fonctionnalité de filtres afin de permettre à l'utilisateur de sélectionner les sites selon des critères de préférence. Les différents filtres applicables sont les suivants :
+* Distance : distance entre la position de départ et le site, en km. À noter que ce filtre n'est pas activé si l'utilisateur n'a pas défini de position sur la carte. La distance est calculée à vol d'oiseau (N.B. une version ultérieure pourrait calculer une distance routière, bien qu'il s'agirait d'une opération computionellement coûteuse, d'autant plus dans la perspective d'étendre l'application à un nombre plus important de sites/régions)
+* Nombre de voies : nombre de voies pour l'ensemble du site. Cela offre un ordre de grandeur de l'envergure du spot à l'utilisateur.
+* Altitude : l'altitude du site, en m (N.B. : information à ajouter dans une version ultérieure)
+* Difficulté : la difficulté des sites. La nomenclature est calquée sur [les échelles de difficulté CAS](https://www.sac-cas.ch/fr/formation-et-securite/planification-de-la-course/echelles-de-difficulte/), et elle permet donc à l'utilisateur de choisir un site adapté à ses compétences ou de prévoir le matériel nécessaire
 * Types de voies : type de voies disponibles (filtre à valeurs multiples : couennes, longues voies, salle)
 
 Une fois les filtres appliqués, plusieurs actions se déroulent afin de mettre en évidence la sélection des sites respectant les critères :
 * Mise en évidence des sites sur la carte par changement de couleur (les sites non sélectionnés apparaissent de couleur grise)
 * Recentrage de la carte sur l'ensemble des sites
 * Création d'une liste faisant apparaître les différens sites, avec affichage du nombre de sites filtrés. Un clic permet d'ouvrir la page contenant toutes les informations du site
+
+Une option permet de réinitialiser l'ensemble des valeurs de filtre afin de laisser à l'utilisateur la possibilité d'exécuter une nouvelle sélection, ou simplement de désafficher la sélection sur la carte.
 
 
 ### 2.4 Informations sur les sites de grimpe
@@ -149,7 +151,7 @@ L'accès aux informations au travers de notre application peut ce faire de deux 
 
 ![gps](img/sc3.png)
 
-- Résultat de l'opération de filtre, avec affichage des sites sélectionnés sur la carte et en liste
+- Résultat de l'opération de filtre, avec affichage des sites sélectionnés sur la carte ainsi qu'une liste
 
 ![gps2](img/sc4.png)
 
