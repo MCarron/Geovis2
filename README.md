@@ -72,7 +72,17 @@ Après quelques secondes (ou minutes selon votre machine), la dernière ligne de
 
 ### 2.3 Système de filtre
 
+L'application dispose d'une fonctionnalité de filtres afin de sélectionner les sites selon des critères de préférence. Les différents filtres applicables sont les suivants :
+* Distance : distance entre la position de départ et le site, en km. À noter que ce filtre n'est pas activé si l'utilisateur n'a pas défini de position sur la carte
+* Nombre de voies : nombre de voies pour l'ensemble du site 
+* Altitude : l'altitude (maximale) du site, en m (N.B. : information à ajouter dans une version ultérieure)
+* Difficulté : la difficulté des sites. La nomenclature est calquée sur [les échelles de difficulté CAS](https://www.sac-cas.ch/fr/formation-et-securite/planification-de-la-course/echelles-de-difficulte/), et permettent donc à l'utilisateur de choisir un site adapté à ses compétences ou de prévoir le matériel nécessaire
+* Types de voies : type de voies disponibles (filtre à valeurs multiples : couennes, longues voies, salle)
 
+Une fois les filtres appliqués, plusieurs actions se déroulent afin de mettre en évidence la sélection des sites respectant les critères :
+* Mise en évidence des sites sur la carte par changement de couleur (les sites non sélectionnés apparaissent de couleur grise)
+* Recentrage de la carte sur l'ensemble des sites
+* Création d'une liste faisant apparaître les différens sites, avec affichage du nombre de sites filtrés. Un clic permet d'ouvrir la page contenant toutes les informations du site
 
 
 ### 2.4 Informations sur les sites de grimpe
@@ -106,7 +116,8 @@ L'accès aux informations au travers de notre application peut ce faire de deux 
 * UI intuitive
 * Complétion automatique des lieux de destination
 * Visualisation des emplacements de chacun des secteurs de grimpe
-* Accès rapide a des informations pour chacun de ces secteurs
+* Possibilité de filtrer les emplacements sur la base de différents critères
+* Accès rapide à des informations pour chacun de ces secteurs
 
 
 ### 3.2 Faiblesses (à améliorer)
@@ -118,7 +129,7 @@ L'accès aux informations au travers de notre application peut ce faire de deux 
 * Nécessité de monter un serveur en local pour faire tourner OTP (possibilité d'un hébergement en ligne par la suite)
 * *Distance totale* incorrecte pour le mode TRANSIT : OTP n'indique que la distance pour les trajets à pieds
 * Il serait intéressant de pouvoir ajouter des informations propres à chacune de voies que l'on peut rencontrer sur un secteur de grimpe. En effet l'application permet d'avoir des informations générales sur un secteur mais n'apporte pas d'informations directes sur les voies de grimpe (localisation des voies sur les parois de grimpe, difficultés de chacune des voies, etc.)
-* Il est toujours possible d'apporter des informations générales en plus liées à chaque secteurs (exposition des parois, fréquentation des secteurs de grimpes, confort lié à la zone d'assurage, équipement des parois, etc.)
+* Il est toujours possible d'apporter des informations générales en plus liées à chaque secteurs (altitude, exposition des parois, fréquentation des secteurs de grimpes, confort lié à la zone d'assurage, équipement des parois, etc.)
 
 ## 4. Screenshots
 
@@ -132,7 +143,18 @@ L'accès aux informations au travers de notre application peut ce faire de deux 
 
 ![gps2](img/sc2.png)
 
+#### Filtre
+
+- Interface du menu de filtre avec sélection aléatoire de valeurs
+
+![gps](img/sc3.png)
+
+- Résultat de l'opération de filtre, avec affichage des sites sélectionnés sur la carte et en liste
+
+![gps2](img/sc4.png)
+
 #### Accès aux informations
+
 - Au travers des marqueurs
 
 ![info](https://user-images.githubusercontent.com/81638170/150320251-f84143fd-2a53-4994-89b5-398c421f83ca.png)

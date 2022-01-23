@@ -783,9 +783,9 @@ $('#slider2').noUiSlider({
 
 // Filtre de l'altitude
 $('#slider3').noUiSlider({
-    start: [0, 3000], 
+    start: [500, 3000], 
     range: {
-        'min': [0],
+        'min': [500],
         'max': [3000],
     },
 	step: 1,
@@ -1035,8 +1035,8 @@ function resetFilters(){
 	output1.html("0 - 300 km");
 	$("#slider2").val([ "0", "250" ]);
 	output2.html("0 - 250");
-	$("#slider3").val([ "0", "3000" ]);
-	output3.html("0 - 3000 m");
+	$("#slider3").val([ "500", "3000" ]);
+	output3.html("500 - 3000 m");
 	$("#slider4").val([ "0", "26" ]);
 	output4.html("1a - 9c");
 	$(".buttons_type").addClass("active");
