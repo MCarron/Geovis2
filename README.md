@@ -132,6 +132,8 @@ L'accès aux informations au travers de notre application peut ce faire de deux 
 * *Distance totale* incorrecte pour le mode TRANSIT : OTP n'indique que la distance pour les trajets à pieds
 * Il serait intéressant de pouvoir ajouter des informations propres à chacune de voies que l'on peut rencontrer sur un secteur de grimpe. En effet l'application permet d'avoir des informations générales sur un secteur mais n'apporte pas d'informations directes sur les voies de grimpe (localisation des voies sur les parois de grimpe, difficultés de chacune des voies, etc.)
 * Il est toujours possible d'apporter des informations générales en plus liées à chaque secteurs (altitude, exposition des parois, fréquentation des secteurs de grimpes, confort lié à la zone d'assurage, équipement des parois, etc.)
+* L'option des filtres gagnerait éventuellement à filtrer la distance sur la base des distances routières et non à vol d'oiseau ; cependant, calculer cette distance pour tous les sites demandent une grande quantité de calcul, sans compter que cette distance diffère suivant le mode de transport, lequel n'est pas nécessairement sélectionné au moment du filtre.
+* Certaines améliorations graphiques peuvent rendre l'interface plus professionnelle et pertinente ; un aspect particulier concerne par exemple la miniature des images de site dans la liste des sites filtrés : elles ne révèlent pas nécessairement un attrait intéressant ou reconnaissable des sites.
 
 ## 4. Screenshots
 
